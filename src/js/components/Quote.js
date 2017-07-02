@@ -5,6 +5,7 @@
  */
 
 import React, {Component} from 'react';
+import sanitizeHtml from 'sanitize-html-react';
 
 export default class Quote extends Component {
     constructor(props) {
@@ -13,13 +14,13 @@ export default class Quote extends Component {
 
     render() {
         var quote = this.props.quote;
-        var quoteText = quote.text.replace(new RegExp('\r?\n', 'g'), '<br />');
+        var quoteText = sanitizeHtml(quote.text.replace(new RegExp('\r?\n', 'g'), '<br />'));
 
         return (
                 <article className="quote">
                     {quote.number}
                     <br />
-                    {quoteText}
+                    <div dangerouslySetInnerHTML={{ __html: quoteText}}></div>
                 </article>
                 );
     }
