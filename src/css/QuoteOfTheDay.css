@@ -48,3 +48,5 @@ body { font-family: Helvetica; font-size: 90% }
 .submit {}
 
 .hidden { display: none }
+
+.quote { margin-top: 15px; margin-bottom: 10px }
