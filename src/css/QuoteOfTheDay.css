@@ -27,6 +27,7 @@ body { font-family: Helvetica; font-size: 90% }
 .QuoteSource { font-family: Times New Roman; font-size: 90% }
 
 #pageHeader { float: top; font-size: 125%; color: red; font-family: Tahoma; background-color: blue; }
+#pageHeader table { border: 0 }
 #pageHeader td { color: red; font-size: 125%; padding: 5px 15px 5px 5px }
 
 .overflow {

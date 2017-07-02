@@ -6,21 +6,14 @@
 
 import React, {Component} from 'react';
 
-export default class Header extends Component {
+export default class SourceCodeListItem extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         return (
-                <div id="pageHeader">
-                    <table>
-                        <tbody>
-                            <tr><td>Scott's Quote of the Day</td></tr>
-                        </tbody>
-                    </table>
-                    <p />
-                </div>
+                <li>{this.props.sourceCode.text}</li>
                 );
     }
 }

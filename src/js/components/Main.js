@@ -6,6 +6,7 @@
 
 import React, {Component} from 'react';
 import Header from './Header';
+import SourceCodeList from './SourceCodeList';
 
 export default class Main extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ export default class Main extends Component {
         return (
                 <div>
                     <Header />
+                    <SourceCodeList />
                 </div>
                 );
     }
