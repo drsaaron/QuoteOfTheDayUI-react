@@ -6,9 +6,11 @@
 
 import { combineReducers } from 'redux';
 import SourceCodeReducer from './SourceCodeReducer';
+import QuotesForSourceCodeReducer from './QuotesForSourceCodeReducer';
 
 const rootReducer = combineReducers( {
-    sourceCodes: SourceCodeReducer
+    sourceCodes: SourceCodeReducer,
+    quotesForSourceCode: QuotesForSourceCodeReducer
 });
 
 export default rootReducer;

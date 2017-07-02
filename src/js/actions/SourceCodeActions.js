@@ -11,3 +11,10 @@ export function retrieveSourceCodes() {
         type: ActionTypes.RETRIEVE_SOURCE_CODES
     };
 }
+
+export function retrieveQuotesForSourceCode(sourceCode) {
+    return {
+        type: ActionTypes.RETRIEVE_QUOTES_FOR_SOURCE_CODE,
+        sourceCode
+    };
+}

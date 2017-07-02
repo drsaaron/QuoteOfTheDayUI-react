@@ -5,15 +5,38 @@
  */
 
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { retrieveQuotesForSourceCode } from '../actions/SourceCodeActions';
 
-export default class SourceCodeListItem extends Component {
+class SourceCodeListItem extends Component {
     constructor(props) {
         super(props);
+        
+        this.clickHandler = this.clickHandler.bind(this);
+    }
+    
+    clickHandler(event) {
+        event.preventDefault();
+        this.props.retrieveQuotesForSourceCode(this.props.sourceCode);
     }
 
     render() {
         return (
-                <li>{this.props.sourceCode.text}</li>
+                <li><a href="#" onClick={this.clickHandler}>{this.props.sourceCode.text}</a></li>
                 );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        retrieveQuotesForSourceCode: (sourceCode) => dispatch(retrieveQuotesForSourceCode(sourceCode))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SourceCodeListItem);

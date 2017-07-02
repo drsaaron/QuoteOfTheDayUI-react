@@ -8,8 +8,9 @@ import { createStore, applyMiddleware } from 'redux';
 import rootReducer from '../reducers/rootReducer';
 import ActionTypes from '../actions/ActionTypes';
 import SourceCodeService from '../services/SourceCodeService';
+import QuotesForSourceCodeService from '../services/QuotesForSourceCodeService';
 
-const store = createStore(rootReducer, {}, applyMiddleware(SourceCodeService));
+const store = createStore(rootReducer, {}, applyMiddleware(SourceCodeService, QuotesForSourceCodeService));
 
 export default store;
     

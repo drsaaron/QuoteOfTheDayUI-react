@@ -6,5 +6,8 @@
 
 export default {
     RETRIEVE_SOURCE_CODES: 'RetrieveSourceCodes',
-    SOURCE_CODES_RETRIEVED: 'SourceCodesRetrieved'
+    SOURCE_CODES_RETRIEVED: 'SourceCodesRetrieved',
+    
+    RETRIEVE_QUOTES_FOR_SOURCE_CODE: 'RetrieveQuotesForSourceCode',
+    QUOTES_FOR_SOURCE_CODE_RETRIEVED: 'QuotesForSourceCodeRetrieved'
 }

@@ -7,6 +7,7 @@
 import React, {Component} from 'react';
 import Header from './Header';
 import SourceCodeList from './SourceCodeList';
+import QuotesForSourceCodeList from './QuotesForSourceCodeList';
 
 export default class Main extends Component {
     constructor(props) {
@@ -18,6 +19,7 @@ export default class Main extends Component {
                 <div>
                     <Header />
                     <SourceCodeList />
+                    <QuotesForSourceCodeList />
                 </div>
                 );
     }

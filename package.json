@@ -12,6 +12,7 @@
   "contributors": [],
   "description": "User interface for the quote of the day application",
   "dependencies": {
+    "classnames": "^2.2.5",
     "react": "^15.5.4",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
