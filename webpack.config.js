@@ -14,7 +14,7 @@ var copyPatterns = [
 
 module.exports = {
     //context: __dirname + "/src/src/js",
-    entry: [ "./src/src/js/App.js" ],
+    entry: [ "./src/js/index.js" ],
     output: {
         path: __dirname + "/dist",
         filename: "bundle.js"
