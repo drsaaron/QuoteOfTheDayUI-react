@@ -13,9 +13,11 @@
   "description": "User interface for the quote of the day application",
   "dependencies": {
     "classnames": "^2.2.5",
+    "history": "^4.6.3",
     "react": "^15.5.4",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
+    "react-router-redux": "^5.0.0-alpha.6",
     "redux": "^3.7.0",
     "redux-promise-middleware": "^3.3.2",
     "sanitize-html-react": "^1.13.0",

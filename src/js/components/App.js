@@ -7,7 +7,9 @@
 import React, {Component} from 'react';
 import Main from './Main';
 import { Provider } from 'react-redux';
-import store from '../store/QuoteOfTheDayStore';
+import store, { history } from '../store/QuoteOfTheDayStore';
+import { ConnectedRouter } from 'react-router-redux';
+import { Route, Switch } from 'react-router';
 
 export default class App extends Component {
     constructor(props) {
@@ -17,7 +19,11 @@ export default class App extends Component {
     render() {
         return (
                 <Provider store={store}>
-                    <Main />
+                    <ConnectedRouter history={history}>
+                        <Switch>
+                            <Route exact path="/" component={Main} />
+                        </Switch>
+                    </ConnectedRouter>
                 </Provider>
                 );
     }

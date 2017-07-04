@@ -6,7 +6,7 @@
 
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import Quote from './Quote';
+import QuoteForSourceCode from './QuoteForSourceCode';
 import classNames from 'classnames';
 
 class QuotesForSourceCodeList extends Component {
@@ -35,7 +35,7 @@ class QuotesForSourceCodeList extends Component {
                     </div>
                 
                     <div id="quotesForSourceCodeQuotes"> 
-                        { this.props.quotesForSourceCode.quoteList.map((quote) => <Quote key={quote.number} quote={quote} />) }
+                        { this.props.quotesForSourceCode.quoteList.map((quote) => <QuoteForSourceCode key={quote.number} quote={quote} />) }
                     </div>
                 </div>
                 );

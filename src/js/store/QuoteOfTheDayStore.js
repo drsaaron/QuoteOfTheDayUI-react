@@ -9,8 +9,17 @@ import rootReducer from '../reducers/rootReducer';
 import ActionTypes from '../actions/ActionTypes';
 import SourceCodeService from '../services/SourceCodeService';
 import QuotesForSourceCodeService from '../services/QuotesForSourceCodeService';
+import createHistory from 'history/createBrowserHistory';
+import { routerMiddleware } from 'react-router-redux';
 
-const store = createStore(rootReducer, {}, applyMiddleware(SourceCodeService, QuotesForSourceCodeService));
+// Create a history of your choosing (we're using a browser history in this case)
+export const history = createHistory();
+
+// Build the middleware for intercepting and dispatching navigation actions
+const historyMiddleware = routerMiddleware(history);
+
+// create the store
+const store = createStore(rootReducer, {}, applyMiddleware(SourceCodeService, QuotesForSourceCodeService, historyMiddleware));
 
 export default store;
     
