@@ -11,6 +11,7 @@ import SourceCodeService from '../services/SourceCodeService';
 import QuotesForSourceCodeService from '../services/QuotesForSourceCodeService';
 import createHistory from 'history/createBrowserHistory';
 import { routerMiddleware } from 'react-router-redux';
+import { retrieveSourceCodes } from '../actions/SourceCodeActions';
 
 // Create a history of your choosing (we're using a browser history in this case)
 export const history = createHistory();
@@ -23,3 +24,5 @@ const store = createStore(rootReducer, {}, applyMiddleware(SourceCodeService, Qu
 
 export default store;
     
+// retrieve source codes to kick off the app.  Is this the right way to go?
+store.dispatch(retrieveSourceCodes());

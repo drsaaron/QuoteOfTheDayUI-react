@@ -6,7 +6,6 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { retrieveSourceCodes } from '../actions/SourceCodeActions';
 import SourceCodeListItem from './SourceCodeListItem';
 
 class SourceCodeList extends Component {
@@ -23,10 +22,6 @@ class SourceCodeList extends Component {
                 </div>
                 );
     }
-    
-    componentDidMount() {
-        this.props.retrieveSourceCodes();
-    }
 }
 
 const mapStateToProps = (state) => {
@@ -35,10 +30,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        retrieveSourceCodes: () => dispatch(retrieveSourceCodes())
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SourceCodeList);
+export default connect(mapStateToProps)(SourceCodeList);
