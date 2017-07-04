@@ -6,6 +6,7 @@
 
 import React, {Component} from 'react';
 import Main from './Main';
+import QuoteDetails from './QuoteDetails';
 import { Provider } from 'react-redux';
 import store, { history } from '../store/QuoteOfTheDayStore';
 import { ConnectedRouter } from 'react-router-redux';
@@ -22,6 +23,7 @@ export default class App extends Component {
                     <ConnectedRouter history={history}>
                         <Switch>
                             <Route exact path="/" component={Main} />
+                            <Route path="/quoteDetails/:quoteNumber" component={QuoteDetails} />
                         </Switch>
                     </ConnectedRouter>
                 </Provider>

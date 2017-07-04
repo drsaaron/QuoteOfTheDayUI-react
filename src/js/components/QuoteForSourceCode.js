@@ -6,10 +6,19 @@
 
 import React, {Component} from 'react';
 import QuoteText from './QuoteText';
+import { push } from 'react-router-redux';
+import { connect } from 'react-redux';
 
-export default class QuoteForSourceCode extends Component {
+class QuoteForSourceCode extends Component {
     constructor(props) {
         super(props);
+        
+        this.clickHandler = this.clickHandler.bind(this);
+    }
+    
+    clickHandler(event) {
+        event.preventDefault();
+        this.props.showDetails(this.props.quote);
     }
 
     render() {
@@ -17,10 +26,24 @@ export default class QuoteForSourceCode extends Component {
 
         return (
                 <article className="quote">
-                    {quote.number}
+                    <a href="#" onClick={this.clickHandler}>{quote.number}</a>
                     <br />
                     <QuoteText quote={quote} />
                 </article>
-                )
+                );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        showDetails: (quote) => dispatch(push("/quoteDetails/" + quote.number))
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuoteForSourceCode);
