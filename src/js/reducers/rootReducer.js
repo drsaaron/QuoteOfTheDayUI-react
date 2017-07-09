@@ -7,11 +7,13 @@
 import { combineReducers } from 'redux';
 import SourceCodeReducer from './SourceCodeReducer';
 import QuotesForSourceCodeReducer from './QuotesForSourceCodeReducer';
+import QuoteDetailsReducer from './QuoteDetailsReducer';
 import { routerReducer } from 'react-router-redux';
 
 const rootReducer = combineReducers( {
     sourceCodes: SourceCodeReducer,
     quotesForSourceCode: QuotesForSourceCodeReducer,
+    quoteDetails: QuoteDetailsReducer,
     router: routerReducer
 });
 

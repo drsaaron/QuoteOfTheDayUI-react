@@ -5,19 +5,18 @@
  */
 
 import React, {Component} from 'react';
-import sanitizeHtml from 'sanitize-html-react';
 
-export default class QuoteText extends Component {
+export default class QuoteOfTheDayHistory extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
-        var quote = this.props.quote;
-        var quoteText = (quote.text) ? sanitizeHtml(quote.text.replace(new RegExp('\r?\n', 'g'), '<br />')) : "<span></span>";
-
         return (
-                <div dangerouslySetInnerHTML={{__html: quoteText}}></div>
+                <div id="quoteOfTheDayHistory">
+                    This is history
+                </div>
                 );
     }
 }
+

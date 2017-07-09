@@ -6,16 +6,40 @@
 
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import { retrieveQuoteDetails } from '../actions/QuoteActions';
+import QuoteText from './QuoteText';
+import QuoteOfTheDayHistory from './QuoteOfTheDayHistory';
 
 class QuoteDetails extends Component {
     constructor(props) {
         super(props);
     }
-    
+
+    getQuoteNumber() {
+        return this.props.match.params.quoteNumber;
+    }
+
     render() {
+        var quoteNumber = this.getQuoteNumber();
+
         return (
-                <div>I am a detail</div>
+                <div>
+                    Details for #{quoteNumber}
+                
+                    <div id="quoteDetailText">
+                        <QuoteText quote={this.props.quoteDetails.quote} />
+                    </div>
+                    
+                    <QuoteOfTheDayHistory history={this.props.quoteDetails.history} />
+                </div>
                 );
+    }
+
+    componentDidMount() {
+        // retrieve details.
+        var quoteNumber = this.getQuoteNumber();
+        console.log("retrieving details for quote " + quoteNumber);
+        this.props.retrieveDetails(quoteNumber);
     }
 }
 
@@ -25,4 +49,10 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(QuoteDetails);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        retrieveDetails: (quoteNumber) => dispatch(retrieveQuoteDetails(quoteNumber))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuoteDetails);

@@ -9,5 +9,9 @@ export default {
     SOURCE_CODES_RETRIEVED: 'SourceCodesRetrieved',
     
     RETRIEVE_QUOTES_FOR_SOURCE_CODE: 'RetrieveQuotesForSourceCode',
-    QUOTES_FOR_SOURCE_CODE_RETRIEVED: 'QuotesForSourceCodeRetrieved'
+    QUOTES_FOR_SOURCE_CODE_RETRIEVED: 'QuotesForSourceCodeRetrieved',
+    
+    RETRIEVE_QUOTE_DETAILS: 'RetrieveQuoteDetails',
+    QUOTE_DETAIL_QUOTE_RETRIEVED: 'QuoteDetailQuoteRetrieved',
+    QUOTE_DETAIL_HISTORY_RETRIEVED: 'QuoteDetailHistoryRetrieved'
 }

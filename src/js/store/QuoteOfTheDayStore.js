@@ -9,6 +9,7 @@ import rootReducer from '../reducers/rootReducer';
 import ActionTypes from '../actions/ActionTypes';
 import SourceCodeService from '../services/SourceCodeService';
 import QuotesForSourceCodeService from '../services/QuotesForSourceCodeService';
+import QuoteService from '../services/QuoteService';
 import createHistory from 'history/createBrowserHistory';
 import { routerMiddleware } from 'react-router-redux';
 import { retrieveSourceCodes } from '../actions/SourceCodeActions';
@@ -20,7 +21,7 @@ export const history = createHistory();
 const historyMiddleware = routerMiddleware(history);
 
 // create the store
-const store = createStore(rootReducer, {}, applyMiddleware(SourceCodeService, QuotesForSourceCodeService, historyMiddleware));
+const store = createStore(rootReducer, {}, applyMiddleware(SourceCodeService, QuotesForSourceCodeService, QuoteService, historyMiddleware));
 
 export default store;
     
