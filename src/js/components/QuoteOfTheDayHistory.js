@@ -14,11 +14,11 @@ export default class QuoteOfTheDayHistory extends Component {
 
     render() {
         var years = Object.keys(this.props.history);
-
+        var noHistory = years.length === 0 ? <em>No history</em> : "";
         return (
                 <div id="quoteOfTheDayHistory">
                     <h2>Quote of the day history</h2>
-                
+                    {noHistory}
                     { years.map(year => <QuoteOfTheDayHistoryForYear key={year} year={year} history={this.props.history[year]} />)}
                 </div>
                 );
