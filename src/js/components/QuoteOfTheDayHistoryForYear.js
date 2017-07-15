@@ -16,7 +16,12 @@ export default class QuoteOfTheDayHistoryForYear extends Component {
         var history = this.props.history;
 
         return (
-                <article>{year}</article>
-        );
+                <article>
+                    {year}
+                    <ul>
+                        { history.map(datum => <li key={datum.runDate}>{datum.runDate}</li>) }
+                    </ul>
+                </article>
+                );
     }
 }

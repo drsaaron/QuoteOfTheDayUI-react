@@ -21,13 +21,17 @@ class QuoteDetails extends Component {
 
     render() {
         var quoteNumber = this.getQuoteNumber();
-
+        var quote = this.props.quoteDetails.quote;
+        var usable = quote.usable ? 'Yes' : 'No';
+        
         return (
                 <div>
                     <h1>Details for #{quoteNumber}</h1>
-                                
+                
                     <div id="quoteDetailText">
-                        <QuoteText quote={this.props.quoteDetails.quote} />
+                        <QuoteText quote={quote} />
+                        <br />
+                        <div id="quoteDetailUsable">Usable: {usable}</div>
                     </div>
                 
                     <QuoteOfTheDayHistory history={this.props.quoteDetails.history} />
