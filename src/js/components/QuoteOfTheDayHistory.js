@@ -5,6 +5,7 @@
  */
 
 import React, {Component} from 'react';
+import QuoteOfTheDayHistoryForYear from './QuoteOfTheDayHistoryForYear';
 
 export default class QuoteOfTheDayHistory extends Component {
     constructor(props) {
@@ -12,9 +13,13 @@ export default class QuoteOfTheDayHistory extends Component {
     }
 
     render() {
+        var years = Object.keys(this.props.history);
+
         return (
                 <div id="quoteOfTheDayHistory">
-                    This is history
+                    <h2>Quote of the day history</h2>
+                
+                    { years.map(year => <QuoteOfTheDayHistoryForYear key={year} year={year} history={this.props.history[year]} />)}
                 </div>
                 );
     }

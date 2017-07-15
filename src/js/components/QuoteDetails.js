@@ -24,12 +24,12 @@ class QuoteDetails extends Component {
 
         return (
                 <div>
-                    Details for #{quoteNumber}
-                
+                    <h1>Details for #{quoteNumber}</h1>
+                                
                     <div id="quoteDetailText">
                         <QuoteText quote={this.props.quoteDetails.quote} />
                     </div>
-                    
+                
                     <QuoteOfTheDayHistory history={this.props.quoteDetails.history} />
                 </div>
                 );
