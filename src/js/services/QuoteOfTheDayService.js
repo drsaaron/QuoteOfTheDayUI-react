@@ -25,7 +25,25 @@ const QuoteOfTheDayService = store => next => action => {
                                     history
                                 });
                             });
-            };
+                    break;
+
+                case ActionTypes.RETRIEVE_QUOTE_OF_THE_DAY:
+                    var runDate = action.runDate;
+                    request
+                            .get(DATA_URL_ROOT + "/qotd/" + runDate)
+                            .end((err, res) => {
+                                if (err) {
+                                    console.log(err);
+                                }
+
+                                var qotd = JSON.parse(res.text);
+                                next({
+                                    type: ActionTypes.QUOTE_OF_THE_DAY_RETRIEVED,
+                                    qotd
+                                });
+                            });
+                    break;
+            }
         };
 
 export default QuoteOfTheDayService;

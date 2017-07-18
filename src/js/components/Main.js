@@ -8,6 +8,7 @@ import React, {Component} from 'react';
 import Header from './Header';
 import SourceCodeList from './SourceCodeList';
 import QuotesForSourceCodeList from './QuotesForSourceCodeList';
+import QuoteOfTheDay from './QuoteOfTheDay';
 
 export default class Main extends Component {
     constructor(props) {
@@ -18,6 +19,7 @@ export default class Main extends Component {
         return (
                 <div>
                     <Header />
+                    <QuoteOfTheDay />
                     <SourceCodeList />
                     <QuotesForSourceCodeList />
                 </div>

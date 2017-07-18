@@ -13,5 +13,9 @@ export default {
     
     RETRIEVE_QUOTE_DETAILS: 'RetrieveQuoteDetails',
     QUOTE_DETAIL_QUOTE_RETRIEVED: 'QuoteDetailQuoteRetrieved',
-    QUOTE_DETAIL_HISTORY_RETRIEVED: 'QuoteDetailHistoryRetrieved'
+    QUOTE_DETAIL_HISTORY_RETRIEVED: 'QuoteDetailHistoryRetrieved',
+    
+    RETRIEVE_QUOTE_OF_THE_DAY: 'RetrieveQuoteOfTheDay',
+    QUOTE_OF_THE_DAY_RETRIEVED: 'QuoteOfTheDayRetrieved',
+    QUOTE_OF_THE_DAY_QUOTE_RETRIEVED: 'QuoteOfTheDayQuoteRetrieved'
 }
