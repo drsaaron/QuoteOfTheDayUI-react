@@ -20,20 +20,26 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
+function today() {
+    var t = new Date();
+    return t.getFullYear() + '-' + (t.getMonth()+1) + '-' + t.getDate();
+}
+
 class QuoteOfTheDay extends Component {
     constructor(props) {
         super(props);
         
         this.state = {
-            runDate: '2017-07-17'
+            runDate: today()
         };
     }
     
     render() {
         var quoteNumber = (this.props.quoteOfTheDay.qotd) ? this.props.quoteOfTheDay.qotd.quoteNumber : -1;
+        var runDate = (quoteNumber > 0) ? this.props.quoteOfTheDay.qotd.runDate : this.state.runDate;
         return (
                 <div id="quoteOfTheDay">
-                    Number: {quoteNumber}
+                    Number: {quoteNumber} Run date = {runDate}
                 </div>
                 );
     }
