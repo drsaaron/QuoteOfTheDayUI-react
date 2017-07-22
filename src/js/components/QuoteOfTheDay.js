@@ -9,6 +9,9 @@ import { connect } from 'react-redux';
 import { retrieveQuoteOfTheDay } from '../actions/QuoteOfTheDayActions';
 import QuoteText from './QuoteText';
 import { retrieveQuotesForSourceCode } from '../actions/SourceCodeActions';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const mapStateToProps = (state) => {
     return {
@@ -33,26 +36,33 @@ class QuoteOfTheDay extends Component {
         super(props);
 
         this.state = {
-            runDate: today()
+            runDate: moment()
         };
 
         this.handleSourceClick = this.handleSourceClick.bind(this);
+        this.handleDateChange = this.handleDateChange.bind(this);
     }
 
+    dateAsString() {
+        return this.state.runDate.format("YYYY-MM-DD");
+    }
+    
     handleSourceClick(event) {
         console.log("getting quotes for " + this.props.quoteOfTheDay.sourceCode.number);
 
         event.preventDefault();
         this.props.retrieveQuotesForSourceCode(this.props.quoteOfTheDay.sourceCode);
     }
+    
+    handleDateChange(date) {
+        this.setState({ runDate: date });
+    }
 
     render() {
-        var quoteNumber = (this.props.quoteOfTheDay.qotd) ? this.props.quoteOfTheDay.qotd.quoteNumber : -1;
-        var runDate = (quoteNumber > 0) ? this.props.quoteOfTheDay.qotd.runDate : this.state.runDate;
         return (
                 <div id="quoteOfTheDay">
                     <h2>Quote of the day</h2>
-                    Number: {quoteNumber} Run date = {runDate}
+                    Run date = {this.dateAsString()}
                     <QuoteText quote={this.props.quoteOfTheDay.quote} />
                     <div className="QuoteSource">Source: <em><a href="#" onClick={this.handleSourceClick}>{this.props.quoteOfTheDay.sourceCode.text}</a></em></div>
                 </div>
@@ -60,7 +70,8 @@ class QuoteOfTheDay extends Component {
     }
 
     componentDidMount() {
-        this.props.retrieveQuoteOfTheDay(this.state.runDate);
+        var runDate = this.dateAsString();
+        this.props.retrieveQuoteOfTheDay(runDate);
     }
 }
 
