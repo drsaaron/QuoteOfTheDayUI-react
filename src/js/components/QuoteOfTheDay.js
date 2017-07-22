@@ -31,7 +31,7 @@ class QuoteOfTheDay extends Component {
         super(props);
 
         this.state = {
-            runDate: moment(),
+            runDate: this.props.quoteOfTheDay.runDate,
             maxDate: moment()
         };
 
@@ -60,7 +60,7 @@ class QuoteOfTheDay extends Component {
         return (
                 <div id="quoteOfTheDay">
                     <h2>Quote of the day</h2>
-                    Run date = <DatePicker maxDate={this.state.maxDate} selected={this.state.runDate} onChange={this.handleDateChange} dateFormat={this.dateFormat}/>
+                    <DatePicker maxDate={this.state.maxDate} selected={this.state.runDate} onChange={this.handleDateChange} dateFormat={this.dateFormat}/>
                     <QuoteText quote={this.props.quoteOfTheDay.quote} />
                     <div className="QuoteSource">Source: <em><a href="#" onClick={this.handleSourceClick}>{this.props.quoteOfTheDay.sourceCode.text}</a></em></div>
                 </div>
@@ -74,7 +74,9 @@ class QuoteOfTheDay extends Component {
     }
     
     componentDidMount() {
-        this.getQuoteOfTheDay();
+        if (this.props.quoteOfTheDay.initialized === false) {
+         this.getQuoteOfTheDay();
+        }
     }
     
     componentDidUpdate(prevProps, prevState) {

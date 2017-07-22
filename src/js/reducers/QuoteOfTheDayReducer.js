@@ -5,9 +5,11 @@
  */
 
 import ActionTypes from '../actions/ActionTypes';
+import moment from 'moment';
 
 const initialState = {
-    retrieving: true,
+    initialized: false,
+    runDate: moment(),
     qotd: {},
     quote: {},
     sourceCode: {}
@@ -18,7 +20,8 @@ export default function QuoteOfTheDayReducer(state = initialState, action) {
         case ActionTypes.RETRIEVE_QUOTE_OF_THE_DAY:
             return {
                 ...state,
-                retrieving: true,
+                initialized: true,
+                runDate: moment(action.runDate),
                 qotd: {},
                 quote: {},
                 sourceCode: {}
@@ -27,7 +30,6 @@ export default function QuoteOfTheDayReducer(state = initialState, action) {
         case ActionTypes.QUOTE_OF_THE_DAY_RETRIEVED:
             return {
                 ...state,
-                retrieving: false,
                 qotd: action.qotd
             }
 
@@ -47,5 +49,5 @@ export default function QuoteOfTheDayReducer(state = initialState, action) {
             return {
                 ...state
             }
-}
+    }
 }
