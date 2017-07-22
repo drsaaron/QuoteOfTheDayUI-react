@@ -7,6 +7,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { retrieveQuoteOfTheDay } from '../actions/QuoteOfTheDayActions';
+import QuoteText from './QuoteText';
 
 const mapStateToProps = (state) => {
     return {
@@ -22,28 +23,29 @@ const mapDispatchToProps = (dispatch) => {
 
 function today() {
     var t = new Date();
-    return t.getFullYear() + '-' + (t.getMonth()+1) + '-' + t.getDate();
+    return t.getFullYear() + '-' + (t.getMonth() + 1) + '-' + t.getDate();
 }
 
 class QuoteOfTheDay extends Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
             runDate: today()
         };
     }
-    
+
     render() {
         var quoteNumber = (this.props.quoteOfTheDay.qotd) ? this.props.quoteOfTheDay.qotd.quoteNumber : -1;
         var runDate = (quoteNumber > 0) ? this.props.quoteOfTheDay.qotd.runDate : this.state.runDate;
         return (
                 <div id="quoteOfTheDay">
                     Number: {quoteNumber} Run date = {runDate}
+                    <QuoteText quote={this.props.quoteOfTheDay.quote} />
                 </div>
                 );
     }
-    
+
     componentDidMount() {
         this.props.retrieveQuoteOfTheDay(this.state.runDate);
     }

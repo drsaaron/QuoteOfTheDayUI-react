@@ -31,16 +31,11 @@ const QuoteOfTheDayService = store => next => action => {
                     var runDate = action.runDate;
                     request
                             .get(DATA_URL_ROOT + "/qotd/" + runDate)
-                            .end((err, res) => {
-                                if (err) {
-                                    console.log(err);
-                                }
-
-                                var qotd = JSON.parse(res.text);
-                                next({
-                                    type: ActionTypes.QUOTE_OF_THE_DAY_RETRIEVED,
-                                    qotd
-                                });
+                            .then(res => {
+                                return JSON.parse(res.text);
+                            })
+                            .then(qotd => {
+                                store.dispatch({ type: ActionTypes.QUOTE_OF_THE_DAY_RETRIEVED, qotd });
                             });
                     break;
             }
