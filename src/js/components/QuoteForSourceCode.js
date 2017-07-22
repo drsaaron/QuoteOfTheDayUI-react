@@ -6,7 +6,7 @@
 
 import React, {Component} from 'react';
 import QuoteText from './QuoteText';
-import { push } from 'react-router-redux';
+import { showQuoteDetails } from '../actions/QuoteActions';
 import { connect } from 'react-redux';
 
 class QuoteForSourceCode extends Component {
@@ -42,8 +42,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        showDetails: (quote) => dispatch(push("/quoteDetails/" + quote.number))
+        showDetails: (quote) => dispatch(showQuoteDetails(quote.number))
     };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuoteForSourceCode);

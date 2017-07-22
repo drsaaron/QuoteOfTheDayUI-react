@@ -5,6 +5,7 @@
  */
 
 import ActionTypes from './ActionTypes';
+import { push } from 'react-router-redux';
 
 export function retrieveQuoteDetails(quoteNumber) {
     return {
@@ -13,4 +14,7 @@ export function retrieveQuoteDetails(quoteNumber) {
     };
 }
 
+export function showQuoteDetails(quoteNumber) {
+    return push("/quoteDetails/" + quoteNumber);
+}
 

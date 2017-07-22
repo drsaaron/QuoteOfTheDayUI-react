@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { retrieveQuoteOfTheDay } from '../actions/QuoteOfTheDayActions';
 import QuoteText from './QuoteText';
 import { retrieveQuotesForSourceCode } from '../actions/SourceCodeActions';
+import { showQuoteDetails } from '../actions/QuoteActions';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -22,7 +23,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         retrieveQuoteOfTheDay: (runDate) => dispatch(retrieveQuoteOfTheDay(runDate)),
-        retrieveQuotesForSourceCode: (sourceCode) => dispatch(retrieveQuotesForSourceCode(sourceCode))
+        retrieveQuotesForSourceCode: (sourceCode) => dispatch(retrieveQuotesForSourceCode(sourceCode)),
+        showDetails: (quoteOfTheDay) => dispatch(showQuoteDetails(quoteOfTheDay.quoteNumber))
     };
 };
 
@@ -37,6 +39,7 @@ class QuoteOfTheDay extends Component {
 
         this.handleSourceClick = this.handleSourceClick.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
+        this.showDetails = this.showDetails.bind(this);
         
         this.dateFormat = "YYYY-MM-DD";
     }
@@ -52,15 +55,23 @@ class QuoteOfTheDay extends Component {
         this.props.retrieveQuotesForSourceCode(this.props.quoteOfTheDay.sourceCode);
     }
     
+    showDetails(event) {
+        event.preventDefault();
+        this.props.showDetails(this.props.quoteOfTheDay.qotd);
+    }
+    
     handleDateChange(date) {
         this.setState({ runDate: date });
     }
 
     render() {
+        var quoteNumber = this.props.quoteOfTheDay.qotd.quoteNumber || -1;
+    
         return (
                 <div id="quoteOfTheDay">
                     <h2>Quote of the day</h2>
                     <DatePicker maxDate={this.state.maxDate} selected={this.state.runDate} onChange={this.handleDateChange} dateFormat={this.dateFormat}/>
+                    Quote #<a href="#" onClick={this.showDetails}>{quoteNumber}</a>
                     <QuoteText quote={this.props.quoteOfTheDay.quote} />
                     <div className="QuoteSource">Source: <em><a href="#" onClick={this.handleSourceClick}>{this.props.quoteOfTheDay.sourceCode.text}</a></em></div>
                 </div>
