@@ -16,6 +16,7 @@ class SourceCodeList extends Component {
     render() {
         return (
                 <div id="quoteSourceCodeList">
+                    <h2>Sources</h2>
                     <ul>
                         { this.props.sourceCodes.sourceCodes.map((sourceCode) => <SourceCodeListItem key={sourceCode.number} sourceCode={sourceCode} />) }
                     </ul>

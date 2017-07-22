@@ -35,6 +35,15 @@ class QuoteOfTheDay extends Component {
         this.state = {
             runDate: today()
         };
+
+        this.handleSourceClick = this.handleSourceClick.bind(this);
+    }
+
+    handleSourceClick(event) {
+        console.log("getting quotes for " + this.props.quoteOfTheDay.sourceCode.number);
+
+        event.preventDefault();
+        this.props.retrieveQuotesForSourceCode(this.props.quoteOfTheDay.sourceCode);
     }
 
     render() {
@@ -42,8 +51,10 @@ class QuoteOfTheDay extends Component {
         var runDate = (quoteNumber > 0) ? this.props.quoteOfTheDay.qotd.runDate : this.state.runDate;
         return (
                 <div id="quoteOfTheDay">
+                    <h2>Quote of the day</h2>
                     Number: {quoteNumber} Run date = {runDate}
                     <QuoteText quote={this.props.quoteOfTheDay.quote} />
+                    <div className="QuoteSource">Source: <em><a href="#" onClick={this.handleSourceClick}>{this.props.quoteOfTheDay.sourceCode.text}</a></em></div>
                 </div>
                 );
     }

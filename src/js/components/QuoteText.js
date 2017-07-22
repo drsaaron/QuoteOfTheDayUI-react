@@ -17,7 +17,7 @@ export default class QuoteText extends Component {
         var quoteText = (quote.text) ? sanitizeHtml(quote.text.replace(new RegExp('\r?\n', 'g'), '<br />')) : "<span></span>";
 
         return (
-                <div dangerouslySetInnerHTML={{__html: quoteText}}></div>
+                <div dangerouslySetInnerHTML={{__html: quoteText}} className="QuoteText"></div>
                 );
     }
 }
