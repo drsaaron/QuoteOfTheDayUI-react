@@ -26,25 +26,23 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-function today() {
-    var t = new Date();
-    return t.getFullYear() + '-' + (t.getMonth() + 1) + '-' + t.getDate();
-}
-
 class QuoteOfTheDay extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            runDate: moment()
+            runDate: moment(),
+            maxDate: moment()
         };
 
         this.handleSourceClick = this.handleSourceClick.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
+        
+        this.dateFormat = "YYYY-MM-DD";
     }
 
     dateAsString() {
-        return this.state.runDate.format("YYYY-MM-DD");
+        return this.state.runDate.format(this.dateFormat);
     }
     
     handleSourceClick(event) {
@@ -62,16 +60,27 @@ class QuoteOfTheDay extends Component {
         return (
                 <div id="quoteOfTheDay">
                     <h2>Quote of the day</h2>
-                    Run date = {this.dateAsString()}
+                    Run date = <DatePicker maxDate={this.state.maxDate} selected={this.state.runDate} onChange={this.handleDateChange} dateFormat={this.dateFormat}/>
                     <QuoteText quote={this.props.quoteOfTheDay.quote} />
                     <div className="QuoteSource">Source: <em><a href="#" onClick={this.handleSourceClick}>{this.props.quoteOfTheDay.sourceCode.text}</a></em></div>
                 </div>
                 );
     }
 
-    componentDidMount() {
+    getQuoteOfTheDay() {
         var runDate = this.dateAsString();
+        console.log("getting quote of the day for " + runDate);
         this.props.retrieveQuoteOfTheDay(runDate);
+    }
+    
+    componentDidMount() {
+        this.getQuoteOfTheDay();
+    }
+    
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState !== null && prevState.runDate !== this.state.runDate) {
+            this.getQuoteOfTheDay();
+        }
     }
 }
 
