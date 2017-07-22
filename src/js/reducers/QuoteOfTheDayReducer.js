@@ -9,7 +9,8 @@ import ActionTypes from '../actions/ActionTypes';
 const initialState = {
     retrieving: true,
     qotd: {},
-    quote: {}
+    quote: {},
+    sourceCode: {}
 };
 
 export default function QuoteOfTheDayReducer(state = initialState, action) {
@@ -19,7 +20,8 @@ export default function QuoteOfTheDayReducer(state = initialState, action) {
                 ...state,
                 retrieving: true,
                 qotd: {},
-                quote: {}
+                quote: {},
+                sourceCode: {}
             }
 
         case ActionTypes.QUOTE_OF_THE_DAY_RETRIEVED:
@@ -33,6 +35,12 @@ export default function QuoteOfTheDayReducer(state = initialState, action) {
             return {
                 ...state,
                 quote: action.quote
+            }
+
+        case ActionTypes.QUOTE_OF_THE_DAY_SOURCE_CODE_RETRIEVED:
+            return {
+                ...state,
+                sourceCode: action.sourceCode
             }
 
         default:

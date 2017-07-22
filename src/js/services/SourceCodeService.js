@@ -7,13 +7,13 @@
 import request from 'superagent';
 import ActionTypes from '../actions/ActionTypes';
 import { DATA_URL_ROOT } from '../constants/Constants';
+import sourceCodeAPI from '../api/SourceCodeAPI';
 
 const SourceCodeService = store => next => action => {
             next(action);
             switch (action.type) {
                 case ActionTypes.RETRIEVE_SOURCE_CODES:
-                    request
-                            .get(DATA_URL_ROOT + "/sourceCode")
+                    sourceCodeAPI.getSourceCodeList()
                             .end((err, res) => {
                                 if (err) {
                                     console.log(err);
