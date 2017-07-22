@@ -4,16 +4,15 @@
  * and open the template in the editor.
  */
 
-import request from 'superagent';
 import ActionTypes from '../actions/ActionTypes';
-import { DATA_URL_ROOT } from '../constants/Constants';
+import quoteAPI from '../api/QuoteAPI';
+import quoteOfTheDayAPI from '../api/QuoteOfTheDayAPI';
 
 const QuoteOfTheDayService = store => next => action => {
             next(action);
             switch (action.type) {
                 case ActionTypes.RETRIEVE_QUOTE_DETAILS:
-                    request
-                            .get(DATA_URL_ROOT + "/qotdHistory/" + action.quoteNumber)
+                    quoteOfTheDayAPI.getQuoteOfTheDayHistory(action.quoteNumber)
                             .end((err, res) => {
                                 if (err) {
                                     console.log(err);
@@ -29,13 +28,23 @@ const QuoteOfTheDayService = store => next => action => {
 
                 case ActionTypes.RETRIEVE_QUOTE_OF_THE_DAY:
                     var runDate = action.runDate;
-                    request
-                            .get(DATA_URL_ROOT + "/qotd/" + runDate)
+                    quoteOfTheDayAPI.getQuoteOfTheDay(runDate)
                             .then(res => {
                                 return JSON.parse(res.text);
                             })
                             .then(qotd => {
-                                store.dispatch({ type: ActionTypes.QUOTE_OF_THE_DAY_RETRIEVED, qotd });
+                                store.dispatch({type: ActionTypes.QUOTE_OF_THE_DAY_RETRIEVED, qotd});
+                                return qotd;
+                            })
+                            .then(qotd => {
+                                return quoteAPI.getQuote(qotd.quoteNumber);
+                            })
+                            .then(res => {
+                                return JSON.parse(res.text);
+                            })
+                            .then(quote => {
+                                store.dispatch({type: ActionTypes.QUOTE_OF_THE_DAY_QUOTE_RETRIEVED, quote});
+                                return quote;
                             });
                     break;
             }

@@ -8,6 +8,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { retrieveQuoteOfTheDay } from '../actions/QuoteOfTheDayActions';
 import QuoteText from './QuoteText';
+import Async from 'react-promise';
 
 const mapStateToProps = (state) => {
     return {

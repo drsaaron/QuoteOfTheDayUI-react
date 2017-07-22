@@ -30,7 +30,6 @@ export default function QuoteOfTheDayReducer(state = initialState, action) {
             }
 
         case ActionTypes.QUOTE_OF_THE_DAY_QUOTE_RETRIEVED:
-            console.log("updating state for QOTD.quote");
             return {
                 ...state,
                 quote: action.quote
