@@ -9,6 +9,7 @@ import SourceCodeReducer from './SourceCodeReducer';
 import QuotesForSourceCodeReducer from './QuotesForSourceCodeReducer';
 import QuoteDetailsReducer from './QuoteDetailsReducer';
 import QuoteOfTheDayReducer from './QuoteOfTheDayReducer';
+import EditQuoteReducer from './EditQuoteReducer';
 import { routerReducer } from 'react-router-redux';
 
 const rootReducer = combineReducers( {
@@ -16,6 +17,7 @@ const rootReducer = combineReducers( {
     quotesForSourceCode: QuotesForSourceCodeReducer,
     quoteDetails: QuoteDetailsReducer,
     quoteOfTheDay: QuoteOfTheDayReducer,
+    editQuote: EditQuoteReducer,
     router: routerReducer
 });
 

@@ -11,7 +11,7 @@
   "author": "scott",
   "contributors": [],
   "description": "User interface for the quote of the day application",
-  "dependencies": {
+  "dependencies": {"redux-thunk":"^2.2.0","react-thunk":"1.0.0",
     "classnames": "^2.2.5",
     "history": "^4.6.3",
     "moment": "^2.18.1",

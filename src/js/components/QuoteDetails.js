@@ -6,19 +6,26 @@
 
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { retrieveQuoteDetails } from '../actions/QuoteActions';
+import { retrieveQuoteDetails, editQuote } from '../actions/QuoteActions';
 import QuoteText from './QuoteText';
 import QuoteOfTheDayHistory from './QuoteOfTheDayHistory';
 
 class QuoteDetails extends Component {
     constructor(props) {
         super(props);
+        
+        this.editQuote = this.editQuote.bind(this);
     }
 
     getQuoteNumber() {
         return this.props.match.params.quoteNumber;
     }
 
+    editQuote(event) {
+        event.preventDefault();
+        this.props.editQuote(this.getQuoteNumber());
+    }
+    
     render() {
         var quoteNumber = this.getQuoteNumber();
         var quote = this.props.quoteDetails.quote;
@@ -33,6 +40,8 @@ class QuoteDetails extends Component {
                         <br />
                         <div id="quoteDetailUsable">Usable: {usable}</div>
                     </div>
+                    
+        <button onClick={this.editQuote}>Edit</button>
                 
                     <QuoteOfTheDayHistory history={this.props.quoteDetails.history} />
                 </div>
@@ -55,7 +64,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        retrieveDetails: (quoteNumber) => dispatch(retrieveQuoteDetails(quoteNumber))
+        retrieveDetails: (quoteNumber) => dispatch(retrieveQuoteDetails(quoteNumber)),
+        editQuote: (quoteNumber) => dispatch(editQuote(quoteNumber))
     };
 };
 

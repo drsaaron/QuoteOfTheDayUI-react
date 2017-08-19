@@ -18,5 +18,8 @@ export default {
     RETRIEVE_QUOTE_OF_THE_DAY: 'RetrieveQuoteOfTheDay',
     QUOTE_OF_THE_DAY_RETRIEVED: 'QuoteOfTheDayRetrieved',
     QUOTE_OF_THE_DAY_QUOTE_RETRIEVED: 'QuoteOfTheDayQuoteRetrieved',
-    QUOTE_OF_THE_DAY_SOURCE_CODE_RETRIEVED: 'QuoteOfTheDaySourceCodeRetrieved'
+    QUOTE_OF_THE_DAY_SOURCE_CODE_RETRIEVED: 'QuoteOfTheDaySourceCodeRetrieved',
+    
+    PREPARE_QUOTE_FOR_EDIT: 'PrepareQuoteForEdit',
+    QUOTE_READY_FOR_EDIT: 'QuoteReadyForEdit'
 }

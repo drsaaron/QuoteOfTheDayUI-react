@@ -11,4 +11,11 @@ export default class QuoteAPI {
     static getQuote(quoteNumber) {
         return request.get(DATA_URL_ROOT + "/quote/" + quoteNumber);
     }
+    
+    static updateQuote(quote) {
+        return request
+                .put(DATA_URL_ROOT + "/quote/" + quote.number) 
+                .send(quote)
+                .set('Accept', 'application/json');
+    }
 }
