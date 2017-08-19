@@ -36,7 +36,7 @@ class QuoteDetails extends Component {
                     <h1>Details for #{quoteNumber}</h1>
                 
                     <div id="quoteDetailText">
-                    <div id="quoteDetailsSource" className="QuoteSource">Source: <em>{this.props.quoteDetails.sourceCode.text}</em></div>
+                        <div id="quoteDetailsSource" className="QuoteSource">Source: <em>{this.props.quoteDetails.sourceCode.text}</em></div>
                         <br />
                         <QuoteText quote={quote} />
                         <br />
