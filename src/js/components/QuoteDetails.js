@@ -13,7 +13,7 @@ import QuoteOfTheDayHistory from './QuoteOfTheDayHistory';
 class QuoteDetails extends Component {
     constructor(props) {
         super(props);
-        
+
         this.editQuote = this.editQuote.bind(this);
     }
 
@@ -25,23 +25,25 @@ class QuoteDetails extends Component {
         event.preventDefault();
         this.props.editQuote(this.getQuoteNumber());
     }
-    
+
     render() {
         var quoteNumber = this.getQuoteNumber();
         var quote = this.props.quoteDetails.quote;
         var usable = quote.usable ? 'Yes' : 'No';
-        
+
         return (
                 <div>
                     <h1>Details for #{quoteNumber}</h1>
                 
                     <div id="quoteDetailText">
+                    <div id="quoteDetailsSource" className="QuoteSource">Source: <em>{this.props.quoteDetails.sourceCode.text}</em></div>
+                        <br />
                         <QuoteText quote={quote} />
                         <br />
                         <div id="quoteDetailUsable">Usable: {usable}</div>
                     </div>
-                    
-        <button onClick={this.editQuote}>Edit</button>
+                
+                    <button onClick={this.editQuote}>Edit</button>
                 
                     <QuoteOfTheDayHistory history={this.props.quoteDetails.history} />
                 </div>

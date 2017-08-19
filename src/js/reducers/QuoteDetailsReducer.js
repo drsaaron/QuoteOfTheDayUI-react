@@ -10,7 +10,8 @@ const initialState = {
     quoteFetching: false,
     historyFetching: false,
     quote: {},
-    history: {}
+    history: {},
+    sourceCode: {}
 };
 
 export default function QuoteDetailsReducer(state = initialState, action) {
@@ -38,11 +39,17 @@ export default function QuoteDetailsReducer(state = initialState, action) {
                 history: action.history
             };
 
+        case ActionTypes.QUOTE_DETAIL_SOURCE_CODE_RETRIEVED:
+            return {
+                ...state,
+                sourceCode: action.sourceCode
+            };
+
         default:
             return {
                 ...state
             };
-    }
+}
 }
 
 
