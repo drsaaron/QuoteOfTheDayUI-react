@@ -8,7 +8,8 @@ import ActionTypes from '../actions/ActionTypes';
 
 const initialState = {
     quoteNumber: -1,
-    quote: {}
+    quote: {},
+    sourceCodes: []
 };
 
 export default function EditQuoteReducer(state = initialState, action) {
@@ -17,7 +18,8 @@ export default function EditQuoteReducer(state = initialState, action) {
             return {
                 ...state,
                 quoteNumber: action.quoteNumber,
-                quote: {}
+                quote: {},
+                sourceCodes: []
             };
 
         case ActionTypes.QUOTE_READY_FOR_EDIT:
@@ -26,9 +28,16 @@ export default function EditQuoteReducer(state = initialState, action) {
                 quote: action.quote
             }
 
+        case ActionTypes.QUOTE_EDIT_SOURCE_CODE_LIST_RETRIEVED:
+            console.log("adding source codes");
+            return {
+                ...state,
+                sourceCodes: action.sourceCodes
+            }
+
         default:
             return {
                 ...state
             }
-    }
+}
 }

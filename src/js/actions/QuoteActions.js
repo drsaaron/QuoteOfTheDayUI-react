@@ -7,6 +7,7 @@
 import ActionTypes from './ActionTypes';
 import { push } from 'react-router-redux';
 import quoteAPI from '../api/QuoteAPI';
+import sourceCodeAPI from '../api/SourceCodeAPI';
 
 export function retrieveQuoteDetails(quoteNumber) {
     return {
@@ -38,6 +39,18 @@ export function retrieveQuoteForEdit(quoteNumber) {
                     dispatch({
                         type: ActionTypes.QUOTE_READY_FOR_EDIT,
                         quote
+                    });
+                });
+
+        sourceCodeAPI.getSourceCodeList()
+                .then((res) => {
+                    return JSON.parse(res.text);
+                })
+                .then((sourceCodes) => {
+                    console.log("source codes = " + JSON.stringify(sourceCodes));
+                    dispatch({
+                        type: ActionTypes.QUOTE_EDIT_SOURCE_CODE_LIST_RETRIEVED,
+                        sourceCodes
                     });
                 });
     };

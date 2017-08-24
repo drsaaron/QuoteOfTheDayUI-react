@@ -19,17 +19,27 @@ class QuoteEditor extends Component {
 
         this.state = {
             text: 'quote',
-            usable: true
+            usable: true,
+            sourceCode: -1
         };
 
         this.handleTextChange = this.handleTextChange.bind(this);
         this.handleUsableChange = this.handleUsableChange.bind(this);
+        this.handleSourceCodeChange = this.handleSourceCodeChange.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
         console.log("new props");
-        this.setState({...this.state, text: nextProps.editQuote.quote.text, usable: nextProps.editQuote.quote.usable || false});
+        this.setState({...this.state,
+            text: nextProps.editQuote.quote.text,
+            usable: nextProps.editQuote.quote.usable || false,
+            sourceCode: nextProps.editQuote.quote.sourceCode || -1
+        });
+    }
+
+    handleSourceCodeChange(event) {
+        this.setState({...this.state, sourceCode: event.target.value});
     }
 
     handleTextChange(event) {
@@ -42,11 +52,17 @@ class QuoteEditor extends Component {
 
     handleEdit(event) {
         event.preventDefault();
-        var updatedQuote = {...this.props.editQuote.quote, text: this.state.text, usable: this.state.usable};
+        var updatedQuote = {
+            ...this.props.editQuote.quote, 
+            text: this.state.text, 
+            usable: this.state.usable,
+            sourceCode: this.state.sourceCode
+        };
         this.props.editCallback(updatedQuote);
     }
 
     render() {
+        var sourceCodeDisabled = this.props.editQuote.quoteNumber > 0;
         return (
                 <div id="quoteEditor">
                     # {this.props.editQuote.quoteNumber} 
@@ -54,6 +70,11 @@ class QuoteEditor extends Component {
                     <form action="post">
                         <table>
                             <tbody>
+                                <tr><td>Source:</td><td>
+                                        <select value={this.state.sourceCode} onChange={this.handleSourceCodeChange} disabled={sourceCodeDisabled}>
+                                          {this.props.editQuote.sourceCodes.map(sourceCode => <option key={sourceCode.number} value={sourceCode.number}>{sourceCode.text}</option> ) }
+                                        </select>
+                                    </td></tr>
                                 <tr><td>Text:</td><td><textarea value={this.state.text} cols="80" rows="20" onChange={this.handleTextChange} /></td></tr>
                                 <tr><td>Usable:</td><td><input type="checkbox" id="usable" checked={this.state.usable} onChange={this.handleUsableChange} /></td></tr>
                                 <tr><td colSpan="2"><button className="submit" onClick={this.handleEdit}>{this.props.editLabel}</button></td></tr>
@@ -61,8 +82,8 @@ class QuoteEditor extends Component {
                         </table>
                     </form>
                 </div>
-                );
-    }
-}
+                            );
+            }
+        }
 
-export default connect(mapStateToProps)(QuoteEditor);
+        export default connect(mapStateToProps)(QuoteEditor);
