@@ -8,6 +8,7 @@ import ActionTypes from './ActionTypes';
 import { push } from 'react-router-redux';
 import quoteAPI from '../api/QuoteAPI';
 import sourceCodeAPI from '../api/SourceCodeAPI';
+import { retrieveQuotesForSourceCode } from './SourceCodeActions';
 
 export function retrieveQuoteDetails(quoteNumber) {
     return {
@@ -26,15 +27,15 @@ export function editQuote(quoteNumber) {
 
 function getSourceCodesForEdit(dispatch) {
     sourceCodeAPI.getSourceCodeList()
-                .then((res) => {
-                    return JSON.parse(res.text);
-                })
-                .then((sourceCodes) => {
-                    dispatch({
-                        type: ActionTypes.QUOTE_EDIT_SOURCE_CODE_LIST_RETRIEVED,
-                        sourceCodes
-                    });
+            .then((res) => {
+                return JSON.parse(res.text);
+            })
+            .then((sourceCodes) => {
+                dispatch({
+                    type: ActionTypes.QUOTE_EDIT_SOURCE_CODE_LIST_RETRIEVED,
+                    sourceCodes
                 });
+            });
 }
 
 export function retrieveQuoteForEdit(quoteNumber) {
@@ -81,5 +82,35 @@ export function prepareAddQuote(sourceCode) {
             type: ActionTypes.PREPARE_QUOTE_FOR_ADD,
             sourceCode
         });
+
+        getSourceCodesForEdit(dispatch);
+    };
+}
+
+export function saveQuote(newQuote) {
+    return (dispatch) => {
+        // add the quote, get the updated quotes for the source code, and return to home page
+        quoteAPI.addQuote(newQuote)
+                .then((res) => {
+                    return JSON.parse(res.text);
+                })
+                .then((newQuote) => {
+                    dispatch({
+                        type: ActionTypes.NEW_QUOTE_ADDED,
+                        newQuote
+                    });
+                    return newQuote;
+                })
+                .then((newQuote) => {
+                    return sourceCodeAPI.getSourceCode(newQuote.sourceCode);
+                })
+                .then((res) => {
+                    return JSON.parse(res.text);
+                })
+                .then((sourceCode) => {
+                    dispatch(retrieveQuotesForSourceCode(sourceCode));
+                });
+
+        dispatch(push("/"));
     };
 }

@@ -12,6 +12,7 @@ import store, { history } from '../store/QuoteOfTheDayStore';
 import { ConnectedRouter } from 'react-router-redux';
 import { Route, Switch } from 'react-router';
 import EditQuote from './EditQuote';
+import AddQuote from './AddQuote';
 
 export default class App extends Component {
     constructor(props) {
@@ -26,6 +27,7 @@ export default class App extends Component {
                             <Route exact path="/" component={Main} />
                             <Route path="/quoteDetails/:quoteNumber" component={QuoteDetails} />
                             <Route path="/editQuote/:quoteNumber" component={EditQuote} />
+                            <Route path="/addQuote/:sourceCode" component={AddQuote} />
                         </Switch>
                     </ConnectedRouter>
                 </Provider>

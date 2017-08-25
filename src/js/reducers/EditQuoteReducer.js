@@ -47,6 +47,12 @@ export default function EditQuoteReducer(state = initialState, action) {
                 sourceCodes: action.sourceCodes
             }
 
+        case ActionTypes.NEW_QUOTE_ADDED:
+            return {
+                ...state,
+                quote: action.newQuote
+            }
+
         default:
             return {
                 ...state

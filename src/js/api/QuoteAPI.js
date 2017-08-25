@@ -18,4 +18,11 @@ export default class QuoteAPI {
                 .send(quote)
                 .set('Accept', 'application/json');
     }
+    
+    static addQuote(quote) {
+        return request
+                .post(DATA_URL_ROOT + "/quote")
+                .send(quote)
+                .set('Accept', 'application/json');
+    }
 }

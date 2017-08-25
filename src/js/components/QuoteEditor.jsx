@@ -62,7 +62,7 @@ class QuoteEditor extends Component {
     }
 
     render() {
-        var sourceCodeDisabled = this.props.editQuote.quoteNumber > 0;
+        var sourceCodeDisabled = this.props.editQuote.sourceCode > 0;
         return (
                 <div id="quoteEditor">
                     { this.props.editQuote.quoteNumber > 0 ? <h2>Editting #{this.props.editQuote.quoteNumber}</h2> : <h2>Adding quote</h2> }
