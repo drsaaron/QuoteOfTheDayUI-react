@@ -24,6 +24,19 @@ export function editQuote(quoteNumber) {
     return push("/editQuote/" + quoteNumber);
 }
 
+function getSourceCodesForEdit(dispatch) {
+    sourceCodeAPI.getSourceCodeList()
+                .then((res) => {
+                    return JSON.parse(res.text);
+                })
+                .then((sourceCodes) => {
+                    dispatch({
+                        type: ActionTypes.QUOTE_EDIT_SOURCE_CODE_LIST_RETRIEVED,
+                        sourceCodes
+                    });
+                });
+}
+
 export function retrieveQuoteForEdit(quoteNumber) {
     return (dispatch) => {
         dispatch({
@@ -42,17 +55,7 @@ export function retrieveQuoteForEdit(quoteNumber) {
                     });
                 });
 
-        sourceCodeAPI.getSourceCodeList()
-                .then((res) => {
-                    return JSON.parse(res.text);
-                })
-                .then((sourceCodes) => {
-                    console.log("source codes = " + JSON.stringify(sourceCodes));
-                    dispatch({
-                        type: ActionTypes.QUOTE_EDIT_SOURCE_CODE_LIST_RETRIEVED,
-                        sourceCodes
-                    });
-                });
+        getSourceCodesForEdit(dispatch);
     };
 }
 
@@ -68,3 +71,15 @@ export function updateQuote(quote) {
     };
 }
 
+export function addQuote(sourceCode) {
+    return push("/addQuote/" + sourceCode);
+}
+
+export function prepareAddQuote(sourceCode) {
+    return (dispatch) => {
+        dispatch({
+            type: ActionTypes.PREPARE_QUOTE_FOR_ADD,
+            sourceCode
+        });
+    };
+}

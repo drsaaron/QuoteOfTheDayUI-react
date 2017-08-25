@@ -23,5 +23,7 @@ export default {
     
     PREPARE_QUOTE_FOR_EDIT: 'PrepareQuoteForEdit',
     QUOTE_READY_FOR_EDIT: 'QuoteReadyForEdit',
-    QUOTE_EDIT_SOURCE_CODE_LIST_RETRIEVED: 'QuoteEditSourceCodeListRetrieved'
+    QUOTE_EDIT_SOURCE_CODE_LIST_RETRIEVED: 'QuoteEditSourceCodeListRetrieved',
+    
+    PREPARE_QUOTE_FOR_ADD: 'PrepareQuoteForAdd'
 }

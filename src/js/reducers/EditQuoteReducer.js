@@ -9,7 +9,8 @@ import ActionTypes from '../actions/ActionTypes';
 const initialState = {
     quoteNumber: -1,
     quote: {},
-    sourceCodes: []
+    sourceCodes: [],
+    sourceCode: -1
 };
 
 export default function EditQuoteReducer(state = initialState, action) {
@@ -19,13 +20,24 @@ export default function EditQuoteReducer(state = initialState, action) {
                 ...state,
                 quoteNumber: action.quoteNumber,
                 quote: {},
-                sourceCodes: []
+                sourceCodes: [],
+                sourceCode: -1
+            };
+
+        case ActionTypes.PREPARE_QUOTE_FOR_ADD:
+            return {
+                ...state,
+                quoteNumber: -1,
+                quote: {},
+                sourceCodes: [],
+                sourceCode: action.sourceCode
             };
 
         case ActionTypes.QUOTE_READY_FOR_EDIT:
             return {
                 ...state,
-                quote: action.quote
+                quote: action.quote,
+                sourceCode: action.quote.sourceCode
             }
 
         case ActionTypes.QUOTE_EDIT_SOURCE_CODE_LIST_RETRIEVED:

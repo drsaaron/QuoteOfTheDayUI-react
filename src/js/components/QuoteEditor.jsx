@@ -34,7 +34,7 @@ class QuoteEditor extends Component {
         this.setState({...this.state,
             text: nextProps.editQuote.quote.text,
             usable: nextProps.editQuote.quote.usable || false,
-            sourceCode: nextProps.editQuote.quote.sourceCode || -1
+            sourceCode: nextProps.editQuote.sourceCode || -1
         });
     }
 
@@ -53,8 +53,8 @@ class QuoteEditor extends Component {
     handleEdit(event) {
         event.preventDefault();
         var updatedQuote = {
-            ...this.props.editQuote.quote, 
-            text: this.state.text, 
+            ...this.props.editQuote.quote,
+            text: this.state.text,
             usable: this.state.usable,
             sourceCode: this.state.sourceCode
         };
@@ -65,14 +65,14 @@ class QuoteEditor extends Component {
         var sourceCodeDisabled = this.props.editQuote.quoteNumber > 0;
         return (
                 <div id="quoteEditor">
-                    # {this.props.editQuote.quoteNumber} 
+                    { this.props.editQuote.quoteNumber > 0 ? <h2>Editting #{this.props.editQuote.quoteNumber}</h2> : <h2>Adding quote</h2> }
                 
                     <form action="post">
                         <table>
                             <tbody>
                                 <tr><td>Source:</td><td>
                                         <select value={this.state.sourceCode} onChange={this.handleSourceCodeChange} disabled={sourceCodeDisabled}>
-                                          {this.props.editQuote.sourceCodes.map(sourceCode => <option key={sourceCode.number} value={sourceCode.number}>{sourceCode.text}</option> ) }
+                                            {this.props.editQuote.sourceCodes.map(sourceCode => <option key={sourceCode.number} value={sourceCode.number}>{sourceCode.text}</option>) }
                                         </select>
                                     </td></tr>
                                 <tr><td>Text:</td><td><textarea value={this.state.text} cols="80" rows="20" onChange={this.handleTextChange} /></td></tr>
@@ -82,8 +82,8 @@ class QuoteEditor extends Component {
                         </table>
                     </form>
                 </div>
-                            );
-            }
-        }
+                );
+    }
+}
 
-        export default connect(mapStateToProps)(QuoteEditor);
+export default connect(mapStateToProps)(QuoteEditor);
