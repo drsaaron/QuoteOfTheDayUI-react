@@ -7,7 +7,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { retrieveQuotesForSourceCode } from '../actions/SourceCodeActions';
-import { addQuote } from '../actions/QuoteActions';
+import { addQuote } from '../actions/NavigationActions';
 
 class SourceCodeListItem extends Component {
     constructor(props) {

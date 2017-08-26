@@ -8,10 +8,11 @@ import React, {Component} from 'react';
 import { prepareAddQuote, saveQuote } from '../actions/QuoteActions';
 import { connect } from 'react-redux';
 import QuoteEditor from './QuoteEditor';
+import Header from './Header';
 
 const mapStateToProps = (state) => {
     return {
-        
+
     };
 };
 
@@ -25,20 +26,23 @@ const mapDispatchToProps = (dispatch) => {
 class AddQuote extends Component {
     constructor(props) {
         super(props);
-        
+
         this.handleAdd = this.handleAdd.bind(this);
     }
 
     handleAdd(newQuote) {
         this.props.saveQuote(newQuote);
     }
-    
+
     render() {
         return (
-                <QuoteEditor editLabel="Add" editCallback={this.handleAdd} />
+                <div>
+                    <Header />
+                    <QuoteEditor editLabel="Add" editCallback={this.handleAdd} />
+                </div>
                 );
     }
-    
+
     componentDidMount() {
         var sourceCode = this.props.match.params.sourceCode;
         console.log("preparing to add quote to source " + sourceCode);

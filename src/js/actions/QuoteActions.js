@@ -5,24 +5,16 @@
  */
 
 import ActionTypes from './ActionTypes';
-import { push } from 'react-router-redux';
 import quoteAPI from '../api/QuoteAPI';
 import sourceCodeAPI from '../api/SourceCodeAPI';
 import { retrieveQuotesForSourceCode } from './SourceCodeActions';
+import { goHome } from './NavigationActions';
 
 export function retrieveQuoteDetails(quoteNumber) {
     return {
         type: ActionTypes.RETRIEVE_QUOTE_DETAILS,
         quoteNumber
     };
-}
-
-export function showQuoteDetails(quoteNumber) {
-    return push("/quoteDetails/" + quoteNumber);
-}
-
-export function editQuote(quoteNumber) {
-    return push("/editQuote/" + quoteNumber);
 }
 
 function getSourceCodesForEdit(dispatch) {
@@ -72,10 +64,6 @@ export function updateQuote(quote) {
     };
 }
 
-export function addQuote(sourceCode) {
-    return push("/addQuote/" + sourceCode);
-}
-
 export function prepareAddQuote(sourceCode) {
     return (dispatch) => {
         dispatch({
@@ -111,6 +99,6 @@ export function saveQuote(newQuote) {
                     dispatch(retrieveQuotesForSourceCode(sourceCode));
                 });
 
-        dispatch(push("/"));
+        dispatch(goHome());
     };
 }

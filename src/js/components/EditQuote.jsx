@@ -8,10 +8,11 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { retrieveQuoteForEdit, updateQuote } from '../actions/QuoteActions';
 import QuoteEditor from './QuoteEditor';
+import Header from './Header';
 
 const mapStateToProps = (state) => {
     return {
-        
+
     };
 };
 
@@ -39,7 +40,10 @@ class EditQuote extends Component {
 
     render() {
         return (
-                <QuoteEditor editLabel="Save" editCallback={this.handleSave} />
+                <div>
+                    <Header />
+                    <QuoteEditor editLabel="Save" editCallback={this.handleSave} />
+                </div>
                 );
     }
 

@@ -6,7 +6,7 @@
 
 import React, {Component} from 'react';
 import QuoteText from './QuoteText';
-import { showQuoteDetails } from '../actions/QuoteActions';
+import { showQuoteDetails } from '../actions/NavigationActions';
 import { connect } from 'react-redux';
 
 class QuoteForSourceCode extends Component {

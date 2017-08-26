@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { retrieveQuoteOfTheDay } from '../actions/QuoteOfTheDayActions';
 import QuoteText from './QuoteText';
 import { retrieveQuotesForSourceCode } from '../actions/SourceCodeActions';
-import { showQuoteDetails } from '../actions/QuoteActions';
+import { showQuoteDetails } from '../actions/NavigationActions';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';

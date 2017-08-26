@@ -6,9 +6,11 @@
 
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { retrieveQuoteDetails, editQuote } from '../actions/QuoteActions';
+import { retrieveQuoteDetails } from '../actions/QuoteActions';
+import { editQuote } from '../actions/NavigationActions';
 import QuoteText from './QuoteText';
 import QuoteOfTheDayHistory from './QuoteOfTheDayHistory';
+import Header from './Header';
 
 class QuoteDetails extends Component {
     constructor(props) {
@@ -33,6 +35,7 @@ class QuoteDetails extends Component {
 
         return (
                 <div>
+                    <Header />
                     <h1>Details for #{quoteNumber}</h1>
                 
                     <div id="quoteDetailText">

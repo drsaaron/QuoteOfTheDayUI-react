@@ -5,22 +5,42 @@
  */
 
 import React, {Component} from 'react';
+import { goHome } from '../actions/NavigationActions';
+import { connect } from 'react-redux';
 
-export default class Header extends Component {
+const mapStateToProps = (state) => {
+    return {
+
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        goHome: () => dispatch(goHome())
+    };
+};
+
+class Header extends Component {
     constructor(props) {
         super(props);
+
+        this.handleHomeLink = this.handleHomeLink.bind(this);
+    }
+
+    handleHomeLink(event) {
+        event.preventDefault();
+        this.props.goHome();
     }
 
     render() {
         return (
                 <div id="pageHeader">
-                    <table>
-                        <tbody>
-                            <tr><td>Scott's Quote of the Day</td></tr>
-                        </tbody>
-                    </table>
-                    <p />
+                    <div id="pageHeaderApp">
+                        <a href="#" onClick={this.handleHomeLink}>Scott's Quote of the Day</a>
+                    </div>
                 </div>
                 );
     }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
