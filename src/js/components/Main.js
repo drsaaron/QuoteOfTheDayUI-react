@@ -20,8 +20,10 @@ export default class Main extends Component {
                 <div>
                     <Header />
                     <QuoteOfTheDay />
-                    <SourceCodeList />
-                    <QuotesForSourceCodeList />
+		    <div id="appDataContainer">
+                        <SourceCodeList />
+                        <QuotesForSourceCodeList />
+		    </div>
                 </div>
                 );
     }

@@ -29,7 +29,7 @@ class QuotesForSourceCodeList extends Component {
         }
 
         return (
-                <div id="quotesForSourceCode" className={this.getClassNames()}>
+                <div id="quotesForSourceCodeContainer" className={this.getClassNames()}>
                     <div id="quotesForSourceCodeName">
                         Quotes for <span className="quoteSourceCodeText">{sourceCodeText}</span>
                     </div>
