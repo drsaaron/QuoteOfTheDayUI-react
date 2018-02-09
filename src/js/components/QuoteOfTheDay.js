@@ -5,30 +5,12 @@
  */
 
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import { retrieveQuoteOfTheDay } from '../actions/QuoteOfTheDayActions';
 import QuoteText from './QuoteText';
-import { retrieveQuotesForSourceCode } from '../actions/SourceCodeActions';
-import { showQuoteDetails } from '../actions/NavigationActions';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const mapStateToProps = (state) => {
-    return {
-        quoteOfTheDay: state.quoteOfTheDay
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        retrieveQuoteOfTheDay: (runDate) => dispatch(retrieveQuoteOfTheDay(runDate)),
-        retrieveQuotesForSourceCode: (sourceCode) => dispatch(retrieveQuotesForSourceCode(sourceCode)),
-        showDetails: (quoteOfTheDay) => dispatch(showQuoteDetails(quoteOfTheDay.quoteNumber))
-    };
-};
-
-class QuoteOfTheDay extends Component {
+export default class QuoteOfTheDay extends Component {
     constructor(props) {
         super(props);
 
@@ -57,7 +39,7 @@ class QuoteOfTheDay extends Component {
     
     showDetails(event) {
         event.preventDefault();
-        this.props.showDetails(this.props.quoteOfTheDay.qotd);
+        this.props.showDetails(this.props.quoteOfTheDay.qotd.quoteNumber);
     }
     
     handleDateChange(date) {
@@ -96,5 +78,3 @@ class QuoteOfTheDay extends Component {
         }
     }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(QuoteOfTheDay);

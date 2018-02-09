@@ -5,11 +5,8 @@
  */
 
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import { retrieveQuotesForSourceCode } from '../actions/SourceCodeActions';
-import { addQuote } from '../actions/NavigationActions';
 
-class SourceCodeListItem extends Component {
+export default class SourceCodeListItem extends Component {
     constructor(props) {
         super(props);
         
@@ -33,18 +30,3 @@ class SourceCodeListItem extends Component {
                 );
     }
 }
-
-const mapStateToProps = (state) => {
-    return {
-        
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        retrieveQuotesForSourceCode: (sourceCode) => dispatch(retrieveQuotesForSourceCode(sourceCode)),
-        addQuote: (sourceCode) => dispatch(addQuote(sourceCode.number))
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SourceCodeListItem);

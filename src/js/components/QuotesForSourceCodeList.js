@@ -5,11 +5,10 @@
  */
 
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
 import QuoteForSourceCode from './QuoteForSourceCode';
 import classNames from 'classnames';
 
-class QuotesForSourceCodeList extends Component {
+export default class QuotesForSourceCodeList extends Component {
 
     constructor(props) {
         super(props);
@@ -35,17 +34,10 @@ class QuotesForSourceCodeList extends Component {
                     </div>
                 
                     <div id="quotesForSourceCodeQuotes"> 
-                        { this.props.quotesForSourceCode.quoteList.map((quote) => <QuoteForSourceCode key={quote.number} quote={quote} />) }
+                        { this.props.quotesForSourceCode.quoteList.map((quote) => <QuoteForSourceCode key={quote.number} quote={quote} showQuoteDetails={this.props.showQuoteDetails} />) }
                     </div>
                 </div>
                 );
     }
 };
 
-const mapStateToProps = (state) => {
-    return {
-        quotesForSourceCode: state.quotesForSourceCode
-    }
-}
-
-export default connect(mapStateToProps)(QuotesForSourceCodeList);

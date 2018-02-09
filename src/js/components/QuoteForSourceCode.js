@@ -6,19 +6,17 @@
 
 import React, {Component} from 'react';
 import QuoteText from './QuoteText';
-import { showQuoteDetails } from '../actions/NavigationActions';
-import { connect } from 'react-redux';
 
-class QuoteForSourceCode extends Component {
+export default class QuoteForSourceCode extends Component {
     constructor(props) {
         super(props);
-        
+
         this.clickHandler = this.clickHandler.bind(this);
     }
-    
+
     clickHandler(event) {
         event.preventDefault();
-        this.props.showDetails(this.props.quote);
+        this.props.showQuoteDetails(this.props.quote.number);
     }
 
     render() {
@@ -33,17 +31,3 @@ class QuoteForSourceCode extends Component {
                 );
     }
 }
-
-const mapStateToProps = (state) => {
-    return {
-
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        showDetails: (quote) => dispatch(showQuoteDetails(quote.number))
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(QuoteForSourceCode);
