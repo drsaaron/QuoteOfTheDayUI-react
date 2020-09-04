@@ -5,7 +5,7 @@
  */
 
 import { createStore, applyMiddleware } from 'redux';
-import rootReducer from '../reducers/rootReducer';
+import createRootReducer from '../reducers/rootReducer';
 import ActionTypes from '../actions/ActionTypes';
 import SourceCodeService from '../services/SourceCodeService';
 import QuotesForSourceCodeService from '../services/QuotesForSourceCodeService';
@@ -23,7 +23,7 @@ export const history = createBrowserHistory();
 const historyMiddleware = routerMiddleware(history);
 
 // create the store
-const store = createStore(rootReducer(history), {}, applyMiddleware(SourceCodeService, QuotesForSourceCodeService, QuoteService, QuoteOfTheDayService, historyMiddleware, thunk));
+const store = createStore(createRootReducer(history), {}, applyMiddleware(SourceCodeService, QuotesForSourceCodeService, QuoteService, QuoteOfTheDayService, historyMiddleware, thunk));
 
 export default store;
     
