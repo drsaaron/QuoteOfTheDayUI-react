@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 var copyPatterns = [
     { from: 'src/index.html' },
@@ -29,7 +29,7 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: /node_modules/,
                 query: {
-                    presets: ['es2016', 'stage-0', 'react']
+                    presets: ['@babel/env', '@babel/react']
                 }
             },
             {
@@ -40,7 +40,7 @@ module.exports = {
     },
 
     plugins: [
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(),
         new CopyWebpackPlugin(copyPatterns, {}),
         new HtmlWebpackPlugin({
             inject: true,

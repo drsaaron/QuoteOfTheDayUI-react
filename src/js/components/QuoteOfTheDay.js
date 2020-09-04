@@ -7,7 +7,6 @@
 import React, {Component} from 'react';
 import QuoteText from './QuoteText';
 import DatePicker from 'react-datepicker';
-import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export default class QuoteOfTheDay extends Component {
@@ -16,18 +15,20 @@ export default class QuoteOfTheDay extends Component {
 
         this.state = {
             runDate: this.props.quoteOfTheDay.runDate,
-            maxDate: moment()
+            maxDate: new Date()
         };
 
         this.handleSourceClick = this.handleSourceClick.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
         this.showDetails = this.showDetails.bind(this);
         
-        this.dateFormat = "YYYY-MM-DD";
+        this.dateFormat = "yyyy-MM-dd";
     }
 
     dateAsString() {
-        return this.state.runDate.format(this.dateFormat);
+	//        return this.state.runDate.format(this.dateFormat);
+	var d = this.state.runDate;
+	return d.getFullYear() + "-" + d.getMonth() + "-" + d.getDay();
     }
     
     handleSourceClick(event) {

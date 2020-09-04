@@ -5,7 +5,7 @@
  */
 
 import ActionTypes from './ActionTypes';
-import { push } from 'react-router-redux';
+import { push } from 'connected-react-router';
 
 export function goHome() {
     return push("/");
