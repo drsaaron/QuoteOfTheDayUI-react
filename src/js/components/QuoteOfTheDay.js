@@ -22,7 +22,6 @@ export default class QuoteOfTheDay extends Component {
         this.handleDateChange = this.handleDateChange.bind(this);
         this.showDetails = this.showDetails.bind(this);
         
-        this.dateFormat = "yyyy-MM-dd";
     }
 
     dateAsString() {
