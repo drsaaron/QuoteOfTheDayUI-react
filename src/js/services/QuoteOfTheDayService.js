@@ -29,7 +29,8 @@ const QuoteOfTheDayService = store => next => action => {
 
                 case ActionTypes.RETRIEVE_QUOTE_OF_THE_DAY:
                     var runDate = action.runDate;
-                    quoteOfTheDayAPI.getQuoteOfTheDay(runDate)
+                    var formatDate = runDate.getFullYear() + "-" + runDate.getMonth() + "-" + runDate.getDay();
+                    quoteOfTheDayAPI.getQuoteOfTheDay(formatDate)
                             .then(res => {
                                 return JSON.parse(res.text);
                             })

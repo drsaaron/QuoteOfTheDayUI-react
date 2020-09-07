@@ -23,7 +23,7 @@ export default class QuoteOfTheDay extends Component {
         this.showDetails = this.showDetails.bind(this);
         
     }
-
+    
     dateAsString() {
 	//        return this.state.runDate.format(this.dateFormat);
 	var d = this.state.runDate;
@@ -44,6 +44,7 @@ export default class QuoteOfTheDay extends Component {
     
     handleDateChange(date) {
         this.setState({ runDate: date });
+        this.getQuoteOfTheDay(date);
     }
 
     render() {
@@ -60,21 +61,9 @@ export default class QuoteOfTheDay extends Component {
                 );
     }
 
-    getQuoteOfTheDay() {
-        var runDate = this.dateAsString();
+    getQuoteOfTheDay(runDate) {
         console.log("getting quote of the day for " + runDate);
         this.props.retrieveQuoteOfTheDay(runDate);
     }
     
-    componentDidMount() {
-        if (this.props.quoteOfTheDay.initialized === false) {
-         this.getQuoteOfTheDay();
-        }
-    }
-    
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState !== null && prevState.runDate !== this.state.runDate) {
-            this.getQuoteOfTheDay();
-        }
-    }
 }
