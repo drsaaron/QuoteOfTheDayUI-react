@@ -8,7 +8,7 @@ import ActionTypes from './ActionTypes';
 import quoteAPI from '../api/QuoteAPI';
 import sourceCodeAPI from '../api/SourceCodeAPI';
 import { retrieveQuotesForSourceCode } from './SourceCodeActions';
-import { goHome } from './NavigationActions';
+import { goHome, showQuoteDetails } from './NavigationActions';
 
 export function retrieveQuoteDetails(quoteNumber) {
     return {
