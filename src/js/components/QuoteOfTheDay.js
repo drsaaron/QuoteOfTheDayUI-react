@@ -7,7 +7,6 @@
 import React, {Component} from 'react';
 import QuoteText from './QuoteText';
 import DatePicker from 'react-datepicker';
-import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export default class QuoteOfTheDay extends Component {
@@ -16,18 +15,13 @@ export default class QuoteOfTheDay extends Component {
 
         this.state = {
             runDate: this.props.quoteOfTheDay.runDate,
-            maxDate: moment()
+            maxDate: new Date()
         };
 
         this.handleSourceClick = this.handleSourceClick.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
         this.showDetails = this.showDetails.bind(this);
         
-        this.dateFormat = "YYYY-MM-DD";
-    }
-
-    dateAsString() {
-        return this.state.runDate.format(this.dateFormat);
     }
     
     handleSourceClick(event) {
@@ -44,6 +38,7 @@ export default class QuoteOfTheDay extends Component {
     
     handleDateChange(date) {
         this.setState({ runDate: date });
+        this.getQuoteOfTheDay(date);
     }
 
     render() {
@@ -52,7 +47,7 @@ export default class QuoteOfTheDay extends Component {
         return (
                 <div id="quoteOfTheDay">
                     <h2>Quote of the day</h2>
-                    <DatePicker maxDate={this.state.maxDate} selected={this.state.runDate} onChange={this.handleDateChange} dateFormat={this.dateFormat}/>
+                    <DatePicker maxDate={this.state.maxDate} selected={this.state.runDate} onChange={this.handleDateChange} />
                     Quote #<a href="#" onClick={this.showDetails}>{quoteNumber}</a>
                     <QuoteText quote={this.props.quoteOfTheDay.quote} />
                     <div className="QuoteSource">Source: <em><a href="#" onClick={this.handleSourceClick}>{this.props.quoteOfTheDay.sourceCode.text}</a></em></div>
@@ -60,21 +55,9 @@ export default class QuoteOfTheDay extends Component {
                 );
     }
 
-    getQuoteOfTheDay() {
-        var runDate = this.dateAsString();
+    getQuoteOfTheDay(runDate) {
         console.log("getting quote of the day for " + runDate);
         this.props.retrieveQuoteOfTheDay(runDate);
     }
     
-    componentDidMount() {
-        if (this.props.quoteOfTheDay.initialized === false) {
-         this.getQuoteOfTheDay();
-        }
-    }
-    
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState !== null && prevState.runDate !== this.state.runDate) {
-            this.getQuoteOfTheDay();
-        }
-    }
 }

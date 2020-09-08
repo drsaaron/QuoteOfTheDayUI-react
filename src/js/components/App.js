@@ -9,8 +9,8 @@ import Main from './Main';
 import QuoteDetails from './QuoteDetails';
 import { Provider } from 'react-redux';
 import store, { history } from '../store/QuoteOfTheDayStore';
-import { ConnectedRouter } from 'react-router-redux';
-import { Route, Switch } from 'react-router';
+import { ConnectedRouter } from 'connected-react-router';
+import { Route, Switch } from 'react-router-dom';
 import EditQuote from './EditQuote';
 import AddQuote from './AddQuote';
 

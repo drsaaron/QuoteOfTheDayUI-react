@@ -5,11 +5,10 @@
  */
 
 import ActionTypes from '../actions/ActionTypes';
-import moment from 'moment';
 
 const initialState = {
     initialized: false,
-    runDate: moment(),
+    runDate: new Date(),
     qotd: {},
     quote: {},
     sourceCode: {}
@@ -21,7 +20,7 @@ export default function QuoteOfTheDayReducer(state = initialState, action) {
             return {
                 ...state,
                 initialized: true,
-                runDate: moment(action.runDate),
+                runDate: action.runDate,
                 qotd: {},
                 quote: {},
                 sourceCode: {}

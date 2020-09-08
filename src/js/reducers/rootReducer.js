@@ -10,16 +10,15 @@ import QuotesForSourceCodeReducer from './QuotesForSourceCodeReducer';
 import QuoteDetailsReducer from './QuoteDetailsReducer';
 import QuoteOfTheDayReducer from './QuoteOfTheDayReducer';
 import EditQuoteReducer from './EditQuoteReducer';
-import { routerReducer } from 'react-router-redux';
+import { connectRouter } from 'connected-react-router';
 
-const rootReducer = combineReducers( {
+export default (history) => combineReducers( {
     sourceCodes: SourceCodeReducer,
     quotesForSourceCode: QuotesForSourceCodeReducer,
     quoteDetails: QuoteDetailsReducer,
     quoteOfTheDay: QuoteOfTheDayReducer,
     editQuote: EditQuoteReducer,
-    router: routerReducer
+    router: connectRouter(history)
 });
 
-export default rootReducer;
     
