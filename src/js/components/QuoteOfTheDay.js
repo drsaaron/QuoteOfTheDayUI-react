@@ -24,12 +24,6 @@ export default class QuoteOfTheDay extends Component {
         
     }
     
-    dateAsString() {
-	//        return this.state.runDate.format(this.dateFormat);
-	var d = this.state.runDate;
-	return d.getFullYear() + "-" + d.getMonth() + "-" + d.getDay();
-    }
-    
     handleSourceClick(event) {
         console.log("getting quotes for " + this.props.quoteOfTheDay.sourceCode.number);
 

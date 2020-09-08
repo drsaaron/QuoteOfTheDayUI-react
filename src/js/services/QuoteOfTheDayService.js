@@ -9,6 +9,13 @@ import quoteAPI from '../api/QuoteAPI';
 import quoteOfTheDayAPI from '../api/QuoteOfTheDayAPI';
 import sourceCodeAPI from '../api/SourceCodeAPI';
 
+function dateAsString(d) {
+    var year = d.getFullYear();
+    var month = d.getMonth() + 1;
+    var day = d.getDate();
+    return year + "-" + month + "-" + day;
+}
+
 const QuoteOfTheDayService = store => next => action => {
             next(action);
             switch (action.type) {
@@ -29,7 +36,7 @@ const QuoteOfTheDayService = store => next => action => {
 
                 case ActionTypes.RETRIEVE_QUOTE_OF_THE_DAY:
                     var runDate = action.runDate;
-                    var formatDate = runDate.getFullYear() + "-" + runDate.getMonth() + "-" + runDate.getDay();
+                    var formatDate = dateAsString(runDate);
                     quoteOfTheDayAPI.getQuoteOfTheDay(formatDate)
                             .then(res => {
                                 return JSON.parse(res.text);
