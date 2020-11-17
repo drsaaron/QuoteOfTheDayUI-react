@@ -34,14 +34,14 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loaders : ["style-loader", "css-loader" ]
+                use : ["style-loader", "css-loader" ]
             }
         ]
     },
 
     plugins: [
         new CleanWebpackPlugin(),
-        new CopyWebpackPlugin(copyPatterns, {}),
+        new CopyWebpackPlugin({ patterns: copyPatterns }),
         new HtmlWebpackPlugin({
             inject: true,
             template: __dirname + '/src/index.html'
