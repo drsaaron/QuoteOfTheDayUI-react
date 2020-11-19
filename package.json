@@ -1,6 +1,6 @@
 {
   "name": "QuoteOfTheDayUI-react",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "keywords": [
     "util",
     "functional",
@@ -48,8 +48,8 @@
   },
   "scripts": {
     "webpack": "webpack",
-    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --port 8001 --inline --content-base dist --history-api-fallback",
-    "start-docker": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --port 8080 --inline --content-base dist --history-api-fallback --host 0.0.0.0"
+    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --port 8001 --mode=development --inline --content-base dist --history-api-fallback",
+    "start-docker": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --port 8080 --mode=production --inline --content-base dist --history-api-fallback --host 0.0.0.0"
   },
   "repository": "https://github.com/drsaaron/QuoteOfTheDayUI-react",
   "license": "UNLICENSED"
