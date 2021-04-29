@@ -1,6 +1,6 @@
 #! /bin/sh
 
-version=$(perl -MJSON -ne 'BEGIN { $/ = undef; } my $json = from_json($_); print $json->{version} . "\n";' package.json)
+version=$(getPackageJsonAttribute.sh version)
 
 containerName=quoteofthedayui
 
