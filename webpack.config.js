@@ -4,8 +4,13 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+    template: __dirname + "/src/index.html",
+    filename: "index.html",
+    inject: 'body'
+});
+
 var copyPatterns = [
-    { from: 'src/index.html' },
     { from: 'src/css', to: 'css' } /*,
     { from: 'src/favico.ico' },
     { from: 'src/images', to: 'images' },
@@ -26,11 +31,8 @@ module.exports = {
         rules: [
             {
                 test: /.jsx?$/,
-                loader: 'babel-loader',
                 exclude: /node_modules/,
-                query: {
-                    presets: ['@babel/env', '@babel/react']
-                }
+		loader: 'babel-loader'
             },
             {
                 test: /\.css$/,
@@ -42,9 +44,6 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin({ patterns: copyPatterns }),
-        new HtmlWebpackPlugin({
-            inject: true,
-            template: __dirname + '/src/index.html'
-        })
+        HtmlWebpackPluginConfig
     ]
 };

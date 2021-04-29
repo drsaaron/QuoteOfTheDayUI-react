@@ -1,6 +1,6 @@
 {
   "name": "QuoteOfTheDayUI-react",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "keywords": [
     "util",
     "functional",
@@ -13,6 +13,7 @@
   "description": "User interface for the quote of the day application",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "buffer": "^6.0.3",
     "classnames": "^2.2.6",
     "connected-react-router": "^6.8.0",
     "history": "^4.10.1",
@@ -33,23 +34,24 @@
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-decorators": "7.13.15",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
     "babel-loader": "^8.2.1",
     "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^6.3.1",
+    "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^5.0.1",
     "dom-converter": "^0.2.0",
-    "html-webpack-plugin": "^4.5.0",
+    "html-webpack-plugin": "^5.3.1",
     "style-loader": "^2.0.0",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack": "^5.36.1",
+    "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
     "webpack": "webpack",
-    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --port 8001 --mode=development --inline --content-base dist --history-api-fallback",
-    "start-docker": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --port 8080 --mode=production --inline --content-base dist --history-api-fallback --host 0.0.0.0"
+    "start": "node node_modules/webpack/bin/webpack.js serve --port 8001 --mode=development --inline --content-base dist --history-api-fallback",
+    "start-docker": "node node_modules/webpack/bin/webpack.js serve --port 8080 --mode=production --inline --content-base dist --history-api-fallback --host 0.0.0.0"
   },
   "repository": "https://github.com/drsaaron/QuoteOfTheDayUI-react",
   "license": "UNLICENSED"
