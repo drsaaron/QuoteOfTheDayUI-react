@@ -1,18 +1,19 @@
 # build based on node
-FROM node:alpine
+FROM node:slim
 
 # install curl which will be used for healthcheck
-RUN apk add curl
+RUN apt update && apt install -y curl
 
 # install make
-RUN apk add --update make
+RUN apt install -y make
 
 # install g++
-RUN apk add g++
+RUN apt install -y g++
+ENV CXXFLAGS "$CXXFLAGS -std=c++14"
 
 # install python
 ENV PYTHONUNBUFFERED=1
-RUN apk add --update --no-cache python2 && ln -sf python2 /usr/bin/python
+RUN apt install -y python2 && ln -sf python2 /usr/bin/python
 
 # working directory
 WORKDIR /app
@@ -25,6 +26,7 @@ ADD package.json .
 ADD package-lock.json .
 ADD webpack.config.js .
 ADD src ./src
+ADD .babelrc .
 
 # get the packages
 RUN npm install
