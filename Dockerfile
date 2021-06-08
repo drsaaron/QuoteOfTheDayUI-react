@@ -25,6 +25,7 @@ ADD package.json .
 ADD package-lock.json .
 ADD webpack.config.js .
 ADD src ./src
+ADD .babelrc .
 
 # get the packages
 RUN npm install
