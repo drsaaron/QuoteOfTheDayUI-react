@@ -17,22 +17,24 @@ RUN apk add --update --no-cache python2 && ln -sf python2 /usr/bin/python
 # working directory
 WORKDIR /app
 
-# expose port 8080
-EXPOSE 8080
+# expose port 5000
+EXPOSE 5000
 
 # add the source
 ADD package.json .
 ADD package-lock.json .
-ADD webpack.config.js .
 ADD src ./src
-ADD .babelrc .
+ADD public ./public
 
 # get the packages
 RUN npm install
 
 # health checvk
-HEALTHCHECK CMD curl --fail localhost:8080 || exit 1
+HEALTHCHECK CMD curl --fail localhost:5000 || exit 1
+
+# build the app
+RUN npm run build
 
 # start the server
-CMD [ "npm", "run", "start-docker" ]
+CMD [ "npm", "run", "serve" ]
 

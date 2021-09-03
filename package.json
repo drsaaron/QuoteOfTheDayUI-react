@@ -1,6 +1,6 @@
 {
   "name": "QuoteOfTheDayUI-react",
-  "version": "1.0.20",
+  "version": "1.1.0",
   "keywords": [
     "util",
     "functional",
@@ -12,12 +12,16 @@
   "contributors": [],
   "description": "User interface for the quote of the day application",
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.1.9",
     "buffer": "^6.0.3",
     "classnames": "^2.2.6",
     "connected-react-router": "^6.8.0",
     "history": "^4.10.1",
-    "immutable": "^4.0.0-rc.12",
+      "immutable": "^4.0.0-rc.12",
+      "react-scripts": "^4.0.3",
+      "serve": "^12.0.0",
     "react": "^17.0.2",
     "react-datepicker": "^4.1.1",
     "react-dom": "^17.0.2",
@@ -31,27 +35,30 @@
     "seamless-immutable": "^7.1.4",
     "superagent": "^6.1.0"
   },
-  "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/plugin-proposal-decorators": "^7.13.15",
-    "@babel/preset-env": "^7.12.1",
-    "@babel/preset-react": "^7.12.5",
-    "babel-loader": "^8.2.1",
-    "clean-webpack-plugin": "^4.0.0",
-    "copy-webpack-plugin": "^9.0.0",
-    "css-loader": "^6.2.0",
-    "dom-converter": "^0.2.0",
-    "html-webpack-plugin": "^5.3.1",
-    "style-loader": "^3.0.0",
-    "webpack": "^5.36.1",
-    "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.0"
+    "scripts": {
+	"start": "PORT=8001 react-scripts start",
+	"build": "react-scripts build",
+	"test": "react-scripts test",
+	"eject": "react-scripts eject",
+	"serve": "serve -s build"
+    },
+    "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "scripts": {
-    "webpack": "webpack",
-    "start": "node node_modules/webpack/bin/webpack.js serve --port 8001 --mode=development --inline --content-base dist --history-api-fallback",
-    "start-docker": "node node_modules/webpack/bin/webpack.js serve --port 8080 --mode=production --inline --content-base dist --history-api-fallback --host 0.0.0.0"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "repository": "https://github.com/drsaaron/QuoteOfTheDayUI-react",
   "license": "UNLICENSED"

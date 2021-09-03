@@ -6,7 +6,7 @@
 
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App.js';
+import App from './js/components/App.js';
 
 ReactDOM.render(
     <App />, 
