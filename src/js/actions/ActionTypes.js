@@ -7,6 +7,8 @@
 export default {
     RETRIEVE_SOURCE_CODES: 'RetrieveSourceCodes',
     SOURCE_CODES_RETRIEVED: 'SourceCodesRetrieved',
+    PREPARE_ADD_SOURCE_CODE: 'PrepareAddSourceCode',
+    ADD_SOURCE_CODE: 'AddSourceCode',
     
     RETRIEVE_QUOTES_FOR_SOURCE_CODE: 'RetrieveQuotesForSourceCode',
     QUOTES_FOR_SOURCE_CODE_RETRIEVED: 'QuotesForSourceCodeRetrieved',

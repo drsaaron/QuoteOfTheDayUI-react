@@ -23,3 +23,6 @@ export function addQuote(sourceCode) {
     return push("/addQuote/" + sourceCode);
 }
 
+export function addSourceCode() {
+    return push("/addSourceCode");
+}

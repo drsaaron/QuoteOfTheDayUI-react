@@ -15,10 +15,10 @@ export default class SourceCodeList extends Component {
     render() {
         return (
                 <div id="quoteSourceCodeListContainer">
-                    <h2>Sources</h2>
+                    <h2>Sources <button onClick={this.props.addSourceCode}>+</button></h2>
                     <div id="quoteSourceCodeList">
                         <ul>
-                            { this.props.sourceCodes.sourceCodes.map((sourceCode) => <SourceCodeListItem key={sourceCode.number} sourceCode={sourceCode} addQuote={                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 this.props.addQuote} retrieveQuotesForSourceCode={this.props.retrieveQuotesForSourceCode} />) }
+                            { this.props.sourceCodes.sourceCodes.map((sourceCode) => <SourceCodeListItem key={sourceCode.number} sourceCode={sourceCode} addQuote={this.props.addQuote} retrieveQuotesForSourceCode={this.props.retrieveQuotesForSourceCode} />) }
                         </ul>
                     </div>
                 </div>
