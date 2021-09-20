@@ -36,7 +36,7 @@ class Header extends Component {
         return (
                 <div id="pageHeader">
                     <div id="pageHeaderApp">
-                        <a href="#" onClick={this.handleHomeLink}>Scott's Quote of the Day</a>
+                        <a href="/" onClick={this.handleHomeLink}>Scott's Quote of the Day</a>
                     </div>
                 </div>
                 );

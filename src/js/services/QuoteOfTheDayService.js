@@ -19,52 +19,54 @@ function dateAsString(d) {
 const QuoteOfTheDayService = store => next => action => {
             next(action);
             switch (action.type) {
-                case ActionTypes.RETRIEVE_QUOTE_DETAILS:
-                    quoteOfTheDayAPI.getQuoteOfTheDayHistory(action.quoteNumber)
-                            .end((err, res) => {
-                                if (err) {
-                                    console.log(err);
-                                }
-
-                                var history = JSON.parse(res.text).historyByYear;
-                                next({
-                                    type: ActionTypes.QUOTE_DETAIL_HISTORY_RETRIEVED,
-                                    history
-                                });
-                            });
-                    break;
-
-                case ActionTypes.RETRIEVE_QUOTE_OF_THE_DAY:
-                    var runDate = action.runDate;
-                    var formatDate = dateAsString(runDate);
-                    quoteOfTheDayAPI.getQuoteOfTheDay(formatDate)
-                            .then(res => {
-                                return JSON.parse(res.text);
-                            })
-                            .then(qotd => {
-                                store.dispatch({type: ActionTypes.QUOTE_OF_THE_DAY_RETRIEVED, qotd});
-                                return qotd;
-                            })
-                            .then(qotd => {
-                                return quoteAPI.getQuote(qotd.quoteNumber);
-                            })
-                            .then(res => {
-                                return JSON.parse(res.text);
-                            })
-                            .then(quote => {
-                                store.dispatch({type: ActionTypes.QUOTE_OF_THE_DAY_QUOTE_RETRIEVED, quote});
-                                return quote;
-                            })
-                            .then(quote => {
-                                return sourceCodeAPI.getSourceCode(quote.sourceCode);
-                            })
-                            .then(res => {
-                                return JSON.parse(res.text);
-                            })
-                            .then(sourceCode => {
-                                store.dispatch({type: ActionTypes.QUOTE_OF_THE_DAY_SOURCE_CODE_RETRIEVED, sourceCode});
-                            });
-                    break;
+            case ActionTypes.RETRIEVE_QUOTE_DETAILS:
+                quoteOfTheDayAPI.getQuoteOfTheDayHistory(action.quoteNumber)
+                    .end((err, res) => {
+                        if (err) {
+                            console.log(err);
+                        }
+			
+                        var history = JSON.parse(res.text).historyByYear;
+                        next({
+                            type: ActionTypes.QUOTE_DETAIL_HISTORY_RETRIEVED,
+                            history
+                        });
+                    });
+                break;
+		
+            case ActionTypes.RETRIEVE_QUOTE_OF_THE_DAY:
+                var runDate = action.runDate;
+                var formatDate = dateAsString(runDate);
+                quoteOfTheDayAPI.getQuoteOfTheDay(formatDate)
+                    .then(res => {
+                        return JSON.parse(res.text);
+                    })
+                    .then(qotd => {
+                        store.dispatch({type: ActionTypes.QUOTE_OF_THE_DAY_RETRIEVED, qotd});
+                        return qotd;
+                    })
+                    .then(qotd => {
+                        return quoteAPI.getQuote(qotd.quoteNumber);
+                    })
+                    .then(res => {
+                        return JSON.parse(res.text);
+                    })
+                    .then(quote => {
+                        store.dispatch({type: ActionTypes.QUOTE_OF_THE_DAY_QUOTE_RETRIEVED, quote});
+                        return quote;
+                    })
+                    .then(quote => {
+                        return sourceCodeAPI.getSourceCode(quote.sourceCode);
+                    })
+                    .then(res => {
+                        return JSON.parse(res.text);
+                    })
+                    .then(sourceCode => {
+                        store.dispatch({type: ActionTypes.QUOTE_OF_THE_DAY_SOURCE_CODE_RETRIEVED, sourceCode});
+                    });
+                break;
+	    default:
+		
             }
         };
 

@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import App from './js/components/App.js';
 

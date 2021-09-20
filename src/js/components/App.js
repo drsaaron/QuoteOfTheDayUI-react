@@ -13,11 +13,9 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Route, Switch } from 'react-router-dom';
 import EditQuote from './EditQuote';
 import AddQuote from './AddQuote';
+import AddSourceCode from './AddSourceCode';
 
 export default class App extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
@@ -28,6 +26,7 @@ export default class App extends Component {
                             <Route path="/quoteDetails/:quoteNumber" component={QuoteDetails} />
                             <Route path="/editQuote/:quoteNumber" component={EditQuote} />
                             <Route path="/addQuote/:sourceCode" component={AddQuote} />
+			    <Route patch="/addSourceCode" component={AddSourceCode} />
                         </Switch>
                     </ConnectedRouter>
                 </Provider>

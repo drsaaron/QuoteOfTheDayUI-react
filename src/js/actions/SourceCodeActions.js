@@ -5,6 +5,8 @@
  */
 
 import ActionTypes from './ActionTypes';
+import sourceCodeAPI from '../api/SourceCodeAPI';
+import { goHome } from './NavigationActions';
 
 export function retrieveSourceCodes() {
     return {
@@ -18,3 +20,32 @@ export function retrieveQuotesForSourceCode(sourceCode) {
         sourceCode
     };
 }
+
+export function prepareAddSourceCode() {
+    return {
+	type: ActionTypes.PREPARE_ADD_SOURCE_CODE
+    };
+}
+
+export function addSourceCode(sourceCode) {
+    return (dispatch) => {
+	sourceCodeAPI.addSourceCode(sourceCode)
+	    .then((res) => JSON.parse(res.text))
+	    .then((sc) => {
+		dispatch({
+		    type: ActionTypes.ADD_SOURCE_CODE,
+		    sourceCode: sc
+		})
+		return sc;
+	    })
+	    .then(sc => {
+		dispatch(retrieveSourceCodes());
+		return sc;
+	    })
+	    .then(sc => {
+		dispatch(goHome());
+		return sc;
+	    });
+    }
+}
+

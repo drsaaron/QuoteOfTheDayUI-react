@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-import ActionTypes from './ActionTypes';
 import { push } from 'connected-react-router';
 
 export function goHome() {
@@ -23,3 +22,6 @@ export function addQuote(sourceCode) {
     return push("/addQuote/" + sourceCode);
 }
 
+export function addSourceCode() {
+    return push("/addSourceCode");
+}
