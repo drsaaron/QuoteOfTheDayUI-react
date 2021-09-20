@@ -11,31 +11,36 @@ import quoteAPI from '../api/QuoteAPI';
 import sourceCodeAPI from '../api/SourceCodeAPI';
 
 const QuoteService = store => next => action => {
-            next(action);
-            switch (action.type) {
-                case ActionTypes.RETRIEVE_QUOTE_DETAILS:
-                    quoteAPI.getQuote(action.quoteNumber)
-                            .then((res) => {
-                                return JSON.parse(res.text);
-                            })
-                            .then((quote) => {
-                                store.dispatch({
-                                    type: ActionTypes.QUOTE_DETAIL_QUOTE_RETRIEVED,
-                                    quote
-                                });
-                                return quote;
-                            })
-                            .then(quote => {
-                                return sourceCodeAPI.getSourceCode(quote.sourceCode);
-                            })
-                            .then(res => {
-                                return JSON.parse(res.text);
-                            })
-                            .then(sourceCode => {
-                                store.dispatch({type: ActionTypes.QUOTE_DETAIL_SOURCE_CODE_RETRIEVED, sourceCode});
-                            });
-            }
-        };
+    next(action);
+    switch (action.type) {
+    case ActionTypes.RETRIEVE_QUOTE_DETAILS:
+        quoteAPI.getQuote(action.quoteNumber)
+            .then((res) => {
+                return JSON.parse(res.text);
+            })
+            .then((quote) => {
+                store.dispatch({
+                    type: ActionTypes.QUOTE_DETAIL_QUOTE_RETRIEVED,
+                    quote
+                });
+                return quote;
+            })
+            .then(quote => {
+                return sourceCodeAPI.getSourceCode(quote.sourceCode);
+            })
+            .then(res => {
+                return JSON.parse(res.text);
+            })
+            .then(sourceCode => {
+                store.dispatch({type: ActionTypes.QUOTE_DETAIL_SOURCE_CODE_RETRIEVED, sourceCode});
+            });
+
+	break;
+
+    default:
+	
+    }
+};
 
 export default QuoteService;
 

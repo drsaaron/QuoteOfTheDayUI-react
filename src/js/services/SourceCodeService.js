@@ -23,6 +23,7 @@ const SourceCodeService = store => next => action => {
                             sourceCodes
                         });
                     });
+		break;
 		
 	    default:
 		

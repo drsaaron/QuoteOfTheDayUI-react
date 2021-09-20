@@ -48,9 +48,9 @@ export default class QuoteOfTheDay extends Component {
                 <div id="quoteOfTheDay">
                     <h2>Quote of the day</h2>
                     <DatePicker maxDate={this.state.maxDate} selected={this.state.runDate} onChange={this.handleDateChange} />
-                    Quote #<a href="#" onClick={this.showDetails}>{quoteNumber}</a>
+                    Quote #<a href="/" onClick={this.showDetails}>{quoteNumber}</a>
                     <QuoteText quote={this.props.quoteOfTheDay.quote} />
-                    <div className="QuoteSource">Source: <em><a href="#" onClick={this.handleSourceClick}>{this.props.quoteOfTheDay.sourceCode.text}</a></em></div>
+                    <div className="QuoteSource">Source: <em><a href="/" onClick={this.handleSourceClick}>{this.props.quoteOfTheDay.sourceCode.text}</a></em></div>
                 </div>
                 );
     }

@@ -24,7 +24,7 @@ export default class QuoteForSourceCode extends Component {
 
         return (
                 <article className="quote">
-                    <a href="#" onClick={this.clickHandler}>{quote.number}</a>
+                    <a href="/" onClick={this.clickHandler}>{quote.number}</a>
                     <br />
                     <QuoteText quote={quote} />
                 </article>

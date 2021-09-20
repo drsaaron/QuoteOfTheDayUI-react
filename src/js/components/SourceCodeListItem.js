@@ -26,7 +26,7 @@ export default class SourceCodeListItem extends Component {
 
     render() {
         return (
-                <li><a href="#" onClick={this.clickHandler}>{this.props.sourceCode.text}</a> <button onClick={this.addQuote}>+</button></li>
-                );
+            <li><a href="/" onClick={this.clickHandler}>{this.props.sourceCode.text}</a> <button onClick={this.addQuote}>+</button></li>
+        );
     }
 }

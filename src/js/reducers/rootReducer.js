@@ -12,7 +12,7 @@ import QuoteOfTheDayReducer from './QuoteOfTheDayReducer';
 import EditQuoteReducer from './EditQuoteReducer';
 import { connectRouter } from 'connected-react-router';
 
-export default (history) => combineReducers( {
+const applicationStore = (history) => combineReducers( {
     sourceCodes: SourceCodeReducer,
     quotesForSourceCode: QuotesForSourceCodeReducer,
     quoteDetails: QuoteDetailsReducer,
@@ -21,4 +21,4 @@ export default (history) => combineReducers( {
     router: connectRouter(history)
 });
 
-    
+export default applicationStore;

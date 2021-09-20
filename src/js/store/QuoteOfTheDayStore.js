@@ -6,7 +6,6 @@
 
 import { createStore, applyMiddleware } from 'redux';
 import createRootReducer from '../reducers/rootReducer';
-import ActionTypes from '../actions/ActionTypes';
 import SourceCodeService from '../services/SourceCodeService';
 import QuotesForSourceCodeService from '../services/QuotesForSourceCodeService';
 import QuoteService from '../services/QuoteService';
