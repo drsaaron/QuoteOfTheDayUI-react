@@ -18,12 +18,12 @@ const mapDispatchToProps = (dispatch) => {
 
 const AddSourceCode = (props) => {
 
-    const [text, setText] = useState(props.sourceCodes.sourceCode.text);
+    const [text, setText] = useState(props.sourceCodes.defaultSourceCode.text);
 
     // on mount, prepare the state for adding
     const prepareAddSourceCode = props.prepareAddSourceCode;
     useEffect(() => {
-	prepareAddSourceCode()
+	prepareAddSourceCode();
     }, [prepareAddSourceCode]);
 
     const addSourceCode = (event) => {

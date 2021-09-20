@@ -14,7 +14,8 @@ const newSourceCode = {
 const initialState = {
     fetching: false,
     sourceCodes: [],
-    sourceCode: newSourceCode
+    sourceCode: newSourceCode,
+    defaultSourceCode: newSourceCode
 };
 
 export default function SourceCodeReducer(state = initialState, action) {
