@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 import { addSourceCode, prepareAddSourceCode } from '../actions/SourceCodeActions';
 import { connect } from 'react-redux';
 import Header from './Header';
@@ -16,37 +16,27 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-class AddSourceCode extends Component {
+const AddSourceCode = (props) => {
 
-    constructor(props) {
-	super(props);
+    const [text, setText] = useState(props.sourceCodes.sourceCode.text);
 
-	this.state = {
-	    text: this.props.sourceCodes.sourceCode.text
-	};
+    // on mount, prepare the state for adding
+    const prepareAddSourceCode = props.prepareAddSourceCode;
+    useEffect(() => {
+	prepareAddSourceCode()
+    }, [prepareAddSourceCode]);
 
-	this.handleTextChange = this.handleTextChange.bind(this);
-	this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleTextChange(event) {
-	this.setState({
-	    ...this.state,
-	    text: event.target.value
-	});
-    }
-
-    handleSubmit(event) {
+    const addSourceCode = (event) => {
 	event.preventDefault();
-	var newCode = {
-	    number: this.props.sourceCodes.sourceCode.number,
-	    text: this.state.text
-	};
-	this.props.addSourceCode(newCode);
+	var newSource = { number: props.sourceCodes.sourceCode.number, text: text };
+	props.addSourceCode(newSource);
     }
-    
-    render() {
-	return (
+
+    const handleTextChange = (event) => {
+	setText(event.target.value);
+    }
+
+    return (
 	    <div>
 		<Header />
 
@@ -54,18 +44,13 @@ class AddSourceCode extends Component {
 		    <form action="post">
 			<label>
 			    New quote source:
-			    <input type="text" name="text" onChange={this.handleTextChange} />
+			    <input type="text" name="text" value={text} onChange={(event) => handleTextChange(event)} />
 			</label>
-			<input type="submit" value="Submit" onClick={this.handleSubmit} />
+			<input type="submit" value="Submit" onClick={(event) => addSourceCode(event)} />
 		    </form>
 		</div>
 	    </div>
 	);
-    }
-
-    componentDidMount() {
-	this.props.prepareAddSourceCode();
-    }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddSourceCode);
