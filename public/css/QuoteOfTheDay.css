@@ -54,3 +54,5 @@ body { font-family: Helvetica; font-size: 90% }
 .quote { margin-top: 15px; margin-bottom: 10px }
 
 #quoteDetailText { margin: 10px; width: 70% }
+
+#newSourceCodeEditor { margin: 10px }
