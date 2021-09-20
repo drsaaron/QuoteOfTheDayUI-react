@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-export default {
+const values = {
     RETRIEVE_SOURCE_CODES: 'RetrieveSourceCodes',
     SOURCE_CODES_RETRIEVED: 'SourceCodesRetrieved',
     PREPARE_ADD_SOURCE_CODE: 'PrepareAddSourceCode',
@@ -29,4 +29,6 @@ export default {
     
     PREPARE_QUOTE_FOR_ADD: 'PrepareQuoteForAdd',
     NEW_QUOTE_ADDED: 'NewQuoteAdded'
-}
+};
+
+export default values;

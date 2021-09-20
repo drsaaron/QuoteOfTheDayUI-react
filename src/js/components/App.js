@@ -16,9 +16,6 @@ import AddQuote from './AddQuote';
 import AddSourceCode from './AddSourceCode';
 
 export default class App extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

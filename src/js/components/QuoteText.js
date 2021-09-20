@@ -8,9 +8,6 @@ import React, {Component} from 'react';
 import sanitizeHtml from 'sanitize-html-react';
 
 export default class QuoteText extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         var quote = this.props.quote;

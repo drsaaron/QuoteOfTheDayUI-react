@@ -10,10 +10,6 @@ import classNames from 'classnames';
 
 export default class QuotesForSourceCodeList extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     getClassNames() {
         var sourceCodeNumber = this.props.quotesForSourceCode.sourceCode.number || -1;
         return classNames({

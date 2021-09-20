@@ -39,11 +39,11 @@ export function addSourceCode(sourceCode) {
 		return sc;
 	    })
 	    .then(sc => {
-		dispatch(retrieveSourceCodes);
+		dispatch(retrieveSourceCodes());
 		return sc;
 	    })
 	    .then(sc => {
-		dispatch(goHome);
+		dispatch(goHome());
 		return sc;
 	    });
     }

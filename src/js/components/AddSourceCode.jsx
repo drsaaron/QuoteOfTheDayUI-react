@@ -52,13 +52,11 @@ class AddSourceCode extends Component {
 
 		<div id="newSourceCodeEditor">
 		    <form action="post">
-			<form>
-			    <label>
-				New quote source:
-				<input type="text" name="text" onChange={this.handleTextChange} />
-			    </label>
-			    <input type="submit" value="Submit" onClick={this.handleSubmit} />
-			</form>
+			<label>
+			    New quote source:
+			    <input type="text" name="text" onChange={this.handleTextChange} />
+			</label>
+			<input type="submit" value="Submit" onClick={this.handleSubmit} />
 		    </form>
 		</div>
 	    </div>

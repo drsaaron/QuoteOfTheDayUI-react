@@ -7,9 +7,6 @@
 import React, {Component} from 'react';
 
 export default class QuoteOfTheDayHistoryForYear extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         var year = this.props.year;
