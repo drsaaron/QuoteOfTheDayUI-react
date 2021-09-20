@@ -28,7 +28,7 @@ const AddSourceCode = (props) => {
 
     const addSourceCode = (event) => {
 	event.preventDefault();
-	var newSource = { number: props.sourceCodes.sourceCode.number, text: text };
+	var newSource = { number: props.sourceCodes.defaultSourceCode.number, text: text };
 	props.addSourceCode(newSource);
     }
 
@@ -44,9 +44,9 @@ const AddSourceCode = (props) => {
 		    <form action="post">
 			<label>
 			    New quote source:
-			    <input type="text" name="text" value={text} onChange={(event) => handleTextChange(event)} />
+			    <input type="text" name="text" value={text} onChange={handleTextChange} />
 			</label>
-			<input type="submit" value="Submit" onClick={(event) => addSourceCode(event)} />
+			<input type="submit" value="Submit" onClick={addSourceCode} />
 		    </form>
 		</div>
 	    </div>

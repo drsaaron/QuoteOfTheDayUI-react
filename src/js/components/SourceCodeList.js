@@ -4,22 +4,19 @@
  * and open the template in the editor.
  */
 
-import React, { Component } from 'react';
 import SourceCodeListItem from './SourceCodeListItem';
 
-export default class SourceCodeList extends Component {
-
-    render() {
-        return (
-            <div id="quoteSourceCodeListContainer">
-                <h2>Sources <button onClick={this.props.addSourceCode}>+</button></h2>
-                <div id="quoteSourceCodeList">
-                    <ul>
-                        { this.props.sourceCodes.sourceCodes.map((sourceCode) => <SourceCodeListItem key={sourceCode.number} sourceCode={sourceCode} addQuote={this.props.addQuote} retrieveQuotesForSourceCode={this.props.retrieveQuotesForSourceCode} />) }
-                    </ul>
-                </div>
+const SourceCodeList = (props) => {
+    return (
+        <div id="quoteSourceCodeListContainer">
+            <h2>Sources <button onClick={props.addSourceCode}>+</button></h2>
+            <div id="quoteSourceCodeList">
+                <ul>
+                    { props.sourceCodes.sourceCodes.map((sourceCode) => <SourceCodeListItem key={sourceCode.number} sourceCode={sourceCode} addQuote={props.addQuote} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} />) }
+                </ul>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
+export default SourceCodeList;
