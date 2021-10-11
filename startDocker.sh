@@ -1,7 +1,7 @@
 #! /bin/sh
 
 version=$(getPackageJsonAttribute.sh version)
-imageName=drsaaron/$(dockerImageName.sh)
+imageName=$(dockerImageName.sh)
 
 containerName=quoteofthedayui
 
