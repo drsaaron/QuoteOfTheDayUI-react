@@ -1,4 +1,4 @@
-FROM drsaaron/blazarnodebase:1.0
+FROM drsaaron/blazarnodebase:1.1
 
 # expose port 5000
 EXPOSE 5000
