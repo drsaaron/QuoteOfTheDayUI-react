@@ -6,6 +6,8 @@ npm update
 if gitFileChanged.sh -f package-lock.json
 then
     echo "lock file upgraded, so update version"
+    git add package-lock.json # need to commit locally before running npm version patch
+    git commit -m 'patch'
     npm version patch
 else
     echo "lock file unchanged so no version update"
