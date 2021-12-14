@@ -1,6 +1,6 @@
 {
   "name": "QuoteOfTheDayUI-react",
-  "version": "1.1.11",
+  "version": "1.1.12",
   "keywords": [
     "util",
     "functional",
@@ -20,7 +20,7 @@
     "connected-react-router": "^6.8.0",
     "history": "^4.10.1",
     "immutable": "^4.0.0-rc.12",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "^5.0.0",
     "serve": "^13.0.0",
     "react": "^17.0.2",
     "react-datepicker": "^4.1.1",
