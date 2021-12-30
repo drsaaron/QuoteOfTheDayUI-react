@@ -1,6 +1,6 @@
 {
   "name": "QuoteOfTheDayUI-react",
-  "version": "1.1.12",
+  "version": "1.1.13",
   "keywords": [
     "util",
     "functional",
@@ -36,7 +36,7 @@
     "superagent": "^6.1.0"
   },
   "scripts": {
-    "start": "PORT=8001 react-scripts start",
+    "start": "NODE_ENV=development PORT=8001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

@@ -1,8 +1,10 @@
-FROM drsaaron/blazarnodebase:1.4
+FROM drsaaron/blazarnodebase:1.5
 
 # expose port 3000
 ENV SERVER_PORT=3000
 EXPOSE $SERVER_PORT
+
+ENV NODE_ENV=production
 
 # add the source
 ADD package.json .
@@ -13,7 +15,7 @@ ADD public ./public
 # get the packages
 RUN npm install
 
-# health checvk
+# health check
 HEALTHCHECK CMD curl --fail localhost:$SERVER_PORT || exit 1
 
 # build the app. See https://github.com/webpack/webpack/issues/14532 for the NODE_OPTIONS

@@ -6,9 +6,15 @@
 
 import ActionTypes from '../actions/ActionTypes';
 
+const emptyQuote = {
+    text: '',
+    usable: true,
+    sourceCode: -1
+};
+
 const initialState = {
     quoteNumber: -1,
-    quote: {},
+    quote: emptyQuote,
     sourceCodes: [],
     sourceCode: -1
 };
@@ -19,7 +25,7 @@ export default function EditQuoteReducer(state = initialState, action) {
             return {
                 ...state,
                 quoteNumber: action.quoteNumber,
-                quote: {},
+                quote: emptyQuote,
                 sourceCodes: [],
                 sourceCode: -1
             };
@@ -28,7 +34,7 @@ export default function EditQuoteReducer(state = initialState, action) {
             return {
                 ...state,
                 quoteNumber: -1,
-                quote: {},
+                quote: emptyQuote,
                 sourceCodes: [],
                 sourceCode: action.sourceCode
             };
@@ -57,5 +63,5 @@ export default function EditQuoteReducer(state = initialState, action) {
             return {
                 ...state
             }
-}
+    }
 }

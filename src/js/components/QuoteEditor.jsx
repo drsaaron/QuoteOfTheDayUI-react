@@ -18,9 +18,9 @@ class QuoteEditor extends Component {
         super(props);
 
         this.state = {
-            text: 'quote',
-            usable: true,
-            sourceCode: -1
+            text: props.editQuote.quote.text,
+            usable: props.editQuote.quote.usable,
+            sourceCode: props.editQuote.sourceCode
         };
 
         this.handleTextChange = this.handleTextChange.bind(this);
@@ -28,6 +28,7 @@ class QuoteEditor extends Component {
         this.handleSourceCodeChange = this.handleSourceCodeChange.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
     }
+
 
     componentWillReceiveProps(nextProps) {
         console.log("new props");
@@ -47,6 +48,7 @@ class QuoteEditor extends Component {
     }
 
     handleUsableChange(event) {
+	console.log("usable changed: " + event.target.checked);
         this.setState({...this.state, usable: event.target.checked});
     }
 
