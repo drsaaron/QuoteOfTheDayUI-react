@@ -4,12 +4,11 @@
  * and open the template in the editor.
  */
 
-import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { updateQuote } from '../actions/QuoteActions';
 import QuoteEditor from './QuoteEditor';
 import Header from './Header';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
     return {
@@ -25,12 +24,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const EditQuote = (props) => {
 
-    var params = useParams();
     var navigate = useNavigate();
-    console.log("navigate = " + navigate);
 
-    var quoteNumber = params.quoteNumber;
-    
     return (
         <div>
             <Header navigate={navigate} />

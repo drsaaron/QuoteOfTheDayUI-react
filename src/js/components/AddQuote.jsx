@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 
-import React, {Component} from 'react';
-import { prepareAddQuote, saveQuote } from '../actions/QuoteActions';
+import { saveQuote } from '../actions/QuoteActions';
 import { connect } from 'react-redux';
 import QuoteEditor from './QuoteEditor';
 import Header from './Header';

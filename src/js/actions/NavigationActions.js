@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import { retrieveQuoteDetails, retrieveQuoteForEdit, updateQuote,  prepareAddQuote, saveQuote } from '../actions/QuoteActions';
+import { retrieveQuoteDetails, retrieveQuoteForEdit,  prepareAddQuote } from '../actions/QuoteActions';
 
 export function goHome(navigate) {
     navigate("/");

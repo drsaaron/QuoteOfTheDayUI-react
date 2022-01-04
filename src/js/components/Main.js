@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-import React, {Component} from 'react';
 import Header from './Header';
 import SourceCodeList from './SourceCodeList';
 import QuotesForSourceCodeList from './QuotesForSourceCodeList';
