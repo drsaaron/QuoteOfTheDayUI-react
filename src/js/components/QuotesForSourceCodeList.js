@@ -30,7 +30,7 @@ export default class QuotesForSourceCodeList extends Component {
                     </div>
                 
                     <div id="quotesForSourceCodeQuotes"> 
-                        { this.props.quotesForSourceCode.quoteList.map((quote) => <QuoteForSourceCode key={quote.number} quote={quote} showQuoteDetails={this.props.showQuoteDetails} />) }
+                        { this.props.quotesForSourceCode.quoteList.map((quote) => <QuoteForSourceCode key={quote.number} quote={quote} navigate={this.props.navigate} showQuoteDetails={this.props.showQuoteDetails} />) }
                     </div>
                 </div>
                 );

@@ -10,15 +10,13 @@ import QuotesForSourceCodeReducer from './QuotesForSourceCodeReducer';
 import QuoteDetailsReducer from './QuoteDetailsReducer';
 import QuoteOfTheDayReducer from './QuoteOfTheDayReducer';
 import EditQuoteReducer from './EditQuoteReducer';
-import { connectRouter } from 'connected-react-router';
 
 const applicationStore = (history) => combineReducers( {
     sourceCodes: SourceCodeReducer,
     quotesForSourceCode: QuotesForSourceCodeReducer,
     quoteDetails: QuoteDetailsReducer,
     quoteOfTheDay: QuoteOfTheDayReducer,
-    editQuote: EditQuoteReducer,
-    router: connectRouter(history)
+    editQuote: EditQuoteReducer
 });
 
 export default applicationStore;

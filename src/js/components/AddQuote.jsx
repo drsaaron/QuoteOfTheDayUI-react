@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 
-import React, {Component} from 'react';
-import { prepareAddQuote, saveQuote } from '../actions/QuoteActions';
+import { saveQuote } from '../actions/QuoteActions';
 import { connect } from 'react-redux';
 import QuoteEditor from './QuoteEditor';
 import Header from './Header';
+import { useNavigate } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
     return {
@@ -18,36 +18,20 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        prepareAddQuote: (sourceCode) => dispatch(prepareAddQuote(sourceCode)),
-        saveQuote: (newQuote) => dispatch(saveQuote(newQuote))
+        saveQuote: (newQuote, navigate) => dispatch(saveQuote(newQuote, navigate))
     };
 };
 
-class AddQuote extends Component {
-    constructor(props) {
-        super(props);
+const AddQuote = (props) => {
 
-        this.handleAdd = this.handleAdd.bind(this);
-    }
+    var navigate = useNavigate();
 
-    handleAdd(newQuote) {
-        this.props.saveQuote(newQuote);
-    }
-
-    render() {
-        return (
-                <div>
-                    <Header />
-                    <QuoteEditor editLabel="Add" editCallback={this.handleAdd} />
-                </div>
-                );
-    }
-
-    componentDidMount() {
-        var sourceCode = this.props.match.params.sourceCode;
-        console.log("preparing to add quote to source " + sourceCode);
-        this.props.prepareAddQuote(sourceCode);
-    }
+    return (
+        <div>
+            <Header navigate={navigate} />
+            <QuoteEditor editLabel="Add" editCallback={props.saveQuote} navigate={navigate} />
+        </div>
+    );
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddQuote);

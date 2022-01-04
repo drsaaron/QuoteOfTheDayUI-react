@@ -11,7 +11,6 @@ import QuotesForSourceCodeService from '../services/QuotesForSourceCodeService';
 import QuoteService from '../services/QuoteService';
 import QuoteOfTheDayService from '../services/QuoteOfTheDayService';
 import { createBrowserHistory } from 'history';
-import { routerMiddleware } from 'connected-react-router';
 import { retrieveSourceCodes } from '../actions/SourceCodeActions';
 import { retrieveQuoteOfTheDay } from '../actions/QuoteOfTheDayActions';
 import thunk from 'redux-thunk';
@@ -19,11 +18,8 @@ import thunk from 'redux-thunk';
 // Create a history of your choosing (we're using a browser history in this case)
 export const history = createBrowserHistory();
 
-// Build the middleware for intercepting and dispatching navigation actions
-const historyMiddleware = routerMiddleware(history);
-
 // create the store
-const store = createStore(createRootReducer(history), {}, applyMiddleware(SourceCodeService, QuotesForSourceCodeService, QuoteService, QuoteOfTheDayService, historyMiddleware, thunk));
+const store = createStore(createRootReducer(history), {}, applyMiddleware(SourceCodeService, QuotesForSourceCodeService, QuoteService, QuoteOfTheDayService, thunk));
 
 export default store;
     

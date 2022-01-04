@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 
-import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { retrieveQuoteForEdit, updateQuote } from '../actions/QuoteActions';
+import { updateQuote } from '../actions/QuoteActions';
 import QuoteEditor from './QuoteEditor';
 import Header from './Header';
+import { useNavigate } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
     return {
@@ -18,41 +18,20 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        retrieveQuoteForEdit: (quoteNumber) => dispatch(retrieveQuoteForEdit(quoteNumber)),
-        updateQuote: (quote) => dispatch(updateQuote(quote))
+        updateQuote: (quote, navigate) => dispatch(updateQuote(quote, navigate))
     };
 };
 
-class EditQuote extends Component {
-    constructor(props) {
-        super(props);
+const EditQuote = (props) => {
 
-        this.handleSave = this.handleSave.bind(this);
-    }
+    var navigate = useNavigate();
 
-    getQuoteNumber() {
-        return this.props.match.params.quoteNumber;
-    }
-
-    handleSave(updatedQuote) {
-        this.props.updateQuote(updatedQuote);
-    }
-
-    render() {
-        return (
-                <div>
-                    <Header />
-                    <QuoteEditor editLabel="Save" editCallback={this.handleSave} />
-                </div>
-                );
-    }
-
-    componentDidMount() {
-        // retrieve details.
-        var quoteNumber = this.getQuoteNumber();
-        console.log("preparing to edit quote " + quoteNumber);
-        this.props.retrieveQuoteForEdit(quoteNumber);
-    }
+    return (
+        <div>
+            <Header navigate={navigate} />
+            <QuoteEditor navigate={navigate} editLabel="Save" editCallback={props.updateQuote} />
+        </div>
+    );
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditQuote);

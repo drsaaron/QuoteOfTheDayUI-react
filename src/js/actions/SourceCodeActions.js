@@ -27,7 +27,7 @@ export function prepareAddSourceCode() {
     };
 }
 
-export function addSourceCode(sourceCode) {
+export function addSourceCode(sourceCode, navigate) {
     return (dispatch) => {
 	sourceCodeAPI.addSourceCode(sourceCode)
 	    .then((res) => JSON.parse(res.text))
@@ -43,7 +43,7 @@ export function addSourceCode(sourceCode) {
 		return sc;
 	    })
 	    .then(sc => {
-		dispatch(goHome());
+		goHome(navigate);
 		return sc;
 	    });
     }

@@ -7,12 +7,14 @@
 import SourceCodeListItem from './SourceCodeListItem';
 
 const SourceCodeList = (props) => {
+    var navigate = props.navigate;
+    
     return (
         <div id="quoteSourceCodeListContainer">
-            <h2>Sources <button onClick={props.addSourceCode}>+</button></h2>
+            <h2>Sources <button onClick={() => props.addSourceCode(navigate)}>+</button></h2>
             <div id="quoteSourceCodeList">
                 <ul>
-                    { props.sourceCodes.sourceCodes.map((sourceCode) => <SourceCodeListItem key={sourceCode.number} sourceCode={sourceCode} addQuote={props.addQuote} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} />) }
+            { props.sourceCodes.sourceCodes.map((sourceCode) => <SourceCodeListItem key={sourceCode.number} sourceCode={sourceCode} addQuote={props.addQuote} navigate={props.navigate} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} />) }
                 </ul>
             </div>
         </div>

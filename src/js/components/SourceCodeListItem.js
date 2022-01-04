@@ -21,7 +21,7 @@ export default class SourceCodeListItem extends Component {
     
     addQuote(event) {
         event.preventDefault();
-        this.props.addQuote(this.props.sourceCode);
+        this.props.addQuote(this.props.sourceCode, this.props.navigate);
     }
 
     render() {

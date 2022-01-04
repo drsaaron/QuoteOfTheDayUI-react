@@ -4,24 +4,27 @@
  * and open the template in the editor.
  */
 
-import { push } from 'connected-react-router';
+import { retrieveQuoteDetails, retrieveQuoteForEdit,  prepareAddQuote } from '../actions/QuoteActions';
 
-export function goHome() {
-    return push("/");
+export function goHome(navigate) {
+    navigate("/");
 }
 
-export function showQuoteDetails(quoteNumber) {
-    return push("/quoteDetails/" + quoteNumber);
+export function showQuoteDetails(quoteNumber, navigate) {
+    navigate("/quoteDetails/" + quoteNumber);
+    return retrieveQuoteDetails(quoteNumber);
 }
 
-export function editQuote(quoteNumber) {
-    return push("/editQuote/" + quoteNumber);
+export function editQuote(quoteNumber, navigate) {
+    navigate("/editQuote/" + quoteNumber);
+    return retrieveQuoteForEdit(quoteNumber);
 }
 
-export function addQuote(sourceCode) {
-    return push("/addQuote/" + sourceCode);
+export function addQuote(sourceCode, navigate) {
+    navigate("/addQuote/" + sourceCode);
+    return prepareAddQuote(sourceCode);
 }
 
-export function addSourceCode() {
-    return push("/addSourceCode");
+export function addSourceCode(navigate) {
+    navigate("/addSourceCode");
 }

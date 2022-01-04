@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-import React, {Component} from 'react';
 import Header from './Header';
 import SourceCodeList from './SourceCodeList';
 import QuotesForSourceCodeList from './QuotesForSourceCodeList';
@@ -13,6 +12,7 @@ import { connect } from 'react-redux';
 import { retrieveQuotesForSourceCode } from '../actions/SourceCodeActions';
 import { showQuoteDetails, addQuote, addSourceCode } from '../actions/NavigationActions';
 import { retrieveQuoteOfTheDay } from '../actions/QuoteOfTheDayActions';
+import { useNavigate } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
     return {
@@ -26,26 +26,26 @@ const mapDispatchToProps = (dispatch) => {
     return {
         retrieveQuoteOfTheDay: (runDate) => dispatch(retrieveQuoteOfTheDay(runDate)),
         retrieveQuotesForSourceCode: (sourceCode) => dispatch(retrieveQuotesForSourceCode(sourceCode)),
-        showQuoteDetails: (quoteNumber) => dispatch(showQuoteDetails(quoteNumber)),
-        addQuote: (sourceCode) => dispatch(addQuote(sourceCode.number)),
-	addSourceCode: () => dispatch(addSourceCode())
+        showQuoteDetails: (quoteNumber, navigate) => dispatch(showQuoteDetails(quoteNumber, navigate)),
+        addQuote: (sourceCode, navigate) => dispatch(addQuote(sourceCode.number, navigate)),
+	addSourceCode: (navigate) => dispatch(addSourceCode(navigate))
     };
 };
 
-class Main extends Component {
+const Main = (props) => {
 
-    render() {
-        return (
-                <div>
-                    <Header />
-                    <QuoteOfTheDay quoteOfTheDay={this.props.quoteOfTheDay} retrieveQuoteOfTheDay={this.props.retrieveQuoteOfTheDay} retrieveQuotesForSourceCode={this.props.retrieveQuotesForSourceCode} showDetails={this.props.showQuoteDetails} />
-		    <div id="appDataContainer">
-                        <SourceCodeList addSourceCode={this.props.addSourceCode} sourceCodes={this.props.sourceCodes} addQuote={this.props.addQuote} retrieveQuotesForSourceCode={this.props.retrieveQuotesForSourceCode} />
-                        <QuotesForSourceCodeList quotesForSourceCode={this.props.quotesForSourceCode} showQuoteDetails={this.props.showQuoteDetails} />
-		    </div>
-                </div>
-                );
-    }
+    const navigate = useNavigate();
+    
+    return (
+        <div>
+            <Header navigate={navigate} />
+            <QuoteOfTheDay quoteOfTheDay={props.quoteOfTheDay} retrieveQuoteOfTheDay={props.retrieveQuoteOfTheDay} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} navigate={navigate} showDetails={props.showQuoteDetails} />
+	    <div id="appDataContainer">
+                <SourceCodeList addSourceCode={props.addSourceCode} sourceCodes={props.sourceCodes} addQuote={props.addQuote} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} navigate={navigate} />
+                <QuotesForSourceCodeList quotesForSourceCode={props.quotesForSourceCode} navigate={navigate} showQuoteDetails={props.showQuoteDetails} />
+	    </div>
+        </div>
+    );
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

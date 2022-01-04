@@ -30,6 +30,16 @@ function getSourceCodesForEdit(dispatch) {
             });
 }
 
+export function quoteDataUpdate(updatedQuote) {
+    return (dispatch) => {
+	console.log("dispatchnig " + updatedQuote);
+	dispatch({
+	    type: ActionTypes.QUOTE_DATA_UPDATED,
+	    updatedQuote
+	});
+    }
+}
+
 export function retrieveQuoteForEdit(quoteNumber) {
     return (dispatch) => {
         dispatch({
@@ -52,14 +62,14 @@ export function retrieveQuoteForEdit(quoteNumber) {
     };
 }
 
-export function updateQuote(quote) {
+export function updateQuote(quote, navigate) {
     return (dispatch) => {
         quoteAPI.updateQuote(quote)
                 .then((res) => {
                     return JSON.parse(res.text);
                 })
                 .then(q => {
-                    dispatch(showQuoteDetails(q.number));
+                    dispatch(showQuoteDetails(q.number, navigate));
                 });
     };
 }
@@ -75,7 +85,7 @@ export function prepareAddQuote(sourceCode) {
     };
 }
 
-export function saveQuote(newQuote) {
+export function saveQuote(newQuote, navigate) {
     return (dispatch) => {
         // add the quote, get the updated quotes for the source code, and return to home page
         quoteAPI.addQuote(newQuote)
@@ -97,8 +107,10 @@ export function saveQuote(newQuote) {
                 })
                 .then((sourceCode) => {
                     dispatch(retrieveQuotesForSourceCode(sourceCode));
-                });
+                })
+	    .then(() => {
+		goHome(navigate);
+	    });
 
-        dispatch(goHome());
     };
 }
