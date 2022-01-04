@@ -5,7 +5,7 @@
  */
 
 import { push } from 'connected-react-router';
-import { retrieveQuoteDetails } from '../actions/QuoteActions';
+import { retrieveQuoteDetails, retrieveQuoteForEdit, updateQuote } from '../actions/QuoteActions';
 
 export function goHome() {
     return push("/");
@@ -16,8 +16,9 @@ export function showQuoteDetails(quoteNumber, navigate) {
     return retrieveQuoteDetails(quoteNumber);
 }
 
-export function editQuote(quoteNumber) {
-    return push("/editQuote/" + quoteNumber);
+export function editQuote(quoteNumber, navigate) {
+    navigate("/editQuote/" + quoteNumber);
+    return retrieveQuoteForEdit(quoteNumber);
 }
 
 export function addQuote(sourceCode) {

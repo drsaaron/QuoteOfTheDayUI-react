@@ -42,7 +42,7 @@ const Main = (props) => {
             <Header />
             <QuoteOfTheDay quoteOfTheDay={props.quoteOfTheDay} retrieveQuoteOfTheDay={props.retrieveQuoteOfTheDay} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} navigate={navigate} showDetails={props.showQuoteDetails} />
 	    <div id="appDataContainer">
-                <SourceCodeList addSourceCode={props.addSourceCode} sourceCodes={props.sourceCodes} addQuote={props.addQuote} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} />
+                <SourceCodeList addSourceCode={props.addSourceCode} sourceCodes={props.sourceCodes} addQuote={props.addQuote} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} navigate={navigate} />
                 <QuotesForSourceCodeList quotesForSourceCode={props.quotesForSourceCode} navigate={navigate} showQuoteDetails={props.showQuoteDetails} />
 	    </div>
         </div>

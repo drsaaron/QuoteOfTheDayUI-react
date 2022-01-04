@@ -6,7 +6,7 @@
 
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { retrieveQuoteForEdit, updateQuote } from '../actions/QuoteActions';
+import { updateQuote } from '../actions/QuoteActions';
 import QuoteEditor from './QuoteEditor';
 import Header from './Header';
 
@@ -18,7 +18,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        retrieveQuoteForEdit: (quoteNumber) => dispatch(retrieveQuoteForEdit(quoteNumber)),
         updateQuote: (quote) => dispatch(updateQuote(quote))
     };
 };
@@ -47,12 +46,6 @@ class EditQuote extends Component {
                 );
     }
 
-    componentDidMount() {
-        // retrieve details.
-        var quoteNumber = this.getQuoteNumber();
-        console.log("preparing to edit quote " + quoteNumber);
-        this.props.retrieveQuoteForEdit(quoteNumber);
-    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditQuote);

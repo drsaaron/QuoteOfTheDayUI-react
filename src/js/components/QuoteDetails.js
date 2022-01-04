@@ -4,18 +4,12 @@
  * and open the template in the editor.
  */
 
-import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { editQuote } from '../actions/NavigationActions';
 import QuoteText from './QuoteText';
 import QuoteOfTheDayHistory from './QuoteOfTheDayHistory';
 import Header from './Header';
-import { useParams } from 'react-router-dom';
-
-function editQuoteCallback(event, quoteNumber) {
-    event.preventDefault();
-    editQuote(quoteNumber);
-}
+import { useParams, useNavigate } from 'react-router-dom';
 
 const QuoteDetails = (props) => {
 
@@ -24,6 +18,7 @@ const QuoteDetails = (props) => {
     var quoteNumber = params.quoteNumber;
     var quote = props.quoteDetails.quote;
     var usable = quote.usable ? 'Yes' : 'No';
+    var navigate = useNavigate();
 
     return (
         <div>
@@ -38,7 +33,7 @@ const QuoteDetails = (props) => {
                 <div id="quoteDetailUsable">Usable: {usable}</div>
             </div>
             
-            <button onClick={(event) => editQuoteCallback(event, quoteNumber) }>Edit</button>
+            <button onClick={(event) => { event.preventDefault(); props.editQuote(quoteNumber, navigate); } }>Edit</button>
                 
             <QuoteOfTheDayHistory history={props.quoteDetails.history} />
         </div>
@@ -54,7 +49,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        editQuote: (quoteNumber) => dispatch(editQuote(quoteNumber))
+        editQuote: (quoteNumber, navigate) => dispatch(editQuote(quoteNumber, navigate))
     };
 };
 
