@@ -97,8 +97,10 @@ export function saveQuote(newQuote, navigate) {
                 })
                 .then((sourceCode) => {
                     dispatch(retrieveQuotesForSourceCode(sourceCode));
-                });
+                })
+	    .then(() => {
+		goHome(navigate);
+	    });
 
-        goHome(navigate);
     };
 }
