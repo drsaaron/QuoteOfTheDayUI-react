@@ -52,14 +52,14 @@ export function retrieveQuoteForEdit(quoteNumber) {
     };
 }
 
-export function updateQuote(quote) {
+export function updateQuote(quote, navigate) {
     return (dispatch) => {
         quoteAPI.updateQuote(quote)
                 .then((res) => {
                     return JSON.parse(res.text);
                 })
                 .then(q => {
-                    dispatch(showQuoteDetails(q.number));
+                    dispatch(showQuoteDetails(q.number, navigate));
                 });
     };
 }

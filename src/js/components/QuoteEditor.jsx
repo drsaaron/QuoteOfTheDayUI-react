@@ -60,7 +60,7 @@ class QuoteEditor extends Component {
             usable: this.state.usable,
             sourceCode: this.state.sourceCode
         };
-        this.props.editCallback(updatedQuote);
+        this.props.editCallback(updatedQuote, this.props.navigate);
     }
 
     render() {
