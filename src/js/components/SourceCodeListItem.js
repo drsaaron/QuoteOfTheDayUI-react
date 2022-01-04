@@ -20,7 +20,6 @@ export default class SourceCodeListItem extends Component {
     }
     
     addQuote(event) {
-	console.log("navigate in addQuote: " + this.props.navigate);
         event.preventDefault();
         this.props.addQuote(this.props.sourceCode, this.props.navigate);
     }
