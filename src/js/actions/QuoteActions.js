@@ -30,6 +30,16 @@ function getSourceCodesForEdit(dispatch) {
             });
 }
 
+export function quoteDataUpdate(updatedQuote) {
+    return (dispatch) => {
+	console.log("dispatchnig " + updatedQuote);
+	dispatch({
+	    type: ActionTypes.QUOTE_DATA_UPDATED,
+	    updatedQuote
+	});
+    }
+}
+
 export function retrieveQuoteForEdit(quoteNumber) {
     return (dispatch) => {
         dispatch({

@@ -21,47 +21,53 @@ const initialState = {
 
 export default function EditQuoteReducer(state = initialState, action) {
     switch (action.type) {
-        case ActionTypes.PREPARE_QUOTE_FOR_EDIT:
-            return {
-                ...state,
-                quoteNumber: action.quoteNumber,
-                quote: emptyQuote,
-                sourceCodes: [],
-                sourceCode: -1
-            };
+    case ActionTypes.PREPARE_QUOTE_FOR_EDIT:
+        return {
+            ...state,
+            quoteNumber: action.quoteNumber,
+            quote: emptyQuote,
+            sourceCodes: [],
+            sourceCode: -1
+        };
+	
+    case ActionTypes.PREPARE_QUOTE_FOR_ADD:
+        return {
+            ...state,
+            quoteNumber: -1,
+            quote: emptyQuote,
+            sourceCodes: [],
+            sourceCode: action.sourceCode
+        };
+	
+    case ActionTypes.QUOTE_READY_FOR_EDIT:
+        return {
+            ...state,
+            quote: action.quote,
+            sourceCode: action.quote.sourceCode
+        }
+	
+    case ActionTypes.QUOTE_EDIT_SOURCE_CODE_LIST_RETRIEVED:
+        console.log("adding source codes");
+        return {
+            ...state,
+            sourceCodes: action.sourceCodes
+        }
+	
+    case ActionTypes.NEW_QUOTE_ADDED:
+        return {
+            ...state,
+            quote: action.newQuote
+        }
+	
+    case ActionTypes.QUOTE_DATA_UPDATED:
+	return {
+	    ...state,
+	    quote: action.updatedQuote
+	}
 
-        case ActionTypes.PREPARE_QUOTE_FOR_ADD:
-            return {
-                ...state,
-                quoteNumber: -1,
-                quote: emptyQuote,
-                sourceCodes: [],
-                sourceCode: action.sourceCode
-            };
-
-        case ActionTypes.QUOTE_READY_FOR_EDIT:
-            return {
-                ...state,
-                quote: action.quote,
-                sourceCode: action.quote.sourceCode
-            }
-
-        case ActionTypes.QUOTE_EDIT_SOURCE_CODE_LIST_RETRIEVED:
-            console.log("adding source codes");
-            return {
-                ...state,
-                sourceCodes: action.sourceCodes
-            }
-
-        case ActionTypes.NEW_QUOTE_ADDED:
-            return {
-                ...state,
-                quote: action.newQuote
-            }
-
-        default:
-            return {
-                ...state
-            }
+    default:
+        return {
+            ...state
+        }
     }
 }
