@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-import {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import { quoteDataUpdate } from '../actions/QuoteActions';
 
