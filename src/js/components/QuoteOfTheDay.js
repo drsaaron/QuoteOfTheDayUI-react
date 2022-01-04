@@ -33,7 +33,7 @@ export default class QuoteOfTheDay extends Component {
     
     showDetails(event) {
         event.preventDefault();
-        this.props.showDetails(this.props.quoteOfTheDay.qotd.quoteNumber);
+        this.props.showDetails(this.props.quoteOfTheDay.qotd.quoteNumber, this.props.navigate);
     }
     
     handleDateChange(date) {

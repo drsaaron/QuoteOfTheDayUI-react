@@ -5,13 +5,15 @@
  */
 
 import { push } from 'connected-react-router';
+import { retrieveQuoteDetails } from '../actions/QuoteActions';
 
 export function goHome() {
     return push("/");
 }
 
-export function showQuoteDetails(quoteNumber) {
-    return push("/quoteDetails/" + quoteNumber);
+export function showQuoteDetails(quoteNumber, navigate) {
+    navigate("/quoteDetails/" + quoteNumber);
+    return retrieveQuoteDetails(quoteNumber);
 }
 
 export function editQuote(quoteNumber) {

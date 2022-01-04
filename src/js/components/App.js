@@ -9,8 +9,7 @@ import Main from './Main';
 import QuoteDetails from './QuoteDetails';
 import { Provider } from 'react-redux';
 import store, { history } from '../store/QuoteOfTheDayStore';
-import { ConnectedRouter } from 'connected-react-router';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import EditQuote from './EditQuote';
 import AddQuote from './AddQuote';
 import AddSourceCode from './AddSourceCode';
@@ -20,15 +19,15 @@ export default class App extends Component {
     render() {
         return (
                 <Provider store={store}>
-                    <ConnectedRouter history={history}>
-                        <Switch>
-                            <Route exact path="/" component={Main} />
-                            <Route path="/quoteDetails/:quoteNumber" component={QuoteDetails} />
-                            <Route path="/editQuote/:quoteNumber" component={EditQuote} />
-                            <Route path="/addQuote/:sourceCode" component={AddQuote} />
-			    <Route patch="/addSourceCode" component={AddSourceCode} />
-                        </Switch>
-                    </ConnectedRouter>
+                    <BrowserRouter history={history}>
+                        <Routes>
+                            <Route path="/" element={<Main />} />
+                            <Route path="/quoteDetails/:quoteNumber" element={<QuoteDetails />} />
+                            <Route path="/editQuote/:quoteNumber" element={<EditQuote />} />
+                            <Route path="/addQuote/:sourceCode" element={<AddQuote />} />
+			    <Route patch="/addSourceCode" element={<AddSourceCode />} />
+                        </Routes>
+                    </BrowserRouter>
                 </Provider>
                 );
     }
