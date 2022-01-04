@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-import { push } from 'connected-react-router';
 import { retrieveQuoteDetails, retrieveQuoteForEdit, updateQuote,  prepareAddQuote, saveQuote } from '../actions/QuoteActions';
 
 export function goHome(navigate) {
@@ -26,6 +25,6 @@ export function addQuote(sourceCode, navigate) {
     return prepareAddQuote(sourceCode);
 }
 
-export function addSourceCode() {
-    return push("/addSourceCode");
+export function addSourceCode(navigate) {
+    navigate("/addSourceCode");
 }

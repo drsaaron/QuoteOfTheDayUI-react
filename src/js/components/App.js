@@ -25,7 +25,7 @@ export default class App extends Component {
                             <Route path="/quoteDetails/:quoteNumber" element={<QuoteDetails />} />
                             <Route path="/editQuote/:quoteNumber" element={<EditQuote />} />
                             <Route path="/addQuote/:sourceCode" element={<AddQuote />} />
-			    <Route patch="/addSourceCode" element={<AddSourceCode />} />
+			    <Route path="/addSourceCode" element={<AddSourceCode />} />
                         </Routes>
                     </BrowserRouter>
                 </Provider>

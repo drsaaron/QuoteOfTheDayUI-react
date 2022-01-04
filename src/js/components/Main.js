@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => {
         retrieveQuotesForSourceCode: (sourceCode) => dispatch(retrieveQuotesForSourceCode(sourceCode)),
         showQuoteDetails: (quoteNumber, navigate) => dispatch(showQuoteDetails(quoteNumber, navigate)),
         addQuote: (sourceCode, navigate) => dispatch(addQuote(sourceCode.number, navigate)),
-	addSourceCode: () => dispatch(addSourceCode())
+	addSourceCode: (navigate) => dispatch(addSourceCode(navigate))
     };
 };
 

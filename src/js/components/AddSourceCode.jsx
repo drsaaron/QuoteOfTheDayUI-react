@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { addSourceCode, prepareAddSourceCode } from '../actions/SourceCodeActions';
 import { connect } from 'react-redux';
 import Header from './Header';
+import {useNavigate} from 'react-router-dom';
 
 const mapStateToProps = (state) => {
     return {
@@ -11,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-	addSourceCode: (sourceCode) => dispatch(addSourceCode(sourceCode)),
+	addSourceCode: (sourceCode, navigate) => dispatch(addSourceCode(sourceCode, navigate)),
 	prepareAddSourceCode: () => dispatch(prepareAddSourceCode())
     };
 };
@@ -19,7 +20,8 @@ const mapDispatchToProps = (dispatch) => {
 const AddSourceCode = (props) => {
 
     const [text, setText] = useState(props.sourceCodes.defaultSourceCode.text);
-
+    const navigate = useNavigate();
+    
     // on mount, prepare the state for adding
     const prepareAddSourceCode = props.prepareAddSourceCode;
     useEffect(() => {
@@ -29,7 +31,7 @@ const AddSourceCode = (props) => {
     const addSourceCode = (event) => {
 	event.preventDefault();
 	var newSource = { number: props.sourceCodes.defaultSourceCode.number, text: text };
-	props.addSourceCode(newSource);
+	props.addSourceCode(newSource, navigate);
     }
 
     const handleTextChange = (event) => {
