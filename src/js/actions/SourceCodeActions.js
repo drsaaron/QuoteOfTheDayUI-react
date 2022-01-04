@@ -43,7 +43,7 @@ export function addSourceCode(sourceCode) {
 		return sc;
 	    })
 	    .then(sc => {
-		dispatch(goHome());
+		goHome();
 		return sc;
 	    });
     }

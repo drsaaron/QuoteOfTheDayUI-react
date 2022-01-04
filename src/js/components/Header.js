@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        goHome: () => dispatch(goHome())
+        goHome: (navigate) => dispatch(goHome(navigate))
     };
 };
 
@@ -29,7 +29,7 @@ class Header extends Component {
 
     handleHomeLink(event) {
         event.preventDefault();
-        this.props.goHome();
+        this.props.goHome(this.props.navigate);
     }
 
     render() {

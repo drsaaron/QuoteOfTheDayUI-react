@@ -75,7 +75,7 @@ export function prepareAddQuote(sourceCode) {
     };
 }
 
-export function saveQuote(newQuote) {
+export function saveQuote(newQuote, navigate) {
     return (dispatch) => {
         // add the quote, get the updated quotes for the source code, and return to home page
         quoteAPI.addQuote(newQuote)
@@ -99,6 +99,6 @@ export function saveQuote(newQuote) {
                     dispatch(retrieveQuotesForSourceCode(sourceCode));
                 });
 
-        dispatch(goHome());
+        goHome(navigate);
     };
 }

@@ -22,7 +22,7 @@ const QuoteDetails = (props) => {
 
     return (
         <div>
-            <Header />
+            <Header navigate={navigate} />
             <h1>Details for #{quoteNumber}</h1>
             
             <div id="quoteDetailText">

@@ -33,7 +33,7 @@ const EditQuote = (props) => {
     
     return (
         <div>
-            <Header />
+            <Header navigate={navigate} />
             <QuoteEditor navigate={navigate} editLabel="Save" editCallback={props.updateQuote} />
         </div>
     );

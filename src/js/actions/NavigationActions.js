@@ -7,8 +7,8 @@
 import { push } from 'connected-react-router';
 import { retrieveQuoteDetails, retrieveQuoteForEdit, updateQuote } from '../actions/QuoteActions';
 
-export function goHome() {
-    return push("/");
+export function goHome(navigate) {
+    navigate("/");
 }
 
 export function showQuoteDetails(quoteNumber, navigate) {
