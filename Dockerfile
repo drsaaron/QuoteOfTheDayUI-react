@@ -1,4 +1,4 @@
-FROM drsaaron/blazarnodebase:1.7
+FROM drsaaron/blazarnodebase:1.8
 
 # expose port 3000
 ENV SERVER_PORT=3000
