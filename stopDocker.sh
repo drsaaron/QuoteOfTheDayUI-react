@@ -1,10 +1,4 @@
 #! /bin/ksh
 
-pid=$(docker ps | grep nginx | awk '{ print $1 }')
-if [ "$pid" = "" ]
-then
-    echo "nginx not running..." 1>&2
-    exit 1
-else 
-    docker kill $pid
-fi
+containerName=$(grep ^containerName startDocker.sh | awk -F= '{ print $2 }')
+docker stop $containerName
