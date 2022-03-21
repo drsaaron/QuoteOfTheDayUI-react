@@ -1,0 +1,4 @@
+{
+    "SERVER_PORT": "8001",
+    "DATA_SERVICE_URL": "http://quoteofthedayservices:3000"
+}
