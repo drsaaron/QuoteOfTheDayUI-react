@@ -1,0 +1,4 @@
+{
+    SERVER_PORT: '8000',
+    DATA_SERVICE_URL: 'http://localhost:3000'
+}
