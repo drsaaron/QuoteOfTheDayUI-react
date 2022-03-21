@@ -1,7 +1,7 @@
 FROM drsaaron/blazarnodebase:1.10
 
-# expose port 3000
-ENV SERVER_PORT=3000
+# expose port 8001
+ENV SERVER_PORT=8001
 EXPOSE $SERVER_PORT
 
 ENV NODE_ENV=production
@@ -11,6 +11,8 @@ ADD package.json .
 ADD package-lock.json .
 ADD src ./src
 ADD public ./public
+ADD config ./config
+ADD server ./server
 
 # get the packages
 RUN npm install
