@@ -62,6 +62,16 @@ app.get('/api/:resource/:key', (req, res) => {
 	.catch(errorHandler);
 });
 
+app.post('/api/:resource', (req, res) => {
+    var resource = req.params.resource;
+    var object = req.body;
+    instance.post(DATA_SERVICE_URL + "/" + resource, object)
+	.then(response => {
+	    return res.json(response.data);
+	})
+	.catch(errorHandler);
+});
+
 // if all else fails, return the react app
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
