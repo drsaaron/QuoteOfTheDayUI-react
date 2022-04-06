@@ -4,21 +4,19 @@
  * and open the template in the editor.
  */
 
-import React, {Component} from 'react';
+const QuoteOfTheDayHistoryForYear = (props) => {
 
-export default class QuoteOfTheDayHistoryForYear extends Component {
-
-    render() {
-        var year = this.props.year;
-        var history = this.props.history;
-
-        return (
-                <article>
-                    {year}
-                    <ul>
-                        { history.map(datum => <li key={datum.runDate}>{datum.runDate}</li>) }
-                    </ul>
-                </article>
-                );
-    }
+    var year = props.year;
+    var history = props.history;
+    
+    return (
+        <article>
+            {year}
+            <ul>
+                { history.map(datum => <li key={datum.runDate}>{datum.runDate}</li>) }
+            </ul>
+        </article>
+    );
 }
+
+export default QuoteOfTheDayHistoryForYear;
