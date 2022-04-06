@@ -12,7 +12,7 @@ exports[`header basic 1`] = `
       onClick={[Function]}
     >
       Scott's Quote of the Day, version 
-      1.2.3
+      jest test
     </a>
   </div>
 </div>

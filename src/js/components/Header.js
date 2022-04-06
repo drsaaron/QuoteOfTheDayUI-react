@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 
-const {version} = require("../../../package.json");
-
 const Header = (props) => {
 
     const handleHomeLink = (event) => {
@@ -16,7 +14,7 @@ const Header = (props) => {
     return (
         <div id="pageHeader">
             <div id="pageHeaderApp">
-                <a href="/" onClick={handleHomeLink}>Scott's Quote of the Day, version {version}</a>
+                <a href="/" onClick={handleHomeLink}>Scott's Quote of the Day, version {props.version}</a>
             </div>
         </div>
     );

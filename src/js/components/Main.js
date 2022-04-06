@@ -14,6 +14,8 @@ import { showQuoteDetails, addQuote, addSourceCode, goHome } from '../actions/Na
 import { retrieveQuoteOfTheDay } from '../actions/QuoteOfTheDayActions';
 import { useNavigate } from 'react-router-dom';
 
+const {version} = require("../../../package.json");
+
 const mapStateToProps = (state) => {
     return {
         quoteOfTheDay: state.quoteOfTheDay,
@@ -39,7 +41,7 @@ const Main = (props) => {
     
     return (
         <div>
-            <Header navigate={navigate} goHome={goHome} />
+            <Header navigate={navigate} goHome={goHome} version={version} />
             <QuoteOfTheDay quoteOfTheDay={props.quoteOfTheDay} retrieveQuoteOfTheDay={props.retrieveQuoteOfTheDay} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} navigate={navigate} showDetails={props.showQuoteDetails} />
 	    <div id="appDataContainer">
                 <SourceCodeList addSourceCode={props.addSourceCode} sourceCodes={props.sourceCodes} addQuote={props.addQuote} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} navigate={navigate} />

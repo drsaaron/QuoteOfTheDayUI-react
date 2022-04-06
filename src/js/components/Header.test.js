@@ -7,7 +7,7 @@ import Header from './Header';
 
 describe('header', () => {
     test('basic', () => {
-	const component = renderer.create(<Header goHome={goHome} />);
+	const component = renderer.create(<Header goHome={goHome} version="jest test" />);
 	let tree = component.toJSON();
 	expect(tree).toMatchSnapshot();
     });
