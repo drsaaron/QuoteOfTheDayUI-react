@@ -1,6 +1,6 @@
 {
   "name": "QuoteOfTheDayUI-react",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "keywords": [
     "util",
     "functional",
@@ -13,8 +13,8 @@
   "description": "User interface for the quote of the day application",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^13.1.9",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^14.0.0",
     "axios": "^0.26.1",
     "axios-logger": "^2.6.0",
     "buffer": "^6.0.3",
@@ -24,9 +24,9 @@
     "fs": "^0.0.1-security",
     "history": "^5.2.0",
     "immutable": "^4.0.0-rc.12",
-    "react": "^17.0.2",
+    "react": "^18.0.0",
     "react-datepicker": "^4.1.1",
-    "react-dom": "^17.0.2",
+    "react-dom": "^18.0.0",
     "react-promise": "^3.0.2",
     "react-redux": "^7.2.2",
     "react-router-dom": "^6.2.1",
@@ -65,5 +65,9 @@
     ]
   },
   "repository": "https://github.com/drsaaron/QuoteOfTheDayUI-react",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "react-test-renderer": "^18.0.0"
+  }
+
 }

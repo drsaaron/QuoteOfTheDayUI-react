@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 
-import React, {Component} from 'react';
 import { goHome } from '../actions/NavigationActions';
 import { connect } from 'react-redux';
+
+const {version} = require("../../../package.json");
 
 const mapStateToProps = (state) => {
     return {
@@ -20,27 +21,20 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-class Header extends Component {
-    constructor(props) {
-        super(props);
+const Header = (props) => {
 
-        this.handleHomeLink = this.handleHomeLink.bind(this);
-    }
-
-    handleHomeLink(event) {
+    const handleHomeLink = (event) => {
         event.preventDefault();
-        this.props.goHome(this.props.navigate);
+        props.goHome(props.navigate);
     }
 
-    render() {
-        return (
-                <div id="pageHeader">
-                    <div id="pageHeaderApp">
-                        <a href="/" onClick={this.handleHomeLink}>Scott's Quote of the Day</a>
-                    </div>
-                </div>
-                );
-    }
+    return (
+        <div id="pageHeader">
+            <div id="pageHeaderApp">
+                <a href="/" onClick={handleHomeLink}>Scott's Quote of the Day, version {version}</a>
+            </div>
+        </div>
+    );
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
