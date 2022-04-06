@@ -4,22 +4,7 @@
  * and open the template in the editor.
  */
 
-import { goHome } from '../actions/NavigationActions';
-import { connect } from 'react-redux';
-
 const {version} = require("../../../package.json");
-
-const mapStateToProps = (state) => {
-    return {
-
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        goHome: (navigate) => dispatch(goHome(navigate))
-    };
-};
 
 const Header = (props) => {
 
@@ -37,4 +22,4 @@ const Header = (props) => {
     );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

@@ -10,7 +10,7 @@ import QuotesForSourceCodeList from './QuotesForSourceCodeList';
 import QuoteOfTheDay from './QuoteOfTheDay';
 import { connect } from 'react-redux';
 import { retrieveQuotesForSourceCode } from '../actions/SourceCodeActions';
-import { showQuoteDetails, addQuote, addSourceCode } from '../actions/NavigationActions';
+import { showQuoteDetails, addQuote, addSourceCode, goHome } from '../actions/NavigationActions';
 import { retrieveQuoteOfTheDay } from '../actions/QuoteOfTheDayActions';
 import { useNavigate } from 'react-router-dom';
 
@@ -28,7 +28,8 @@ const mapDispatchToProps = (dispatch) => {
         retrieveQuotesForSourceCode: (sourceCode) => dispatch(retrieveQuotesForSourceCode(sourceCode)),
         showQuoteDetails: (quoteNumber, navigate) => dispatch(showQuoteDetails(quoteNumber, navigate)),
         addQuote: (sourceCode, navigate) => dispatch(addQuote(sourceCode.number, navigate)),
-	addSourceCode: (navigate) => dispatch(addSourceCode(navigate))
+	addSourceCode: (navigate) => dispatch(addSourceCode(navigate)),
+	goHome: (navigate) => dispatch(goHome(navigate))
     };
 };
 
@@ -38,7 +39,7 @@ const Main = (props) => {
     
     return (
         <div>
-            <Header navigate={navigate} />
+            <Header navigate={navigate} goHome={goHome} />
             <QuoteOfTheDay quoteOfTheDay={props.quoteOfTheDay} retrieveQuoteOfTheDay={props.retrieveQuoteOfTheDay} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} navigate={navigate} showDetails={props.showQuoteDetails} />
 	    <div id="appDataContainer">
                 <SourceCodeList addSourceCode={props.addSourceCode} sourceCodes={props.sourceCodes} addQuote={props.addQuote} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} navigate={navigate} />
