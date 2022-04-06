@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`quote of the day history no history 1`] = `
+<div
+  id="quoteOfTheDayHistory"
+>
+  <h2>
+    Quote of the day history
+  </h2>
+  <em>
+    No history
+  </em>
+</div>
+`;
+
+exports[`quote of the day history with history 1`] = `
+<div
+  id="quoteOfTheDayHistory"
+>
+  <h2>
+    Quote of the day history
+  </h2>
+  <article>
+    2001
+    <ul>
+      <li>
+        2001-01-01
+      </li>
+      <li>
+        2001-02-01
+      </li>
+    </ul>
+  </article>
+  <article>
+    2002
+    <ul>
+      <li>
+        2002-10-01
+      </li>
+    </ul>
+  </article>
+</div>
+`;
