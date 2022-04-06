@@ -10,3 +10,25 @@ exports[`header basic 1`] = `
   }
 />
 `;
+
+exports[`header embedded HTML 1`] = `
+<div
+  className="QuoteText"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "I am <em>formatted</em><br />But you can still hear me roar",
+    }
+  }
+/>
+`;
+
+exports[`header empty text 1`] = `
+<div
+  className="QuoteText"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<span></span>",
+    }
+  }
+/>
+`;
