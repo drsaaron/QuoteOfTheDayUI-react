@@ -9,5 +9,5 @@ containerName=quoteofthedayui
 docker stop $containerName
 docker rm $containerName
 
-docker run --network qotd --name $containerName -d -p 8080:$port --user $(id -u):$(id -g) $imageName:$version
+docker run --network qotd --name $containerName -d -p 8080:$port $imageName:$version
 
