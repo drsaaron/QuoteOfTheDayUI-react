@@ -1,4 +1,4 @@
-FROM drsaaron/blazarnodebase:1.16
+FROM drsaaron/blazarnodebase:1.17
 
 # expose port 8001
 ENV SERVER_PORT=8001
@@ -15,7 +15,7 @@ ADD config ./config
 ADD server ./server
 
 # get the packages
-RUN npm install --force
+RUN npm install 
 
 # health check
 HEALTHCHECK CMD curl --fail localhost:$SERVER_PORT || exit 1
