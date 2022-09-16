@@ -36,8 +36,7 @@
     "redux-thunk": "^2.3.0",
     "sanitize-html-react": "^1.13.0",
     "seamless-immutable": "^7.1.4",
-    "serve": "^13.0.0",
-    "superagent": "^7.1.1"
+    "superagent": "^8.0.0"
   },
   "scripts": {
     "start": "NODE_ENV=development node server/index.js",
