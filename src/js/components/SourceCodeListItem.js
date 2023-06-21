@@ -4,29 +4,21 @@
  * and open the template in the editor.
  */
 
-import React, {Component} from 'react';
+const SourceCodeListItem = (props) => {
 
-export default class SourceCodeListItem extends Component {
-    constructor(props) {
-        super(props);
-        
-        this.clickHandler = this.clickHandler.bind(this);
-        this.addQuote = this.addQuote.bind(this);
+    const clickHandler = (event) => {
+        event.preventDefault();
+        props.retrieveQuotesForSourceCode(props.sourceCode);
     }
     
-    clickHandler(event) {
+    const addQuote = (event) => {
         event.preventDefault();
-        this.props.retrieveQuotesForSourceCode(this.props.sourceCode);
+        props.addQuote(props.sourceCode, props.navigate);
     }
     
-    addQuote(event) {
-        event.preventDefault();
-        this.props.addQuote(this.props.sourceCode, this.props.navigate);
-    }
+    return (
+        <li><a href="/" onClick={clickHandler}>{props.sourceCode.text}</a> <button onClick={addQuote}>+</button></li>
+    );
+};
 
-    render() {
-        return (
-            <li><a href="/" onClick={this.clickHandler}>{this.props.sourceCode.text}</a> <button onClick={this.addQuote}>+</button></li>
-        );
-    }
-}
+export default SourceCodeListItem;

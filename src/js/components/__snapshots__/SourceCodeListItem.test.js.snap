@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SourceCodeListItem basic 1`] = `
+<li>
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    I am some text
+  </a>
+   
+  <button
+    onClick={[Function]}
+  >
+    +
+  </button>
+</li>
+`;

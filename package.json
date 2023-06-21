@@ -1,6 +1,6 @@
 {
   "name": "QuoteOfTheDayUI-react",
-  "version": "1.2.24",
+  "version": "1.2.25",
   "keywords": [
     "util",
     "functional",
@@ -66,6 +66,7 @@
   "repository": "https://github.com/drsaaron/QuoteOfTheDayUI-react",
   "license": "UNLICENSED",
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "react-test-renderer": "^18.0.0"
   }
 }

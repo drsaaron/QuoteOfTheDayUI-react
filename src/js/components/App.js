@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-import React, {Component} from 'react';
 import Main from './Main';
 import QuoteDetails from './QuoteDetails';
 import { Provider } from 'react-redux';
@@ -14,21 +13,21 @@ import EditQuote from './EditQuote';
 import AddQuote from './AddQuote';
 import AddSourceCode from './AddSourceCode';
 
-export default class App extends Component {
+const App = (props) => {
+    return (
+        <Provider store={store}>
+            <BrowserRouter history={history}>
+                <Routes>
+                    <Route path="/" element={<Main />} />
+                    <Route path="/quoteDetails/:quoteNumber" element={<QuoteDetails />} />
+                    <Route path="/editQuote/:quoteNumber" element={<EditQuote />} />
+                    <Route path="/addQuote/:sourceCode" element={<AddQuote />} />
+		    <Route path="/addSourceCode" element={<AddSourceCode />} />
+                </Routes>
+            </BrowserRouter>
+        </Provider>
+    );
+};
 
-    render() {
-        return (
-                <Provider store={store}>
-                    <BrowserRouter history={history}>
-                        <Routes>
-                            <Route path="/" element={<Main />} />
-                            <Route path="/quoteDetails/:quoteNumber" element={<QuoteDetails />} />
-                            <Route path="/editQuote/:quoteNumber" element={<EditQuote />} />
-                            <Route path="/addQuote/:sourceCode" element={<AddQuote />} />
-			    <Route path="/addSourceCode" element={<AddSourceCode />} />
-                        </Routes>
-                    </BrowserRouter>
-                </Provider>
-                );
-    }
-}
+export default App;
+
