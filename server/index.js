@@ -87,6 +87,14 @@ app.put('/api/:resource/:key', (req, res) => {
 	.catch(errorHandler);
 });
 
+const AUTH_SERVICE_URL = config.get("AUTH_SERVICE_URL");
+app.post('/authenticate', (req, res) => {
+    var object = req.body;
+    instance.post(AUTH_SERVICE_URL + "/authenticate", object)
+	.then(response => { return res.json(response.data); })
+	.catch(errorHandler);
+});
+
 // if all else fails, return the react app
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../build', 'index.html'));

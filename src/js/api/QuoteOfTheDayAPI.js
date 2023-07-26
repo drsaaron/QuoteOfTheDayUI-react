@@ -4,16 +4,16 @@
  * and open the template in the editor.
  */
 
-import request from 'superagent';
+import {authenticatedGet} from '../actions/AuthenticatedRequest';
 import { DATA_URL_ROOT } from '../constants/Constants';
 
 export default class QuoteOfTheDayAPI {
-    static getQuoteOfTheDayHistory(quoteNumber) {
-        return request.get(DATA_URL_ROOT + "/qotdHistory/" + quoteNumber);
+    static getQuoteOfTheDayHistory(quoteNumber, token) {
+        return authenticatedGet(DATA_URL_ROOT + "/qotdHistory/" + quoteNumber, token);
     }
 
-    static getQuoteOfTheDay(runDate) {
-        return request.get(DATA_URL_ROOT + "/qotd/" + runDate);
+    static getQuoteOfTheDay(runDate, token) {
+        return authenticatedGet(DATA_URL_ROOT + "/qotd/" + runDate, token);
     }
 }
 

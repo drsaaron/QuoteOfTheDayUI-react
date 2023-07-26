@@ -4,24 +4,22 @@
  * and open the template in the editor.
  */
 
-import request from 'superagent';
+import {authenticatedGet, authenticatedPut, authenticatedPost} from '../actions/AuthenticatedRequest';
 import { DATA_URL_ROOT } from '../constants/Constants';
 
 export default class QuoteAPI {
-    static getQuote(quoteNumber) {
-        return request.get(DATA_URL_ROOT + "/quote/" + quoteNumber);
+    static getQuote(quoteNumber, token) {
+        return authenticatedGet(DATA_URL_ROOT + "/quote/" + quoteNumber, token);
     }
     
-    static updateQuote(quote) {
-        return request
-                .put(DATA_URL_ROOT + "/quote/" + quote.number) 
+    static updateQuote(quote, token) {
+        return authenticatedPut(DATA_URL_ROOT + "/quote/" + quote.number, token) 
                 .send(quote)
                 .set('Accept', 'application/json');
     }
     
-    static addQuote(quote) {
-        return request
-                .post(DATA_URL_ROOT + "/quote")
+    static addQuote(quote, token) {
+        return authenticatedPost(DATA_URL_ROOT + "/quote", token)
                 .send(quote)
                 .set('Accept', 'application/json');
     }

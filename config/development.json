@@ -1,4 +1,5 @@
 {
     "SERVER_PORT": "8001",
-    "DATA_SERVICE_URL": "http://localhost:30000"
+    "DATA_SERVICE_URL": "http://localhost:30000",
+    "AUTH_SERVICE_URL": "http://localhost:45000"
 }

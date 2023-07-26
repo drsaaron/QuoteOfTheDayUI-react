@@ -30,7 +30,12 @@ const values = {
     QUOTE_DATA_UPDATED: 'QuoteDataUpdated',
     
     PREPARE_QUOTE_FOR_ADD: 'PrepareQuoteForAdd',
-    NEW_QUOTE_ADDED: 'NewQuoteAdded'
+    NEW_QUOTE_ADDED: 'NewQuoteAdded',
+    
+    USER_LOGGED_IN: 'UserLoggedIn',
+    USER_LOGGED_OUT: 'UserLoggedOut',
+    USER_LOGIN_FAILURE: 'UserLoginFailure',
+    TOKEN_MONITOR_INTERVAL_ID_UPDATE: 'TokenMonitorIntervalIdUpdate'
 };
 
 export default values;

@@ -5,7 +5,7 @@
  */
 
 const Header = (props) => {
-
+    
     const handleHomeLink = (event) => {
         event.preventDefault();
         props.goHome(props.navigate);
