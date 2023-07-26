@@ -45,7 +45,8 @@ const errorHandler = (error) => {
 const DATA_SERVICE_URL = config.get("DATA_SERVICE_URL");
 app.get('/api/:resource', (req, res) => {
     var resource = req.params.resource;
-    instance.get(DATA_SERVICE_URL + "/" + resource, { params: req.query })
+    var apiToken = req.headers.authorization;
+    instance.get(DATA_SERVICE_URL + "/" + resource, { headers: { Authorization: apiToken }, params: req.query })
 	.then(response => {
 	    return res.json(response.data);
 	})
@@ -55,7 +56,8 @@ app.get('/api/:resource', (req, res) => {
 app.get('/api/:resource/:key', (req, res) => {
     var resource = req.params.resource;
     var key = req.params.key;
-    instance.get(DATA_SERVICE_URL + "/" + resource + "/" + key, { params: req.query })
+    var apiToken = req.headers.authorization
+    instance.get(DATA_SERVICE_URL + "/" + resource + "/" + key, { headers: { Authorization: apiToken },  params: req.query })
 	.then(response => {
 	    return res.json(response.data);
 	})
@@ -65,7 +67,8 @@ app.get('/api/:resource/:key', (req, res) => {
 app.post('/api/:resource', (req, res) => {
     var resource = req.params.resource;
     var object = req.body;
-    instance.post(DATA_SERVICE_URL + "/" + resource, object)
+    var apiToken = req.headers.authorization;
+    instance.post(DATA_SERVICE_URL + "/" + resource, object, { headers: { Authorization: apiToken } })
 	.then(response => {
 	    return res.json(response.data);
 	})
@@ -76,7 +79,8 @@ app.put('/api/:resource/:key', (req, res) => {
     var resource = req.params.resource;
     var key = req.params.key;
     var object = req.body;
-    instance.put(DATA_SERVICE_URL + "/" + resource + "/" + key, object)
+    var apiToken = req.headers.authorization;
+    instance.put(DATA_SERVICE_URL + "/" + resource + "/" + key, object, { headers: { Authorization: apiToken } })
 	.then(response => {
 	    return res.json(response.data);
 	})
