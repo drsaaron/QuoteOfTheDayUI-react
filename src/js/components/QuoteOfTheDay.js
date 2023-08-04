@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import QuoteText from './QuoteText';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -39,7 +39,12 @@ const QuoteOfTheDay = (props) => {
 
     var quoteNumber = props.quoteOfTheDay.qotd.quoteNumber || -1;
 
-    console.log("token = " + props.login.token);
+    // if we do not have a quote of the day, get it
+    useEffect(() => {
+	if (props.quoteOfTheDay.initialized === false && props.login.token !== null) {
+	    getQuoteOfTheDay(new Date());
+	}
+    }, [props.login.token]);
     
     return (
         <div id="quoteOfTheDay">

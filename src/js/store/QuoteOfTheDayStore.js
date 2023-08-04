@@ -26,6 +26,3 @@ export default store;
 // retrieve source codes to kick off the app.  Is this the right way to go?
 store.dispatch(retrieveSourceCodes());
 
-// get the current quote of the day
-var today = new Date();
-store.dispatch(retrieveQuoteOfTheDay(today));
