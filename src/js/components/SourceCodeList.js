@@ -18,7 +18,7 @@ const SourceCodeList = (props) => {
     
     return (
         <div id="quoteSourceCodeListContainer">
-            <h2>Sources <button onClick={() => props.addSourceCode(navigate)}>+</button></h2>
+            <h2>Sources <button onClick={() => props.addSourceCode(navigate, props.login.token)}>+</button></h2>
             <div id="quoteSourceCodeList">
                 <ul>
             { props.sourceCodes.sourceCodes.map((sourceCode) => <SourceCodeListItem key={sourceCode.number} sourceCode={sourceCode} addQuote={props.addQuote} navigate={props.navigate} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} login={props.login} />) }

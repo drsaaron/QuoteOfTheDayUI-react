@@ -18,7 +18,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        saveQuote: (newQuote, navigate) => dispatch(saveQuote(newQuote, navigate))
+        saveQuote: (newQuote, navigate, token) => dispatch(saveQuote(newQuote, navigate, token))
     };
 };
 

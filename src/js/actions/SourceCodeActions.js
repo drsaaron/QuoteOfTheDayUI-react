@@ -23,15 +23,16 @@ export function retrieveQuotesForSourceCode(sourceCode, token) {
     };
 }
 
-export function prepareAddSourceCode() {
+export function prepareAddSourceCode(token) {
     return {
-	type: ActionTypes.PREPARE_ADD_SOURCE_CODE
+	type: ActionTypes.PREPARE_ADD_SOURCE_CODE,
+	token: token
     };
 }
 
-export function addSourceCode(sourceCode, navigate) {
+export function addSourceCode(sourceCode, navigate, token) {
     return (dispatch) => {
-	sourceCodeAPI.addSourceCode(sourceCode)
+	sourceCodeAPI.addSourceCode(sourceCode, token)
 	    .then((res) => JSON.parse(res.text))
 	    .then((sc) => {
 		dispatch({
@@ -41,7 +42,7 @@ export function addSourceCode(sourceCode, navigate) {
 		return sc;
 	    })
 	    .then(sc => {
-		dispatch(retrieveSourceCodes());
+		dispatch(retrieveSourceCodes(token));
 		return sc;
 	    })
 	    .then(sc => {
