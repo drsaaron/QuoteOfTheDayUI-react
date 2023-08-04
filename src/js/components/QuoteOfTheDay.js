@@ -18,7 +18,7 @@ const QuoteOfTheDay = (props) => {
         console.log("getting quotes for " + props.quoteOfTheDay.sourceCode.number);
 
         event.preventDefault();
-        props.retrieveQuotesForSourceCode(props.quoteOfTheDay.sourceCode);
+        props.retrieveQuotesForSourceCode(props.quoteOfTheDay.sourceCode, props.login.token);
     }
     
     const showDetails = (event) => {

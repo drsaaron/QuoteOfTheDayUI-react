@@ -14,10 +14,11 @@ export function retrieveSourceCodes() {
     };
 }
 
-export function retrieveQuotesForSourceCode(sourceCode) {
+export function retrieveQuotesForSourceCode(sourceCode, token) {
     return {
         type: ActionTypes.RETRIEVE_QUOTES_FOR_SOURCE_CODE,
-        sourceCode
+        sourceCode: sourceCode,
+	token: token
     };
 }
 

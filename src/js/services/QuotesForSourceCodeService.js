@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import request from 'superagent';
+import { authenticatedGet } from '../actions/AuthenticatedRequest';
 import ActionTypes from '../actions/ActionTypes';
 import { DATA_URL_ROOT } from '../constants/Constants';
 
@@ -12,8 +12,7 @@ const QuotesForSourceCodeService = store => next => action => {
     next(action);
     switch (action.type) {
     case ActionTypes.RETRIEVE_QUOTES_FOR_SOURCE_CODE:
-        request
-            .get(DATA_URL_ROOT + "/quote")
+        authenticatedGet(DATA_URL_ROOT + "/quote", action.token)
             .query({ sourceCode: action.sourceCode.number })
             .end((err, res) => {
                 if (err) {
