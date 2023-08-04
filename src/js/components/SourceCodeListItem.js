@@ -8,7 +8,7 @@ const SourceCodeListItem = (props) => {
 
     const clickHandler = (event) => {
         event.preventDefault();
-        props.retrieveQuotesForSourceCode(props.sourceCode);
+        props.retrieveQuotesForSourceCode(props.sourceCode, props.login.token);
     }
     
     const addQuote = (event) => {
