@@ -33,10 +33,13 @@ const QuoteOfTheDay = (props) => {
 
     const getQuoteOfTheDay = (runDate) => {
         console.log("getting quote of the day for " + runDate);
-        props.retrieveQuoteOfTheDay(runDate);
+	console.log("in callback token = " + props.login.token);
+        props.retrieveQuoteOfTheDay(runDate, props.login.token);
     }
 
     var quoteNumber = props.quoteOfTheDay.qotd.quoteNumber || -1;
+
+    console.log("token = " + props.login.token);
     
     return (
         <div id="quoteOfTheDay">

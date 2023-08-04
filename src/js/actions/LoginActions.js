@@ -20,6 +20,7 @@ export function userLoginFetch(user, history) {
                     if (data.message) {
                         //login error
                     } else {
+			console.log("JWT token = " + data.jwttoken);
                         dispatch({
                             type: ActionTypes.USER_LOGGED_IN,
                             token: data.jwttoken,

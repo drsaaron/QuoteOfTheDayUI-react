@@ -7,13 +7,13 @@
 import request from 'superagent';
 
 export function authenticatedGet(url, token) {
-    return request.get(url).set('Authoriztion', 'Bearer ' + token);
+    return request.get(url).set('Authorization', 'Bearer ' + token);
 }
 
 export function authenticatedPut(url, token) {
-    return request.put(url).set('Authoriztion', 'Bearer ' + token);
+    return request.put(url).set('Authorization', 'Bearer ' + token);
 }
 
 export function authenticatedPost(url, token) {
-    return request.post(url).set('Authoriztion', 'Bearer ' + token);
+    return request.post(url).set('Authorization', 'Bearer ' + token);
 }

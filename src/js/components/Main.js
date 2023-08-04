@@ -20,13 +20,14 @@ const mapStateToProps = (state) => {
     return {
         quoteOfTheDay: state.quoteOfTheDay,
         sourceCodes: state.sourceCodes,
-        quotesForSourceCode: state.quotesForSourceCode
+        quotesForSourceCode: state.quotesForSourceCode,
+	login: state.login
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        retrieveQuoteOfTheDay: (runDate) => dispatch(retrieveQuoteOfTheDay(runDate)),
+        retrieveQuoteOfTheDay: (runDate, token) => dispatch(retrieveQuoteOfTheDay(runDate, token)),
         retrieveQuotesForSourceCode: (sourceCode) => dispatch(retrieveQuotesForSourceCode(sourceCode)),
         showQuoteDetails: (quoteNumber, navigate) => dispatch(showQuoteDetails(quoteNumber, navigate)),
         addQuote: (sourceCode, navigate) => dispatch(addQuote(sourceCode.number, navigate)),
@@ -38,13 +39,14 @@ const mapDispatchToProps = (dispatch) => {
 const Main = (props) => {
 
     const navigate = useNavigate();
+    console.log("token = " + props.login.token);
     
     return (
         <div>
             <Header navigate={navigate} goHome={goHome} version={version} />
-            <QuoteOfTheDay quoteOfTheDay={props.quoteOfTheDay} retrieveQuoteOfTheDay={props.retrieveQuoteOfTheDay} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} navigate={navigate} showDetails={props.showQuoteDetails} />
+            <QuoteOfTheDay quoteOfTheDay={props.quoteOfTheDay} retrieveQuoteOfTheDay={props.retrieveQuoteOfTheDay} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} login={props.login} navigate={navigate} showDetails={props.showQuoteDetails} />
 	    <div id="appDataContainer">
-                <SourceCodeList addSourceCode={props.addSourceCode} sourceCodes={props.sourceCodes} addQuote={props.addQuote} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} navigate={navigate} />
+            <SourceCodeList addSourceCode={props.addSourceCode} sourceCodes={props.sourceCodes} addQuote={props.addQuote} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} login={props.login} navigate={navigate} />
                 <QuotesForSourceCodeList quotesForSourceCode={props.quotesForSourceCode} navigate={navigate} showQuoteDetails={props.showQuoteDetails} />
 	    </div>
         </div>
