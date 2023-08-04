@@ -20,7 +20,7 @@ const QuoteOfTheDayService = store => next => action => {
             next(action);
             switch (action.type) {
             case ActionTypes.RETRIEVE_QUOTE_DETAILS:
-                quoteOfTheDayAPI.getQuoteOfTheDayHistory(action.quoteNumber)
+                quoteOfTheDayAPI.getQuoteOfTheDayHistory(action.quoteNumber, action.token)
                     .end((err, res) => {
                         if (err) {
                             console.log(err);

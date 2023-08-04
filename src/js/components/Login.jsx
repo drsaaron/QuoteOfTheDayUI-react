@@ -2,6 +2,10 @@ import {useState} from 'react';
 import {connect} from 'react-redux';
 import {userLoginFetch} from '../actions/LoginActions';
 import {useNavigate} from 'react-router-dom';
+import Header from './Header';
+import { goHome } from '../actions/NavigationActions';
+
+const {version} = require("../../../package.json");
 
 const mapStateToProps = (state) => {
     return {
@@ -11,7 +15,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-	userLoginFetch: (userInfo, history) => dispatch(userLoginFetch(userInfo, history))
+	userLoginFetch: (userInfo, history) => dispatch(userLoginFetch(userInfo, history)),
+	goHome: (navigate) => dispatch(goHome(navigate))
     };
 };
 
@@ -28,6 +33,7 @@ const Login = (props) => {
 
     return (
 	<div id="loginForm">
+	    <Header navigate={navigate} goHome={goHome} version={version} />
 	    <form onSubmit={(event) => handleSubmit(event)}>
 		<h1>Login</h1>
 		<table>

@@ -10,10 +10,11 @@ import sourceCodeAPI from '../api/SourceCodeAPI';
 import { retrieveQuotesForSourceCode } from './SourceCodeActions';
 import { goHome, showQuoteDetails } from './NavigationActions';
 
-export function retrieveQuoteDetails(quoteNumber) {
+export function retrieveQuoteDetails(quoteNumber, token) {
     return {
         type: ActionTypes.RETRIEVE_QUOTE_DETAILS,
-        quoteNumber
+        quoteNumber: quoteNumber,
+	token: token
     };
 }
 

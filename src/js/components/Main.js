@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         retrieveQuoteOfTheDay: (runDate, token) => dispatch(retrieveQuoteOfTheDay(runDate, token)),
         retrieveQuotesForSourceCode: (sourceCode, token) => dispatch(retrieveQuotesForSourceCode(sourceCode, token)),
-        showQuoteDetails: (quoteNumber, navigate) => dispatch(showQuoteDetails(quoteNumber, navigate)),
+        showQuoteDetails: (quoteNumber, navigate, token) => dispatch(showQuoteDetails(quoteNumber, navigate, token)),
         addQuote: (sourceCode, navigate) => dispatch(addQuote(sourceCode.number, navigate)),
 	addSourceCode: (navigate) => dispatch(addSourceCode(navigate)),
 	goHome: (navigate) => dispatch(goHome(navigate)),

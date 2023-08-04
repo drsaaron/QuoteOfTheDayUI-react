@@ -10,9 +10,10 @@ export function goHome(navigate) {
     navigate("/");
 }
 
-export function showQuoteDetails(quoteNumber, navigate) {
+export function showQuoteDetails(quoteNumber, navigate, token) {
     navigate("/quoteDetails/" + quoteNumber);
-    return retrieveQuoteDetails(quoteNumber);
+    console.log("token = " + token);
+    return retrieveQuoteDetails(quoteNumber, token);
 }
 
 export function editQuote(quoteNumber, navigate) {

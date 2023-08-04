@@ -23,7 +23,7 @@ const QuoteOfTheDay = (props) => {
     
     const showDetails = (event) => {
         event.preventDefault();
-        props.showDetails(props.quoteOfTheDay.qotd.quoteNumber, props.navigate);
+        props.showDetails(props.quoteOfTheDay.qotd.quoteNumber, props.navigate, props.login.token);
     }
     
     const handleDateChange = (date) => {
