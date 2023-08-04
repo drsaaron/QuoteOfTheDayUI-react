@@ -11,8 +11,6 @@ import QuotesForSourceCodeService from '../services/QuotesForSourceCodeService';
 import QuoteService from '../services/QuoteService';
 import QuoteOfTheDayService from '../services/QuoteOfTheDayService';
 import { createBrowserHistory } from 'history';
-import { retrieveSourceCodes } from '../actions/SourceCodeActions';
-import { retrieveQuoteOfTheDay } from '../actions/QuoteOfTheDayActions';
 import thunk from 'redux-thunk';
 
 // Create a history of your choosing (we're using a browser history in this case)
@@ -23,6 +21,4 @@ const store = createStore(createRootReducer(history), {}, applyMiddleware(Source
 
 export default store;
     
-// retrieve source codes to kick off the app.  Is this the right way to go?
-store.dispatch(retrieveSourceCodes());
 

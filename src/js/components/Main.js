@@ -10,7 +10,7 @@ import SourceCodeList from './SourceCodeList';
 import QuotesForSourceCodeList from './QuotesForSourceCodeList';
 import QuoteOfTheDay from './QuoteOfTheDay';
 import { connect } from 'react-redux';
-import { retrieveQuotesForSourceCode } from '../actions/SourceCodeActions';
+import { retrieveQuotesForSourceCode, retrieveSourceCodes } from '../actions/SourceCodeActions';
 import { showQuoteDetails, addQuote, addSourceCode, goHome } from '../actions/NavigationActions';
 import { retrieveQuoteOfTheDay } from '../actions/QuoteOfTheDayActions';
 import { useNavigate } from 'react-router-dom';
@@ -31,6 +31,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         retrieveQuoteOfTheDay: (runDate, token) => dispatch(retrieveQuoteOfTheDay(runDate, token)),
         retrieveQuotesForSourceCode: (sourceCode, token) => dispatch(retrieveQuotesForSourceCode(sourceCode, token)),
+	retrieveSourceCodes: (token) => dispatch(retrieveSourceCodes(token)),
         showQuoteDetails: (quoteNumber, navigate, token) => dispatch(showQuoteDetails(quoteNumber, navigate, token)),
         addQuote: (sourceCode, navigate) => dispatch(addQuote(sourceCode.number, navigate)),
 	addSourceCode: (navigate) => dispatch(addSourceCode(navigate)),
@@ -91,7 +92,7 @@ const Main = (props) => {
             <Header navigate={navigate} goHome={goHome} version={version} />
             <QuoteOfTheDay quoteOfTheDay={props.quoteOfTheDay} retrieveQuoteOfTheDay={props.retrieveQuoteOfTheDay} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} login={props.login} navigate={navigate} showDetails={props.showQuoteDetails} />
 	    <div id="appDataContainer">
-            <SourceCodeList addSourceCode={props.addSourceCode} sourceCodes={props.sourceCodes} addQuote={props.addQuote} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} login={props.login} navigate={navigate} />
+            <SourceCodeList addSourceCode={props.addSourceCode} sourceCodes={props.sourceCodes} addQuote={props.addQuote} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} login={props.login} navigate={navigate} retrieveSourceCodes={props.retrieveSourceCodes} />
             <QuotesForSourceCodeList quotesForSourceCode={props.quotesForSourceCode} navigate={navigate} showQuoteDetails={props.showQuoteDetails} login={props.login} />
 	    </div>
         </div>

@@ -8,9 +8,10 @@ import ActionTypes from './ActionTypes';
 import sourceCodeAPI from '../api/SourceCodeAPI';
 import { goHome } from './NavigationActions';
 
-export function retrieveSourceCodes() {
+export function retrieveSourceCodes(token) {
     return {
-        type: ActionTypes.RETRIEVE_SOURCE_CODES
+        type: ActionTypes.RETRIEVE_SOURCE_CODES,
+	token: token
     };
 }
 

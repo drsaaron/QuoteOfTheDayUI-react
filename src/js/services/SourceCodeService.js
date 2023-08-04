@@ -11,7 +11,7 @@ const SourceCodeService = store => next => action => {
             next(action);
             switch (action.type) {
             case ActionTypes.RETRIEVE_SOURCE_CODES:
-                sourceCodeAPI.getSourceCodeList()
+                sourceCodeAPI.getSourceCodeList(action.token)
                     .end((err, res) => {
                         if (err) {
                             console.log(err);
