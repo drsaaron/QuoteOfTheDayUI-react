@@ -16,7 +16,7 @@ export default class QuoteForSourceCode extends Component {
 
     clickHandler(event) {
         event.preventDefault();
-        this.props.showQuoteDetails(this.props.quote.number, this.props.navigate);
+        this.props.showQuoteDetails(this.props.quote.number, this.props.navigate, this.props.login.token);
     }
 
     render() {

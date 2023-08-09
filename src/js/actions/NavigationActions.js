@@ -10,19 +10,20 @@ export function goHome(navigate) {
     navigate("/");
 }
 
-export function showQuoteDetails(quoteNumber, navigate) {
+export function showQuoteDetails(quoteNumber, navigate, token) {
     navigate("/quoteDetails/" + quoteNumber);
-    return retrieveQuoteDetails(quoteNumber);
+    console.log("token = " + token);
+    return retrieveQuoteDetails(quoteNumber, token);
 }
 
-export function editQuote(quoteNumber, navigate) {
+export function editQuote(quoteNumber, navigate, token) {
     navigate("/editQuote/" + quoteNumber);
-    return retrieveQuoteForEdit(quoteNumber);
+    return retrieveQuoteForEdit(quoteNumber, token);
 }
 
-export function addQuote(sourceCode, navigate) {
+export function addQuote(sourceCode, navigate, token) {
     navigate("/addQuote/" + sourceCode);
-    return prepareAddQuote(sourceCode);
+    return prepareAddQuote(sourceCode, token);
 }
 
 export function addSourceCode(navigate) {

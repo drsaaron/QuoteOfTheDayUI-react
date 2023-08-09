@@ -8,12 +8,12 @@ const SourceCodeListItem = (props) => {
 
     const clickHandler = (event) => {
         event.preventDefault();
-        props.retrieveQuotesForSourceCode(props.sourceCode);
+        props.retrieveQuotesForSourceCode(props.sourceCode, props.login.token);
     }
     
     const addQuote = (event) => {
         event.preventDefault();
-        props.addQuote(props.sourceCode, props.navigate);
+        props.addQuote(props.sourceCode, props.navigate, props.login.token);
     }
     
     return (

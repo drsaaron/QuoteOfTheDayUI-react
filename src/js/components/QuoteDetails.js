@@ -33,7 +33,7 @@ const QuoteDetails = (props) => {
                 <div id="quoteDetailUsable">Usable: {usable}</div>
             </div>
             
-            <button onClick={(event) => { event.preventDefault(); props.editQuote(quoteNumber, navigate); } }>Edit</button>
+            <button onClick={(event) => { event.preventDefault(); props.editQuote(quoteNumber, navigate, props.login.token); } }>Edit</button>
                 
             <QuoteOfTheDayHistory history={props.quoteDetails.history} />
         </div>
@@ -43,13 +43,14 @@ const QuoteDetails = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        quoteDetails: state.quoteDetails
+        quoteDetails: state.quoteDetails,
+	login: state.login
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        editQuote: (quoteNumber, navigate) => dispatch(editQuote(quoteNumber, navigate))
+        editQuote: (quoteNumber, navigate, token) => dispatch(editQuote(quoteNumber, navigate, token))
     };
 };
 

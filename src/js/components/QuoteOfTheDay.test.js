@@ -19,7 +19,7 @@ describe('header', () => {
 		quoteNumber: 5
 	    }
 	};
-	const component = renderer.create(<QuoteOfTheDay quoteOfTheDay={qotd} />);
+	const component = renderer.create(<QuoteOfTheDay quoteOfTheDay={qotd} login={{token: "schmo"}} />);
 	let tree = component.toJSON();
 	expect(tree).toMatchSnapshot();
     });

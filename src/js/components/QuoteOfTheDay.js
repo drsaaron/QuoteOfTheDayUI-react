@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import QuoteText from './QuoteText';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -18,12 +18,12 @@ const QuoteOfTheDay = (props) => {
         console.log("getting quotes for " + props.quoteOfTheDay.sourceCode.number);
 
         event.preventDefault();
-        props.retrieveQuotesForSourceCode(props.quoteOfTheDay.sourceCode);
+        props.retrieveQuotesForSourceCode(props.quoteOfTheDay.sourceCode, props.login.token);
     }
     
     const showDetails = (event) => {
         event.preventDefault();
-        props.showDetails(props.quoteOfTheDay.qotd.quoteNumber, props.navigate);
+        props.showDetails(props.quoteOfTheDay.qotd.quoteNumber, props.navigate, props.login.token);
     }
     
     const handleDateChange = (date) => {
@@ -33,10 +33,18 @@ const QuoteOfTheDay = (props) => {
 
     const getQuoteOfTheDay = (runDate) => {
         console.log("getting quote of the day for " + runDate);
-        props.retrieveQuoteOfTheDay(runDate);
+	console.log("in callback token = " + props.login.token);
+        props.retrieveQuoteOfTheDay(runDate, props.login.token);
     }
 
     var quoteNumber = props.quoteOfTheDay.qotd.quoteNumber || -1;
+
+    // if we do not have a quote of the day, get it
+    useEffect(() => {
+	if (props.quoteOfTheDay.initialized === false && props.login.token !== null) {
+	    getQuoteOfTheDay(new Date());
+	}
+    }, [props.login.token]);
     
     return (
         <div id="quoteOfTheDay">

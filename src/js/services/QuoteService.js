@@ -14,7 +14,8 @@ const QuoteService = store => next => action => {
     next(action);
     switch (action.type) {
     case ActionTypes.RETRIEVE_QUOTE_DETAILS:
-        quoteAPI.getQuote(action.quoteNumber)
+	var token = action.token;
+        quoteAPI.getQuote(action.quoteNumber, token)
             .then((res) => {
                 return JSON.parse(res.text);
             })
@@ -26,7 +27,7 @@ const QuoteService = store => next => action => {
                 return quote;
             })
             .then(quote => {
-                return sourceCodeAPI.getSourceCode(quote.sourceCode);
+                return sourceCodeAPI.getSourceCode(quote.sourceCode, token);
             })
             .then(res => {
                 return JSON.parse(res.text);

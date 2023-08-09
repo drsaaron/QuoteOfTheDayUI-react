@@ -10,15 +10,16 @@ import sourceCodeAPI from '../api/SourceCodeAPI';
 import { retrieveQuotesForSourceCode } from './SourceCodeActions';
 import { goHome, showQuoteDetails } from './NavigationActions';
 
-export function retrieveQuoteDetails(quoteNumber) {
+export function retrieveQuoteDetails(quoteNumber, token) {
     return {
         type: ActionTypes.RETRIEVE_QUOTE_DETAILS,
-        quoteNumber
+        quoteNumber: quoteNumber,
+	token: token
     };
 }
 
-function getSourceCodesForEdit(dispatch) {
-    sourceCodeAPI.getSourceCodeList()
+function getSourceCodesForEdit(dispatch, token) {
+    sourceCodeAPI.getSourceCodeList(token)
             .then((res) => {
                 return JSON.parse(res.text);
             })
@@ -40,14 +41,14 @@ export function quoteDataUpdate(updatedQuote) {
     }
 }
 
-export function retrieveQuoteForEdit(quoteNumber) {
+export function retrieveQuoteForEdit(quoteNumber, token) {
     return (dispatch) => {
         dispatch({
             type: ActionTypes.PREPARE_QUOTE_FOR_EDIT,
             quoteNumber
         });
 
-        quoteAPI.getQuote(quoteNumber)
+        quoteAPI.getQuote(quoteNumber, token)
                 .then((res) => {
                     return JSON.parse(res.text);
                 })
@@ -58,13 +59,13 @@ export function retrieveQuoteForEdit(quoteNumber) {
                     });
                 });
 
-        getSourceCodesForEdit(dispatch);
+        getSourceCodesForEdit(dispatch, token);
     };
 }
 
-export function updateQuote(quote, navigate) {
+export function updateQuote(quote, navigate, token) {
     return (dispatch) => {
-        quoteAPI.updateQuote(quote)
+        quoteAPI.updateQuote(quote, token)
                 .then((res) => {
                     return JSON.parse(res.text);
                 })
@@ -74,21 +75,21 @@ export function updateQuote(quote, navigate) {
     };
 }
 
-export function prepareAddQuote(sourceCode) {
+export function prepareAddQuote(sourceCode, token) {
     return (dispatch) => {
         dispatch({
             type: ActionTypes.PREPARE_QUOTE_FOR_ADD,
             sourceCode
         });
 
-        getSourceCodesForEdit(dispatch);
+        getSourceCodesForEdit(dispatch, token);
     };
 }
 
-export function saveQuote(newQuote, navigate) {
+export function saveQuote(newQuote, navigate, token) {
     return (dispatch) => {
         // add the quote, get the updated quotes for the source code, and return to home page
-        quoteAPI.addQuote(newQuote)
+        quoteAPI.addQuote(newQuote, token)
                 .then((res) => {
                     return JSON.parse(res.text);
                 })

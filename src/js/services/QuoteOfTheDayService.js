@@ -20,7 +20,7 @@ const QuoteOfTheDayService = store => next => action => {
             next(action);
             switch (action.type) {
             case ActionTypes.RETRIEVE_QUOTE_DETAILS:
-                quoteOfTheDayAPI.getQuoteOfTheDayHistory(action.quoteNumber)
+                quoteOfTheDayAPI.getQuoteOfTheDayHistory(action.quoteNumber, action.token)
                     .end((err, res) => {
                         if (err) {
                             console.log(err);
@@ -36,8 +36,10 @@ const QuoteOfTheDayService = store => next => action => {
 		
             case ActionTypes.RETRIEVE_QUOTE_OF_THE_DAY:
                 var runDate = action.runDate;
+		var token = action.token;
+		console.log("token = " + token);
                 var formatDate = dateAsString(runDate);
-                quoteOfTheDayAPI.getQuoteOfTheDay(formatDate)
+                quoteOfTheDayAPI.getQuoteOfTheDay(formatDate, token)
                     .then(res => {
                         return JSON.parse(res.text);
                     })
@@ -46,7 +48,7 @@ const QuoteOfTheDayService = store => next => action => {
                         return qotd;
                     })
                     .then(qotd => {
-                        return quoteAPI.getQuote(qotd.quoteNumber);
+                        return quoteAPI.getQuote(qotd.quoteNumber, token);
                     })
                     .then(res => {
                         return JSON.parse(res.text);
@@ -56,7 +58,7 @@ const QuoteOfTheDayService = store => next => action => {
                         return quote;
                     })
                     .then(quote => {
-                        return sourceCodeAPI.getSourceCode(quote.sourceCode);
+                        return sourceCodeAPI.getSourceCode(quote.sourceCode, token);
                     })
                     .then(res => {
                         return JSON.parse(res.text);

@@ -10,13 +10,15 @@ import QuotesForSourceCodeReducer from './QuotesForSourceCodeReducer';
 import QuoteDetailsReducer from './QuoteDetailsReducer';
 import QuoteOfTheDayReducer from './QuoteOfTheDayReducer';
 import EditQuoteReducer from './EditQuoteReducer';
+import LoginReducer from './LoginReducer';
 
 const applicationStore = (history) => combineReducers( {
     sourceCodes: SourceCodeReducer,
     quotesForSourceCode: QuotesForSourceCodeReducer,
     quoteDetails: QuoteDetailsReducer,
     quoteOfTheDay: QuoteOfTheDayReducer,
-    editQuote: EditQuoteReducer
+    editQuote: EditQuoteReducer,
+    login: LoginReducer
 });
 
 export default applicationStore;

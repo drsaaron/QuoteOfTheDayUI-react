@@ -6,9 +6,10 @@
 
 import ActionTypes from './ActionTypes';
 
-export function retrieveQuoteOfTheDay(runDate) {
+export function retrieveQuoteOfTheDay(runDate, token) {
     return {
         type: ActionTypes.RETRIEVE_QUOTE_OF_THE_DAY,
-        runDate
+	token: token,
+        runDate: runDate
     };
 }

@@ -6,13 +6,14 @@ import {useNavigate} from 'react-router-dom';
 
 const mapStateToProps = (state) => {
     return {
-	sourceCodes: state.sourceCodes
+	sourceCodes: state.sourceCodes,
+	login: state.login
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-	addSourceCode: (sourceCode, navigate) => dispatch(addSourceCode(sourceCode, navigate)),
+	addSourceCode: (sourceCode, navigate, token) => dispatch(addSourceCode(sourceCode, navigate, token)),
 	prepareAddSourceCode: () => dispatch(prepareAddSourceCode())
     };
 };
@@ -31,7 +32,7 @@ const AddSourceCode = (props) => {
     const addSourceCode = (event) => {
 	event.preventDefault();
 	var newSource = { number: props.sourceCodes.defaultSourceCode.number, text: text };
-	props.addSourceCode(newSource, navigate);
+	props.addSourceCode(newSource, navigate, props.login.token);
     }
 
     const handleTextChange = (event) => {
