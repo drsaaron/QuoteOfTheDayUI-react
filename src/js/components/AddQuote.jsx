@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
     return {
-
+	login: state.login
     };
 };
 
@@ -29,7 +29,7 @@ const AddQuote = (props) => {
     return (
         <div>
             <Header navigate={navigate} />
-            <QuoteEditor editLabel="Add" editCallback={props.saveQuote} navigate={navigate} />
+            <QuoteEditor editLabel="Add" editCallback={props.saveQuote} navigate={navigate} login={props.login} />
         </div>
     );
 }

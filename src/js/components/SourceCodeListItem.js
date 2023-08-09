@@ -13,7 +13,7 @@ const SourceCodeListItem = (props) => {
     
     const addQuote = (event) => {
         event.preventDefault();
-        props.addQuote(props.sourceCode, props.navigate);
+        props.addQuote(props.sourceCode, props.navigate, props.login.token);
     }
     
     return (

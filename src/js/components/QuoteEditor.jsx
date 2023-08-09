@@ -33,7 +33,7 @@ const QuoteEditor = (props) => {
             usable: usable,
             sourceCode: sourceCode
         };
-        props.editCallback(updatedQuote, props.navigate);
+        props.editCallback(updatedQuote, props.navigate, props.login.token);
     };
 
     const handleTextChange = (event) => {

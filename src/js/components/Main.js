@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch) => {
         retrieveQuotesForSourceCode: (sourceCode, token) => dispatch(retrieveQuotesForSourceCode(sourceCode, token)),
 	retrieveSourceCodes: (token) => dispatch(retrieveSourceCodes(token)),
         showQuoteDetails: (quoteNumber, navigate, token) => dispatch(showQuoteDetails(quoteNumber, navigate, token)),
-        addQuote: (sourceCode, navigate) => dispatch(addQuote(sourceCode.number, navigate)),
+        addQuote: (sourceCode, navigate, token) => dispatch(addQuote(sourceCode.number, navigate, token)),
 	addSourceCode: (navigate, token) => dispatch(addSourceCode(navigate, token)),
 	goHome: (navigate) => dispatch(goHome(navigate)),
 	loginForm: (navigate) => loginForm(navigate),

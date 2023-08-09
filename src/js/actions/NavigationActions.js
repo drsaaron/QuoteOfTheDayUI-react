@@ -21,9 +21,9 @@ export function editQuote(quoteNumber, navigate) {
     return retrieveQuoteForEdit(quoteNumber);
 }
 
-export function addQuote(sourceCode, navigate) {
+export function addQuote(sourceCode, navigate, token) {
     navigate("/addQuote/" + sourceCode);
-    return prepareAddQuote(sourceCode);
+    return prepareAddQuote(sourceCode, token);
 }
 
 export function addSourceCode(navigate) {
