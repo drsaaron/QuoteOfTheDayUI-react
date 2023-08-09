@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import { addSourceCode, prepareAddSourceCode } from '../actions/SourceCodeActions';
 import { connect } from 'react-redux';
 import Header from './Header';

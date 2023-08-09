@@ -4,30 +4,25 @@
  * and open the template in the editor.
  */
 
-import React, {Component} from 'react';
 import QuoteText from './QuoteText';
 
-export default class QuoteForSourceCode extends Component {
-    constructor(props) {
-        super(props);
+const QuoteForSourceCode = (props) => {
 
-        this.clickHandler = this.clickHandler.bind(this);
-    }
-
-    clickHandler(event) {
+    const clickHandler = (event) => {
         event.preventDefault();
-        this.props.showQuoteDetails(this.props.quote.number, this.props.navigate, this.props.login.token);
+        props.showQuoteDetails(props.quote.number, props.navigate, props.login.token);
     }
 
-    render() {
-        var quote = this.props.quote;
+    var quote = props.quote;
 
-        return (
-                <article className="quote">
-                    <a href="/" onClick={this.clickHandler}>{quote.number}</a>
-                    <br />
-                    <QuoteText quote={quote} />
-                </article>
-                );
-    }
-}
+    return (
+        <article className="quote">
+            <a href="/" onClick={clickHandler}>{quote.number}</a>
+            <br />
+            <QuoteText quote={quote} />
+        </article>
+    );
+};
+
+export default QuoteForSourceCode;
+

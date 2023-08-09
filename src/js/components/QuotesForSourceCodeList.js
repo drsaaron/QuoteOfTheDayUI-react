@@ -4,36 +4,35 @@
  * and open the template in the editor.
  */
 
-import React, {Component} from 'react';
 import QuoteForSourceCode from './QuoteForSourceCode';
 import classNames from 'classnames';
 
-export default class QuotesForSourceCodeList extends Component {
+const QuotesForSourceCodeList = (props) => {
 
-    getClassNames() {
-        var sourceCodeNumber = this.props.quotesForSourceCode.sourceCode.number || -1;
+    const getClassNames = () => {
+        var sourceCodeNumber = props.quotesForSourceCode.sourceCode.number || -1;
         return classNames({
             hidden: sourceCodeNumber < 0
         });
+    };
+    
+    var sourceCodeText = "";
+    if (props.quotesForSourceCode.sourceCode.text) {
+        sourceCodeText = props.quotesForSourceCode.sourceCode.text;
     }
     
-    render() {
-        var sourceCodeText = "";
-        if (this.props.quotesForSourceCode.sourceCode.text) {
-            sourceCodeText = this.props.quotesForSourceCode.sourceCode.text;
-        }
-
-        return (
-                <div id="quotesForSourceCodeContainer" className={this.getClassNames()}>
-                    <div id="quotesForSourceCodeName">
-                        Quotes for <span className="quoteSourceCodeText">{sourceCodeText}</span>
-                    </div>
-                
-                    <div id="quotesForSourceCodeQuotes"> 
-                        { this.props.quotesForSourceCode.quoteList.map((quote) => <QuoteForSourceCode key={quote.number} quote={quote} navigate={this.props.navigate} login={this.props.login} showQuoteDetails={this.props.showQuoteDetails} />) }
-                    </div>
-                </div>
-                );
-    }
+    return (
+        <div id="quotesForSourceCodeContainer" className={getClassNames()}>
+            <div id="quotesForSourceCodeName">
+                Quotes for <span className="quoteSourceCodeText">{sourceCodeText}</span>
+            </div>
+            
+            <div id="quotesForSourceCodeQuotes"> 
+                { props.quotesForSourceCode.quoteList.map((quote) => <QuoteForSourceCode key={quote.number} quote={quote} navigate={props.navigate} login={props.login} showQuoteDetails={props.showQuoteDetails} />) }
+            </div>
+        </div>
+    );
 };
+
+export default QuotesForSourceCodeList;
 
