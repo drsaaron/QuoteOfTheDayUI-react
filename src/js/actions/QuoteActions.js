@@ -41,14 +41,14 @@ export function quoteDataUpdate(updatedQuote) {
     }
 }
 
-export function retrieveQuoteForEdit(quoteNumber) {
+export function retrieveQuoteForEdit(quoteNumber, token) {
     return (dispatch) => {
         dispatch({
             type: ActionTypes.PREPARE_QUOTE_FOR_EDIT,
             quoteNumber
         });
 
-        quoteAPI.getQuote(quoteNumber)
+        quoteAPI.getQuote(quoteNumber, token)
                 .then((res) => {
                     return JSON.parse(res.text);
                 })
@@ -59,13 +59,13 @@ export function retrieveQuoteForEdit(quoteNumber) {
                     });
                 });
 
-        getSourceCodesForEdit(dispatch);
+        getSourceCodesForEdit(dispatch, token);
     };
 }
 
-export function updateQuote(quote, navigate) {
+export function updateQuote(quote, navigate, token) {
     return (dispatch) => {
-        quoteAPI.updateQuote(quote)
+        quoteAPI.updateQuote(quote, token)
                 .then((res) => {
                     return JSON.parse(res.text);
                 })

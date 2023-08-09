@@ -16,9 +16,9 @@ export function showQuoteDetails(quoteNumber, navigate, token) {
     return retrieveQuoteDetails(quoteNumber, token);
 }
 
-export function editQuote(quoteNumber, navigate) {
+export function editQuote(quoteNumber, navigate, token) {
     navigate("/editQuote/" + quoteNumber);
-    return retrieveQuoteForEdit(quoteNumber);
+    return retrieveQuoteForEdit(quoteNumber, token);
 }
 
 export function addQuote(sourceCode, navigate, token) {
