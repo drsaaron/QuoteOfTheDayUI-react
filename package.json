@@ -12,7 +12,7 @@
   "contributors": [],
   "description": "User interface for the quote of the day application",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/jest-dom": "^6.0.1",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.0.0",
     "axios": "^1.1.2",
