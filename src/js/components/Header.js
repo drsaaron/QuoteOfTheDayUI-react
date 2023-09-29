@@ -4,6 +4,14 @@
  * and open the template in the editor.
  */
 
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => {
+    return {
+	applicationData: state.applicationData
+    };
+};
+
 const Header = (props) => {
     
     const handleHomeLink = (event) => {
@@ -14,10 +22,11 @@ const Header = (props) => {
     return (
         <div id="pageHeader">
             <div id="pageHeaderApp">
-                <a href="/" onClick={handleHomeLink}>Scott's Quote of the Day, version {props.version}</a>
+                <a href="/" onClick={handleHomeLink}>Scott's Quote of the Day, version {props.applicationData.appVersion}</a>
             </div>
         </div>
     );
 }
 
-export default Header;
+export default connect(mapStateToProps)(Header);
+

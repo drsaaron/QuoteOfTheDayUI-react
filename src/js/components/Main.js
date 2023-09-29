@@ -16,8 +16,6 @@ import { retrieveQuoteOfTheDay } from '../actions/QuoteOfTheDayActions';
 import { useNavigate } from 'react-router-dom';
 import { loginForm, logout, updateTokenMonitorInterval } from '../actions/LoginActions';
 
-const {version} = require("../../../package.json");
-
 const mapStateToProps = (state) => {
     return {
         quoteOfTheDay: state.quoteOfTheDay,
@@ -89,7 +87,7 @@ const Main = (props) => {
     
     return (
         <div>
-            <Header navigate={navigate} goHome={goHome} version={version} />
+            <Header navigate={navigate} goHome={goHome} />
             <QuoteOfTheDay quoteOfTheDay={props.quoteOfTheDay} retrieveQuoteOfTheDay={props.retrieveQuoteOfTheDay} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} login={props.login} navigate={navigate} showDetails={props.showQuoteDetails} />
 	    <div id="appDataContainer">
             <SourceCodeList addSourceCode={props.addSourceCode} sourceCodes={props.sourceCodes} addQuote={props.addQuote} retrieveQuotesForSourceCode={props.retrieveQuotesForSourceCode} login={props.login} navigate={navigate} retrieveSourceCodes={props.retrieveSourceCodes} />

@@ -13,8 +13,12 @@ import EditQuote from './EditQuote';
 import AddQuote from './AddQuote';
 import AddSourceCode from './AddSourceCode';
 import Login from './Login';
+import { addApplicationVersion } from '../actions/ApplicationDataActions';
+
+const {version} = require("../../../package.json");
 
 const App = (props) => {
+    store.dispatch(addApplicationVersion(version));
     return (
             <Provider store={store}>
                 <BrowserRouter history={history}>

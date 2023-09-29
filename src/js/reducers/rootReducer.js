@@ -11,6 +11,7 @@ import QuoteDetailsReducer from './QuoteDetailsReducer';
 import QuoteOfTheDayReducer from './QuoteOfTheDayReducer';
 import EditQuoteReducer from './EditQuoteReducer';
 import LoginReducer from './LoginReducer';
+import ApplicationDataReducer from './ApplicationDataReducer';
 
 const applicationStore = (history) => combineReducers( {
     sourceCodes: SourceCodeReducer,
@@ -18,7 +19,8 @@ const applicationStore = (history) => combineReducers( {
     quoteDetails: QuoteDetailsReducer,
     quoteOfTheDay: QuoteOfTheDayReducer,
     editQuote: EditQuoteReducer,
-    login: LoginReducer
+    login: LoginReducer,
+    applicationData: ApplicationDataReducer
 });
 
 export default applicationStore;

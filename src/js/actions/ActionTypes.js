@@ -35,7 +35,9 @@ const values = {
     USER_LOGGED_IN: 'UserLoggedIn',
     USER_LOGGED_OUT: 'UserLoggedOut',
     USER_LOGIN_FAILURE: 'UserLoginFailure',
-    TOKEN_MONITOR_INTERVAL_ID_UPDATE: 'TokenMonitorIntervalIdUpdate'
+    TOKEN_MONITOR_INTERVAL_ID_UPDATE: 'TokenMonitorIntervalIdUpdate',
+
+    APPLICATION_VERSION_ADDED: 'ApplicationVersionAdded'
 };
 
 export default values;
