@@ -1,4 +1,4 @@
-FROM drsaaron/blazarnodebase:1.38
+FROM drsaaron/blazarnodebase:1.39
 
 # expose port 8001
 ENV SERVER_PORT=8001
