@@ -90,27 +90,25 @@ export function saveQuote(newQuote, navigate, token) {
     return (dispatch) => {
         // add the quote, get the updated quotes for the source code, and return to home page
         quoteAPI.addQuote(newQuote, token)
-                .then((res) => {
-                    return JSON.parse(res.text);
-                })
-                .then((newQuote) => {
-                    dispatch({
-                        type: ActionTypes.NEW_QUOTE_ADDED,
-                        newQuote
-                    });
-                    return newQuote;
-                })
-                .then((newQuote) => {
-                    return sourceCodeAPI.getSourceCode(newQuote.sourceCode);
-                })
-                .then((res) => {
-                    return JSON.parse(res.text);
-                })
-                .then((sourceCode) => {
-                    dispatch(retrieveQuotesForSourceCode(sourceCode));
-                })
-	    .then(() => {
+            .then((res) => {
+                return JSON.parse(res.text);
+            })
+            .then((newQuote) => {
+                dispatch({
+                    type: ActionTypes.NEW_QUOTE_ADDED,
+                    newQuote
+                });
+                return newQuote;
+            })
+            .then((q) => {
+		console.log("getting quotes for source code " + q.sourceCode);
+                dispatch(retrieveQuotesForSourceCode({number: q.sourceCode}));
+		return q;
+            })
+	    .then(q => {
+		console.log("going home...");
 		goHome(navigate);
+		return q;
 	    });
 
     };
