@@ -9,6 +9,7 @@ import { updateQuote } from '../actions/QuoteActions';
 import QuoteEditor from './QuoteEditor';
 import Header from './Header';
 import { useNavigate } from 'react-router-dom';
+import { goHome } from '../actions/NavigationActions';
 
 const mapStateToProps = (state) => {
     return {
@@ -18,7 +19,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateQuote: (quote, navigate, token) => dispatch(updateQuote(quote, navigate, token))
+        updateQuote: (quote, navigate, token) => dispatch(updateQuote(quote, navigate, token)),
+	goHome: (navigate) => dispatch(goHome(navigate))
     };
 };
 
@@ -28,7 +30,7 @@ const EditQuote = (props) => {
 
     return (
         <div>
-            <Header navigate={navigate} />
+            <Header navigate={navigate} goHome={props.goHome} />
             <QuoteEditor navigate={navigate} editLabel="Save" editCallback={props.updateQuote} login={props.login} />
         </div>
     );

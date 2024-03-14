@@ -3,6 +3,7 @@ import { addSourceCode, prepareAddSourceCode } from '../actions/SourceCodeAction
 import { connect } from 'react-redux';
 import Header from './Header';
 import {useNavigate} from 'react-router-dom';
+import { goHome } from '../actions/NavigationActions';
 
 const mapStateToProps = (state) => {
     return {
@@ -14,7 +15,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
 	addSourceCode: (sourceCode, navigate, token) => dispatch(addSourceCode(sourceCode, navigate, token)),
-	prepareAddSourceCode: () => dispatch(prepareAddSourceCode())
+	prepareAddSourceCode: () => dispatch(prepareAddSourceCode()),
+	goHome: (navigate) => dispatch(goHome(navigate))
     };
 };
 
@@ -41,7 +43,7 @@ const AddSourceCode = (props) => {
 
     return (
 	    <div>
-		<Header />
+		<Header navigate={navigate} goHome={props.goHome} />
 
 		<div id="newSourceCodeEditor">
 		    <form action="post">

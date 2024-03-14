@@ -10,6 +10,7 @@ import QuoteText from './QuoteText';
 import QuoteOfTheDayHistory from './QuoteOfTheDayHistory';
 import Header from './Header';
 import { useParams, useNavigate } from 'react-router-dom';
+import { goHome } from '../actions/NavigationActions';
 
 const QuoteDetails = (props) => {
 
@@ -22,7 +23,7 @@ const QuoteDetails = (props) => {
 
     return (
         <div>
-            <Header navigate={navigate} />
+            <Header navigate={navigate} goHome={props.goHome} />
             <h1>Details for #{quoteNumber}</h1>
             
             <div id="quoteDetailText">
@@ -50,7 +51,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        editQuote: (quoteNumber, navigate, token) => dispatch(editQuote(quoteNumber, navigate, token))
+        editQuote: (quoteNumber, navigate, token) => dispatch(editQuote(quoteNumber, navigate, token)),
+	goHome: (navigate) => dispatch(goHome(navigate))
     };
 };
 

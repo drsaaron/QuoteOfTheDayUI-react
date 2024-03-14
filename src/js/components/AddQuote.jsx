@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import QuoteEditor from './QuoteEditor';
 import Header from './Header';
 import { useNavigate } from 'react-router-dom';
+import { goHome } from '../actions/NavigationActions';
 
 const mapStateToProps = (state) => {
     return {
@@ -18,7 +19,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        saveQuote: (newQuote, navigate, token) => dispatch(saveQuote(newQuote, navigate, token))
+        saveQuote: (newQuote, navigate, token) => dispatch(saveQuote(newQuote, navigate, token)),
+	goHome: (navigate) => dispatch(goHome(navigate))
     };
 };
 
@@ -28,7 +30,7 @@ const AddQuote = (props) => {
 
     return (
         <div>
-            <Header navigate={navigate} />
+            <Header navigate={navigate} goHome={props.goHome} />
             <QuoteEditor editLabel="Add" editCallback={props.saveQuote} navigate={navigate} login={props.login} />
         </div>
     );
