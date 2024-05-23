@@ -13,7 +13,7 @@
   "description": "User interface for the quote of the day application",
   "dependencies": {
     "@testing-library/jest-dom": "^6.0.1",
-    "@testing-library/react": "^14.0.0",
+    "@testing-library/react": "^15.0.0",
     "@testing-library/user-event": "^14.0.0",
     "axios": "^1.1.2",
     "axios-logger": "^2.6.0",
@@ -34,7 +34,7 @@
     "redux-promise-middleware": "^6.1.2",
     "redux-thunk": "^3.1.0",
     "sanitize-html-react": "^1.13.0",
-    "superagent": "^8.0.0"
+    "superagent": "^9.0.0"
   },
   "scripts": {
     "start": "NODE_ENV=development node server/index.js",
