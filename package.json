@@ -1,6 +1,6 @@
 {
   "name": "QuoteOfTheDayUI-react",
-  "version": "2.0.12",
+  "version": "2.0.13",
   "keywords": [
     "util",
     "functional",
@@ -19,16 +19,16 @@
     "axios-logger": "^2.6.0",
     "buffer": "^6.0.3",
     "classnames": "^2.2.6",
-    "config": "^3.3.7",
-    "express": "^4.17.3",
+    "config": "^4.0.0",
+    "express": "^5.0.0",
     "fs": "^0.0.1-security",
     "history": "^5.2.0",
-    "react": "^18.0.0",
-    "react-datepicker": "^7.1.0",
-    "react-dom": "^18.0.0",
+    "react": "^19.0.0",
+    "react-datepicker": "^8.4.0",
+    "react-dom": "^19.0.0",
     "react-promise": "^3.0.2",
     "react-redux": "^9.0.1",
-    "react-router-dom": "^6.2.1",
+    "react-router-dom": "^7.6.1",
     "react-scripts": "^5.0.0",
     "redux": "^5.0.1",
     "redux-promise-middleware": "^6.1.2",
@@ -64,6 +64,6 @@
   "repository": "https://github.com/drsaaron/QuoteOfTheDayUI-react",
   "license": "UNLICENSED",
   "devDependencies": {
-    "react-test-renderer": "^18.0.0"
+    "react-test-renderer": "^19.0.0"
   }
 }
