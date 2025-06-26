@@ -95,9 +95,4 @@ app.post('/authenticate', (req, res) => {
 	.catch(errorHandler);
 });
 
-// if all else fails, return the react app
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
-});
-
 httpServer.listen(PORT, () => { console.log(`Application server listening on port ${PORT} (http)`); });
