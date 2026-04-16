@@ -24,7 +24,7 @@
     "fs": "^0.0.1-security",
     "history": "^5.2.0",
     "react": "^19.0.0",
-    "react-datepicker": "^8.4.0",
+    "react-datepicker": "^9.1.0",
     "react-dom": "^19.0.0",
     "react-promise": "^3.0.2",
     "react-redux": "^9.0.1",
