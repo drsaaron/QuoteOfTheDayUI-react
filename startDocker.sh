@@ -9,8 +9,9 @@ containerName=quoteofthedayui
 docker stop $containerName
 docker rm $containerName
 
+PODMAN_USERNS=
+
 docker run \
-       --user $(id -u):$(id -g) \
        --network qotd \
        --health-cmd="CMD ./healthCheck.sh || exit 1" \
        --health-interval=60s \
