@@ -95,4 +95,23 @@ app.post('/authenticate', (req, res) => {
 	.catch(errorHandler);
 });
 
+// add a health route
+app.get("/health", (req, res) => {
+    // can we call the API server
+    instance.get(DATA_SERVICE_URL + "/monitoring/health")
+	.then(response => {
+	    var serviceHealth = response.data;
+	    var serviceStatus = serviceHealth.status;
+	    var status = serviceStatus === "UP";
+	    if (!status) {
+ 		res.status(503);
+	    }
+	    return res.json({ status: status ? "UP" : "DOWN", components: { appServer: { status: serviceStatus } }});
+	})
+	.catch(error => {
+	    res.status(503);
+	    return res.json({ status: "DOWN", components: { appServer: { status: "DOWN" } }});
+	});
+});
+
 httpServer.listen(PORT, () => { console.log(`Application server listening on port ${PORT} (http)`); });

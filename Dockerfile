@@ -1,5 +1,8 @@
 FROM drsaaron/blazarnodebase:1.67
 
+# install JQ, needed for the health check
+RUN apt update && apt install -y jq
+
 # expose port 8001
 ENV SERVER_PORT=8001
 EXPOSE $SERVER_PORT
@@ -13,6 +16,7 @@ ADD src ./src
 ADD public ./public
 ADD config ./config
 ADD server ./server
+ADD ./healthCheck.sh ./healthCheck.sh
 
 # get the packages
 RUN npm install 
