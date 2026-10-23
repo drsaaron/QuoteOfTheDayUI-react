@@ -9,5 +9,5 @@ containerName=quoteofthedayui
 docker stop $containerName
 docker rm $containerName
 
-docker run --user $(id -u):$(id -g) --network qotd --name $containerName -d -p 8080:$port $imageName:$version
+docker run --user $(id -u):$(id -g) --network qotd --health-cmd="CMD curl --fail localhost:$port || exit 1" --name $containerName -d -p 8080:$port $imageName:$version
 
